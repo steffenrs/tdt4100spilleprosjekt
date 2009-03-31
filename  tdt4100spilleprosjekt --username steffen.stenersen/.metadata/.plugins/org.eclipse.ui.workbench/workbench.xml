@@ -34,13 +34,13 @@
 </folder>
 </info>
 </editorArea>
-<editor activePart="true" focus="true" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Program.java" partName="Program.java" path="C:/Users/Steffen R. Stenersen/Documents/NTNU/Java/SpilleProsjekt/SpilleProsjekt/src/spill/Program.java" title="Program.java" tooltip="SpilleProsjekt/src/spill/Program.java" workbook="DefaultEditorWorkbook">
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Program.java" partName="Program.java" path="C:/Users/Steffen R. Stenersen/Documents/NTNU/Java/SpilleProsjekt/SpilleProsjekt/src/spill/Program.java" title="Program.java" tooltip="SpilleProsjekt/src/spill/Program.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/SpilleProsjekt/src/spill/Program.java"/>
 <editorState selectionLength="0" selectionOffset="133"/>
 </editor>
-<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Game.java" partName="Game.java" path="C:/Users/Steffen R. Stenersen/Documents/NTNU/Java/SpilleProsjekt/SpilleProsjekt/src/spill/Game.java" title="Game.java" tooltip="SpilleProsjekt/src/spill/Game.java" workbook="DefaultEditorWorkbook">
+<editor activePart="true" focus="true" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Game.java" partName="Game.java" path="C:/Users/Steffen R. Stenersen/Documents/NTNU/Java/SpilleProsjekt/SpilleProsjekt/src/spill/Game.java" title="Game.java" tooltip="SpilleProsjekt/src/spill/Game.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/SpilleProsjekt/src/spill/Game.java"/>
-<editorState selectionLength="0" selectionOffset="101"/>
+<editorState selectionLength="0" selectionOffset="111"/>
 </editor>
 </editors>
 <views>
@@ -48,7 +48,8 @@
 <view id="org.eclipse.ui.views.ProblemView" partName="Problems">
 <viewState PRIMARY_SORT_FIELD="org.eclipse.ui.ide.severityAndDescriptionField" categoryGroup="org.eclipse.ui.ide.severity" markerContentGenerator="org.eclipse.ui.ide.problemsGenerator" partName="Problems">
 <expanded>
-<category IMemento.internal.id="Errors (1 item)"/>
+<category IMemento.internal.id="Errors (8 items)"/>
+<category IMemento.internal.id="Errors"/>
 </expanded>
 <columnWidths org.eclipse.ui.ide.locationField="54" org.eclipse.ui.ide.markerType="79" org.eclipse.ui.ide.pathField="104" org.eclipse.ui.ide.resourceField="79" org.eclipse.ui.ide.severityAndDescriptionField="250"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.severityAndDescriptionField"/>
@@ -231,6 +232,7 @@
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/SpilleProsjekt/src/Program.java"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/SpilleProsjekt/src/spill/Program.java"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/SpilleProsjekt/src/spill/Game.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/SpilleProsjekt/src/spill/Game.java"/>
 </editors>
 <item historyLabel="Program.java" index="0">
 <position/>
@@ -253,8 +255,11 @@
 <item historyLabel="Game.java" index="2">
 <position info="not_deleted" x="101" y="0"/>
 </item>
-<item active="true" historyLabel="Program.java" index="1">
+<item historyLabel="Program.java" index="1">
 <position info="not_deleted" x="133" y="0"/>
+</item>
+<item active="true" historyLabel="Game.java" index="3">
+<position info="not_deleted" x="108" y="0"/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>

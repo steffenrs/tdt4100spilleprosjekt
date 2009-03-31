@@ -10,8 +10,7 @@ public class Game
 	
 	public void run()
 	{
-		a<skjøl
-	}dfkaosjdfkoasdfkjasdkjlas¨dasdjas
+
+	}
 	
-	asdjasdkjjks
 }
