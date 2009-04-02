@@ -1,0 +1,48 @@
+package spectrum;
+
+import java.awt.Graphics;
+import java.awt.image.ImageObserver;
+
+import javax.swing.ImageIcon;
+
+public class Game 
+{
+	private ImageObserver observer;
+	private Graphics graphics;
+	
+	private Actor test;
+	
+	public Game(ImageObserver observer, Graphics graphics)
+	{
+		this.observer = observer;
+		this.graphics = graphics;
+	}
+	
+	public void run()
+	{
+		String path = System.getProperty("user.dir") + "\\Content\\enemy.png";
+		ImageIcon ic = new ImageIcon(path);
+		test = new Actor(ic.getImage(), 4, 2, this.observer);
+		
+		
+	}
+	
+	public void Update()
+	{
+		int counter;
+		int limit = 2000000;
+		
+		counter++;
+		if(counter > limit)
+		{
+			sprite.Update();
+			this.Draw();
+			counter = 0;
+		}
+	}
+	
+	public void Draw()
+	{
+		test.Draw(graphics, observer, 32, 32);
+	}
+}

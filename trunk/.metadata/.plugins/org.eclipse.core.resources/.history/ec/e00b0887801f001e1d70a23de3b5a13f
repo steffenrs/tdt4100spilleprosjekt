@@ -1,0 +1,19 @@
+package spectrum;
+
+import java.awt.image.ImageObserver;
+
+public class Game 
+{
+	Actor test;
+	
+	public Game(ImageObserver observer, Graphics graphics)
+	{
+		observer.
+	}
+	
+	public void run()
+	{
+		test = new Actor();
+		
+	}
+}

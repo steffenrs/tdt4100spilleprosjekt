@@ -1,0 +1,6 @@
+package spectrum;
+
+public class Player extends Actor
+{
+
+}
