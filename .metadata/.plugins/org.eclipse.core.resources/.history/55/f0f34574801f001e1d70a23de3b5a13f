@@ -1,0 +1,12 @@
+package spectrum;
+
+public class Game 
+{
+	Actor test;
+	
+	public void run()
+	{
+		test = new Actor();
+		
+	}
+}

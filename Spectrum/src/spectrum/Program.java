@@ -1,13 +1,11 @@
 package spectrum;
 
-public class Program {
-
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+public class Program 
+{
+	public static void main(String[] args) 
+	{
+		Game game = new Game();
+		game.run();
 	}
 
 }
