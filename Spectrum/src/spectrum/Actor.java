@@ -9,7 +9,10 @@ public class Actor
 	public static ArrayList<Actor> actors;
 	Sprite spriteSheet;
 	
-	static 
+	int x;
+	int y;
+	
+	static
 	{
 		actors = new ArrayList<Actor>();
 	}
@@ -20,13 +23,26 @@ public class Actor
 		this.spriteSheet = sprite;
 	}
 	
+	public Actor(Sprite sprite, int x, int y)
+	{
+		this(sprite);
+		this.x = x;
+		this.y = y;
+	}
+	
 	public void Update()
 	{
 		spriteSheet.Update();
 	}
 	
+	public void Draw(Graphics g, ImageObserver observer)
+	{
+		spriteSheet.Draw(g, observer, x, y);
+	}
+	
 	public void Draw(Graphics g, ImageObserver observer, int x, int y)
 	{
 		spriteSheet.Draw(g, observer, x, y);
+		
 	}
 }

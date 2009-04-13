@@ -1,0 +1,76 @@
+package leveleditor;
+
+import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.image.ImageObserver;
+import java.text.NumberFormat;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFormattedTextField;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
+public class Editor extends JPanel
+{
+	private ImageObserver observer;
+	private Graphics graphics;
+	
+	Image i;
+	
+	public static void main(String[] args) 
+	{
+		Editor editor = new Editor();
+	}
+	
+	public Editor()
+	{
+		JFrame f = new JFrame();
+		f.setTitle("Editor");
+		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		f.setSize(900, 800);
+		f.setVisible(true);
+		f.setResizable(false);
+		f.add(this);
+		graphics = f.getGraphics();
+		this.observer = f;
+		
+		this.setSize(900, 800);
+		this.setVisible(true);
+		
+		this.addMouseListener(new MyMouseListener(this));
+		
+		JLabel l1 = new JLabel("Width: ");
+		l1.setLocation(100, 100);
+		this.add(l1);
+		
+		JFormattedTextField tf = new JFormattedTextField(NumberFormat.getIntegerInstance());
+		tf.setColumns(4);
+		this.add(tf);
+		
+		JButton b1 = new JButton();
+		b1.setText("Set X");
+		this.add(b1);
+		
+		loadGraphics();
+	}
+	
+	public void loadGraphics()
+	{
+		String path = System.getProperty("user.dir") + "\\Content\\block.png";
+		ImageIcon ic = new ImageIcon(path);
+		
+		i = ic.getImage();
+	}
+	
+	public void drawC(int x, int y)
+	{
+		graphics.drawImage(i, x, y, observer);
+	}
+	
+	public void paintComponent(Graphics g)
+	{
+		super.paintComponent(g);
+	}
+}

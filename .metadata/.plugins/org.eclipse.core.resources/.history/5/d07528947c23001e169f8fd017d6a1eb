@@ -1,0 +1,46 @@
+package leveleditor;
+
+import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.image.ImageObserver;
+
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+
+public class Editor extends JFrame
+{
+	private ImageObserver observer;
+	private Graphics graphics;
+	
+	Image i;
+	
+	public static void main(String[] args) 
+	{
+		Editor editor = new Editor();
+	}
+	
+	public Editor()
+	{
+		this.setTitle("Editor");
+		
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setSize(900, 800);
+		this.setVisible(true);
+		this.setResizable(false);
+		
+		graphics = this.getGraphics();
+		
+		String path = System.getProperty("user.dir") + "\\Content\\block.png";
+		ImageIcon ic = new ImageIcon(path);
+		
+		Image i = ic.getImage();
+		super.paintComponents(graphics);
+		graphics.drawImage(i, 100, 100, this);
+	}	
+	
+	public void Draw()
+	{
+		super.paintComponents(graphics);
+		graphics.drawImage(i, 100, 100, this);
+	}
+}
