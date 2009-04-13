@@ -1,0 +1,83 @@
+package spectrum;
+
+import java.awt.image.ImageObserver;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+
+import javax.swing.ImageIcon;
+
+public class Level 
+{
+	private ArrayList<ImageIcon> textures;
+	private ArrayList<String[]> level;
+	ImageObserver io;
+	
+	public Level(ImageObserver io)
+	{
+		textures = new ArrayList<ImageIcon>();
+		level = new ArrayList<String[]>();
+		this.io = io;
+	}
+	
+	public void Load(String path)
+	{
+		BufferedReader reader = null;
+		
+		try
+		{
+			reader = new BufferedReader(new FileReader(path));
+			
+			String input;
+			int step = 0;
+			
+			while((input = reader.readLine()) != null)
+			{
+				if(input.length() != 0)
+				{
+					if(input.charAt(0) == '[')
+					{
+						step++;
+						input = reader.readLine();
+					}
+				}
+				
+				switch(step)
+				{
+				case 1: 
+					textures.add(new ImageIcon(System.getProperty("user.dir") + "\\Content\\" + input + ".png"));
+					break;
+				case 2:
+					break;
+				case 3:
+					String[] cells = input.split(" ");
+					level.add(cells);
+					break;
+				}
+			}
+			String p = System.getProperty("user.dir") + "\\Content\\";
+			String current;
+			for (int x = 0; x < level.get(0).length; x++) 
+			{
+				for (int y = 0; y < level.size(); y++) 
+				{
+					current = level.get(y)[x];
+					if(current == "-1")
+						continue;
+					
+					int c = Integer.parseInt(current);
+					Sprite sprite = new Sprite(textures.get(c).getImage(), 1, 1, io);
+				}
+			}
+			
+		}
+		catch(IOException exc)
+		{
+			System.out.println(exc.getMessage());
+		}
+		
+		
+		
+	}
+}

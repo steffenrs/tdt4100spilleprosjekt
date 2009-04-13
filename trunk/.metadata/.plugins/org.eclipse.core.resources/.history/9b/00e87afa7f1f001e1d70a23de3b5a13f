@@ -1,9 +1,0 @@
-package spectrum;
-
-public class GUI 
-{
-	public GUI()
-	{
-		
-	}
-}

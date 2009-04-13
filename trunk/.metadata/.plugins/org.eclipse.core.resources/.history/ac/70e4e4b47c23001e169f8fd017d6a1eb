@@ -1,0 +1,43 @@
+package leveleditor;
+
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+
+public class MyMouseListener implements MouseListener
+{
+	Editor editor;
+	
+	public MyMouseListener(Editor e)
+	{
+		this.editor = e;
+	}
+	
+	public void mouseClicked(MouseEvent arg0) 
+	{
+		
+	}
+
+	public void mouseEntered(MouseEvent arg0) 
+	{
+		
+	}
+
+	public void mouseExited(MouseEvent arg0) 
+	{
+		
+	}
+
+	public void mousePressed(MouseEvent arg0) 
+	{
+		if(arg0.getButton() == MouseEvent.BUTTON1)
+		{
+			
+		}
+	}
+
+	public void mouseReleased(MouseEvent arg0) 
+	{
+		
+	}
+
+}
