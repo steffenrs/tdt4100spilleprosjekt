@@ -9,8 +9,27 @@ public class Actor
 	public static ArrayList<Actor> actors;
 	Sprite spriteSheet;
 	
-	int x;
-	int y;
+	private int xPos;
+	private int yPos;
+	
+	public void setXPos(int x){
+		xPos = x;	
+	}
+	
+	public int getXPos(){
+		return xPos;
+	}
+	
+	public void setYPos(int y){
+		yPos = y;
+	}
+	
+	public int getYPos(){
+		return yPos;
+	}
+	
+	
+	
 	
 	static
 	{
@@ -26,9 +45,10 @@ public class Actor
 	public Actor(Sprite sprite, int x, int y)
 	{
 		this(sprite);
-		this.x = x;
-		this.y = y;
+		this.xPos = x;
+		this.yPos = y;
 	}
+	
 	
 	public void Update()
 	{
@@ -37,7 +57,7 @@ public class Actor
 	
 	public void Draw(Graphics g, ImageObserver observer)
 	{
-		spriteSheet.Draw(g, observer, x, y);
+		spriteSheet.Draw(g, observer, xPos, yPos);
 	}
 	
 	public void Draw(Graphics g, ImageObserver observer, int x, int y)
