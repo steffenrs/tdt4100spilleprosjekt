@@ -11,10 +11,14 @@ public class Game extends JFrame
 {
 	private ImageObserver observer;
 	private Graphics graphics;
-	private int counter = 0;
 	
 	private Actor test;
 	private Level testLevel;
+	
+	//Game Loop
+	float updateInterval = 1000/60;
+	long start = System.currentTimeMillis();
+	long current = 0;
 	
 	public static void main(String[] args) 
 	{
@@ -65,12 +69,6 @@ public class Game extends JFrame
 		
 		
 	}
-	
-	
-	
-	float updateInterval = 1000/60;
-	long start = System.currentTimeMillis();
-	long current = 0;
 	
 	public void Update()
 	{
