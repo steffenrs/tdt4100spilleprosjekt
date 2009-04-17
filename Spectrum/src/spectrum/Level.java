@@ -54,9 +54,14 @@ public class Level
 				switch(step)
 				{
 				case 1: 
+					if(input.equals(""))
+						continue;
 					textures.add(new ImageIcon(System.getProperty("user.dir") + "\\Content\\" + input + ".png"));
+					int t = input.indexOf("_");
+					textures.get(textures.size() - 1).setDescription(input.substring(0, t));
 					break;
-				case 2:
+					
+					case 2:
 					break;
 				case 3:
 					String[] cells = input.split(" ");
@@ -73,8 +78,10 @@ public class Level
 					current = Integer.parseInt(level.get(y)[x]);
 					if(current != -1)
 					{
-						Sprite sprite = new Sprite(textures.get(current).getImage(), 1, 1, io);
-						new Actor(sprite, x * 32, y*32);
+						ImageIcon ic = textures.get(current);
+						Sprite sprite = new Sprite(ic.getImage(), 1, 1, io);
+						//FIKS TYPE HER
+						new Actor(sprite, x * 32, y*32, Type.typeOf(ic.getDescription()));
 					}
 				}
 			}
