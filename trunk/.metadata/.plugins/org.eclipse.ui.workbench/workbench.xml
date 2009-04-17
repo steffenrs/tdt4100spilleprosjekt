@@ -8,15 +8,15 @@
 </perspectiveBar>
 <coolbarLayout locked="0">
 <coolItem id="group.file" itemType="typeGroupMarker"/>
-<coolItem id="org.eclipse.ui.workbench.file" itemType="typeToolBarContribution" x="98" y="22"/>
+<coolItem id="org.eclipse.ui.workbench.file" itemType="typeToolBarContribution" x="99" y="22"/>
 <coolItem id="additions" itemType="typeGroupMarker"/>
-<coolItem id="org.eclipse.debug.ui.launchActionSet" itemType="typeToolBarContribution" x="124" y="22"/>
-<coolItem id="org.eclipse.jdt.ui.JavaElementCreationActionSet" itemType="typeToolBarContribution" x="98" y="22"/>
-<coolItem id="org.eclipse.ui.edit.text.actionSet.presentation" itemType="typeToolBarContribution" x="85" y="22"/>
+<coolItem id="org.eclipse.debug.ui.launchActionSet" itemType="typeToolBarContribution" x="129" y="22"/>
+<coolItem id="org.eclipse.jdt.ui.JavaElementCreationActionSet" itemType="typeToolBarContribution" x="99" y="22"/>
+<coolItem id="org.eclipse.ui.edit.text.actionSet.presentation" itemType="typeToolBarContribution" x="84" y="22"/>
 <coolItem id="org.eclipse.wst.xml.ui.design.DesignToolBar" itemType="typeToolBarContribution" x="-1" y="-1"/>
 <coolItem id="org.eclipse.search.searchActionSet" itemType="typeToolBarContribution" x="130" y="22"/>
 <coolItem id="group.nav" itemType="typeGroupMarker"/>
-<coolItem id="org.eclipse.ui.workbench.navigate" itemType="typeToolBarContribution" x="185" y="22"/>
+<coolItem id="org.eclipse.ui.workbench.navigate" itemType="typeToolBarContribution" x="190" y="22"/>
 <coolItem id="group.editor" itemType="typeGroupMarker"/>
 <coolItem id="org.eclipse.jdt.ui.ClassFileEditor" itemType="typePlaceholder" x="-1" y="-1"/>
 <coolItem id="org.eclipse.jdt.ui.CompilationUnitEditor" itemType="typeToolBarContribution" x="-1" y="-1"/>
@@ -34,29 +34,49 @@
 <part id="2"/>
 <part id="3"/>
 <part id="4"/>
+<part id="5"/>
+<part id="6"/>
+<part id="7"/>
+<part id="8"/>
 </presentation>
 </folder>
 </info>
 </editorArea>
-<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Game.java" partName="Game.java" path="C:/Users/Steffen R. Stenersen/Documents/NTNU/Java/SpilleProsjekt/Spectrum/src/spectrum/Game.java" title="Game.java" tooltip="Spectrum/src/spectrum/Game.java" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Spectrum/src/spectrum/Game.java"/>
-<editorState selectionLength="0" selectionOffset="403"/>
-</editor>
-<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Level.java" partName="Level.java" path="C:/Users/Steffen R. Stenersen/Documents/NTNU/Java/SpilleProsjekt/Spectrum/src/spectrum/Level.java" title="Level.java" tooltip="Spectrum/src/spectrum/Level.java" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Spectrum/src/spectrum/Level.java"/>
-<editorState selectionLength="0" selectionOffset="1287"/>
-</editor>
-<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Sprite.java" partName="Sprite.java" path="C:/Users/Steffen R. Stenersen/Documents/NTNU/Java/SpilleProsjekt/Spectrum/src/spectrum/Sprite.java" title="Sprite.java" tooltip="Spectrum/src/spectrum/Sprite.java" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Spectrum/src/spectrum/Sprite.java"/>
-<editorState selectionLength="0" selectionOffset="1541"/>
-</editor>
-<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Actor.java" partName="Actor.java" path="C:/Users/Steffen R. Stenersen/Documents/NTNU/Java/SpilleProsjekt/Spectrum/src/spectrum/Actor.java" title="Actor.java" tooltip="Spectrum/src/spectrum/Actor.java" workbook="DefaultEditorWorkbook">
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Actor.java" partName="Actor.java" path="C:/Spillprosjekt/Spectrum/src/spectrum/Actor.java" title="Actor.java" tooltip="Spectrum/src/spectrum/Actor.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Spectrum/src/spectrum/Actor.java"/>
-<editorState selectionLength="0" selectionOffset="634"/>
+<editorState selectionLength="0" selectionOffset="0"/>
 </editor>
-<editor activePart="true" focus="true" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Input.java" partName="Input.java" path="C:/Users/Steffen R. Stenersen/Documents/NTNU/Java/SpilleProsjekt/Spectrum/src/spectrum/Input.java" title="Input.java" tooltip="Spectrum/src/spectrum/Input.java" workbook="DefaultEditorWorkbook">
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Block.java" partName="Block.java" path="C:/Spillprosjekt/Spectrum/src/spectrum/Block.java" title="Block.java" tooltip="Spectrum/src/spectrum/Block.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Spectrum/src/spectrum/Block.java"/>
+<editorState selectionLength="0" selectionOffset="122"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Gem.java" partName="Gem.java" path="C:/Spillprosjekt/Spectrum/src/spectrum/Gem.java" title="Gem.java" tooltip="Spectrum/src/spectrum/Gem.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Spectrum/src/spectrum/Gem.java"/>
+<editorState selectionLength="0" selectionOffset="250"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Game.java" partName="Game.java" path="C:/Spillprosjekt/Spectrum/src/spectrum/Game.java" title="Game.java" tooltip="Spectrum/src/spectrum/Game.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Spectrum/src/spectrum/Game.java"/>
+<editorState selectionLength="0" selectionOffset="0"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Goal.java" partName="Goal.java" path="C:/Spillprosjekt/Spectrum/src/spectrum/Goal.java" title="Goal.java" tooltip="Spectrum/src/spectrum/Goal.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Spectrum/src/spectrum/Goal.java"/>
+<editorState selectionLength="0" selectionOffset="0"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Input.java" partName="Input.java" path="C:/Spillprosjekt/Spectrum/src/spectrum/Input.java" title="Input.java" tooltip="Spectrum/src/spectrum/Input.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Spectrum/src/spectrum/Input.java"/>
-<editorState selectionLength="0" selectionOffset="271"/>
+<editorState selectionLength="0" selectionOffset="0"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Level.java" partName="Level.java" path="C:/Spillprosjekt/Spectrum/src/spectrum/Level.java" title="Level.java" tooltip="Spectrum/src/spectrum/Level.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Spectrum/src/spectrum/Level.java"/>
+<editorState selectionLength="13" selectionOffset="315"/>
+</editor>
+<editor activePart="true" focus="true" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Player.java" partName="Player.java" path="C:/Spillprosjekt/Spectrum/src/spectrum/Player.java" title="Player.java" tooltip="Spectrum/src/spectrum/Player.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Spectrum/src/spectrum/Player.java"/>
+<editorState selectionLength="0" selectionOffset="166"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Sprite.java" partName="Sprite.java" path="C:/Spillprosjekt/Spectrum/src/spectrum/Sprite.java" title="Sprite.java" tooltip="Spectrum/src/spectrum/Sprite.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Spectrum/src/spectrum/Sprite.java"/>
+<editorState selectionLength="0" selectionOffset="423"/>
 </editor>
 </editors>
 <views>
@@ -68,8 +88,8 @@
 </view>
 <view id="org.eclipse.ui.views.ProblemView" partName="Problems">
 <viewState PRIMARY_SORT_FIELD="org.eclipse.ui.ide.severityAndDescriptionField" categoryGroup="org.eclipse.ui.ide.severity" markerContentGenerator="org.eclipse.ui.ide.problemsGenerator" partName="Problems">
-<expanded>
-<category IMemento.internal.id="Warnings (2 items)"/>
+<expanded>&#x0A;<category IMemento.internal.id="Warnings (1 item)"/>
+<category IMemento.internal.id="Warnings"/>
 </expanded>
 <columnWidths org.eclipse.ui.ide.locationField="0" org.eclipse.ui.ide.markerType="0" org.eclipse.ui.ide.pathField="0" org.eclipse.ui.ide.resourceField="0" org.eclipse.ui.ide.severityAndDescriptionField="0"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.severityAndDescriptionField"/>
@@ -132,7 +152,9 @@
 <view id="org.eclipse.ui.views.ContentOutline" partName="Outline">
 <viewState/>
 </view>
-<view id="org.eclipse.jdt.ui.SourceView" partName="Declaration"/>
+<view id="org.eclipse.jdt.ui.SourceView" partName="Declaration">
+<viewState/>
+</view>
 <view id="org.eclipse.jdt.ui.JavadocView" partName="Javadoc"/>
 </views>
 <perspectives activePart="org.eclipse.jdt.ui.CompilationUnitEditor" activePerspective="org.eclipse.jdt.ui.JavaPerspective">
@@ -298,58 +320,42 @@
 <view id="org.eclipse.debug.ui.BreakpointView"/>
 <view id="org.eclipse.ui.views.ContentOutline"/>
 <fastViewBars/>
-<layout>
-<mainWindow>
-<info folder="true" part="org.eclipse.debug.internal.ui.NavigatorFolderView">
-<folder activePageID="org.eclipse.debug.ui.DebugView" appearance="2" expanded="2">
-<page content="org.eclipse.debug.ui.DebugView" label="Debug"/>
+<layout>&#x0A;<mainWindow>&#x0A;<info folder="true" part="org.eclipse.debug.internal.ui.NavigatorFolderView">&#x0A;<folder activePageID="org.eclipse.debug.ui.DebugView" appearance="2" expanded="2">&#x0A;<page content="org.eclipse.debug.ui.DebugView" label="Debug"/>
 <page content="org.eclipse.ui.views.ResourceNavigator" label="LabelNotFound"/>
 <page content="org.eclipse.jdt.ui.PackageExplorer" label="LabelNotFound"/>
 <page content="org.eclipse.jdt.ui.TypeHierarchy" label="LabelNotFound"/>
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
-<part id="0"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">&#x0A;<part id="0"/>
 </presentation>
 </folder>
 </info>
-<info folder="true" part="stickyFolderRight" ratio="0.75" ratioLeft="1074" ratioRight="358" relationship="2" relative="org.eclipse.debug.internal.ui.NavigatorFolderView">
-<folder appearance="2" expanded="2">
-<page content="org.eclipse.help.ui.HelpView" label="LabelNotFound"/>
+<info folder="true" part="stickyFolderRight" ratio="0.75" ratioLeft="1074" ratioRight="358" relationship="2" relative="org.eclipse.debug.internal.ui.NavigatorFolderView">&#x0A;<folder appearance="2" expanded="2">&#x0A;<page content="org.eclipse.help.ui.HelpView" label="LabelNotFound"/>
 <page content="org.eclipse.ui.internal.introview" label="LabelNotFound"/>
 <page content="org.eclipse.ui.cheatsheets.views.CheatSheetView" label="LabelNotFound"/>
 </folder>
 </info>
-<info folder="true" part="org.eclipse.debug.internal.ui.ConsoleFolderView" ratio="0.74968714" ratioLeft="599" ratioRight="200" relationship="4" relative="org.eclipse.debug.internal.ui.NavigatorFolderView">
-<folder activePageID="org.eclipse.ui.console.ConsoleView" appearance="2" expanded="2">
-<page content="org.eclipse.ui.console.ConsoleView" label="Console"/>
+<info folder="true" part="org.eclipse.debug.internal.ui.ConsoleFolderView" ratio="0.74968714" ratioLeft="599" ratioRight="200" relationship="4" relative="org.eclipse.debug.internal.ui.NavigatorFolderView">&#x0A;<folder activePageID="org.eclipse.ui.console.ConsoleView" appearance="2" expanded="2">&#x0A;<page content="org.eclipse.ui.console.ConsoleView" label="Console"/>
 <page content="org.eclipse.ui.views.TaskList" label="Tasks"/>
 <page content="org.eclipse.ui.views.BookmarkView" label="LabelNotFound"/>
 <page content="org.eclipse.ui.views.PropertySheet" label="LabelNotFound"/>
 <page content="org.eclipse.jdt.debug.ui.DisplayView" label="LabelNotFound"/>
 <page content="org.eclipse.search.SearchResultView" label="LabelNotFound"/>
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
-<part id="0"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">&#x0A;<part id="0"/>
 <part id="1"/>
 </presentation>
 </folder>
 </info>
 <info part="org.eclipse.ui.editorss" ratio="0.4490818" ratioLeft="269" ratioRight="330" relationship="4" relative="org.eclipse.debug.internal.ui.NavigatorFolderView"/>
-<info folder="true" part="org.eclipse.debug.internal.ui.OutlineFolderView" ratio="0.75" ratioLeft="1074" ratioRight="358" relationship="2" relative="org.eclipse.ui.editorss">
-<folder activePageID="org.eclipse.ui.views.ContentOutline" appearance="2" expanded="2">
-<page content="org.eclipse.ui.views.ContentOutline" label="Outline"/>
+<info folder="true" part="org.eclipse.debug.internal.ui.OutlineFolderView" ratio="0.75" ratioLeft="1074" ratioRight="358" relationship="2" relative="org.eclipse.ui.editorss">&#x0A;<folder activePageID="org.eclipse.ui.views.ContentOutline" appearance="2" expanded="2">&#x0A;<page content="org.eclipse.ui.views.ContentOutline" label="Outline"/>
 <page content="org.eclipse.ant.ui.views.AntView" label="LabelNotFound"/>
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
-<part id="0"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">&#x0A;<part id="0"/>
 </presentation>
 </folder>
 </info>
-<info folder="true" part="org.eclipse.debug.internal.ui.ToolsFolderView" ratio="0.5" ratioLeft="716" ratioRight="716" relationship="2" relative="org.eclipse.debug.internal.ui.NavigatorFolderView">
-<folder activePageID="org.eclipse.debug.ui.BreakpointView" appearance="2" expanded="2">
-<page content="org.eclipse.debug.ui.VariableView" label="Variables"/>
+<info folder="true" part="org.eclipse.debug.internal.ui.ToolsFolderView" ratio="0.5" ratioLeft="716" ratioRight="716" relationship="2" relative="org.eclipse.debug.internal.ui.NavigatorFolderView">&#x0A;<folder activePageID="org.eclipse.debug.ui.BreakpointView" appearance="2" expanded="2">&#x0A;<page content="org.eclipse.debug.ui.VariableView" label="Variables"/>
 <page content="org.eclipse.debug.ui.BreakpointView" label="Breakpoints"/>
 <page content="org.eclipse.debug.ui.ExpressionView" label="LabelNotFound"/>
 <page content="org.eclipse.debug.ui.RegisterView" label="LabelNotFound"/>
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
-<part id="0"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">&#x0A;<part id="0"/>
 <part id="1"/>
 </presentation>
 </folder>
@@ -361,164 +367,165 @@
 <workingSets/>
 <navigationHistory>
 <editors>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Spectrum/src/spectrum/Game.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Spectrum/src/spectrum/Actor.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Spectrum/src/spectrum/Sprite.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Spectrum/src/spectrum/Color.java"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Spectrum/src/spectrum/Level.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Spectrum/src/spectrum/Player.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Spectrum/src/spectrum/Gem.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Spectrum/src/spectrum/Block.java"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Spectrum/src/spectrum/Game.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Spectrum/src/spectrum/Sprite.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Spectrum/src/spectrum/Actor.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Spectrum/src/spectrum/Game.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Spectrum/src/spectrum/Game.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Spectrum/src/spectrum/Actor.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Spectrum/src/spectrum/Sprite.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Spectrum/src/spectrum/Input.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Spectrum/src/spectrum/Player.java"/>
 </editors>
-<item historyLabel="Game.java" index="1">
-<position info="not_deleted" x="1326" y="17"/>
+<item historyLabel="Color.java" index="3">
+<position info="not_deleted" x="129" y="0"/>
 </item>
-<item historyLabel="Actor.java" index="3">
-<position info="not_deleted" x="505" y="23"/>
+<item historyLabel="Actor.java" index="1">
+<position info="not_deleted" x="503" y="0"/>
 </item>
-<item historyLabel="Actor.java" index="3">
-<position info="not_deleted" x="535" y="0"/>
-</item>
-<item historyLabel="Actor.java" index="3">
-<position info="not_deleted" x="505" y="2"/>
-</item>
-<item historyLabel="Level.java" index="0">
-<position info="not_deleted" x="1534" y="0"/>
-</item>
-<item historyLabel="Sprite.java" index="2">
-<position info="not_deleted" x="638" y="0"/>
-</item>
-<item historyLabel="Game.java" index="1">
-<position info="not_deleted" x="991" y="0"/>
-</item>
-<item historyLabel="Actor.java" index="3">
-<position info="not_deleted" x="430" y="0"/>
-</item>
-<item historyLabel="Sprite.java" index="2">
-<position info="not_deleted" x="638" y="0"/>
-</item>
-<item historyLabel="Level.java" index="0">
-<position info="not_deleted" x="1534" y="0"/>
-</item>
-<item historyLabel="Game.java" index="1">
-<position info="not_deleted" x="991" y="0"/>
-</item>
-<item historyLabel="Level.java" index="0">
-<position info="not_deleted" x="1555" y="0"/>
-</item>
-<item historyLabel="Actor.java" index="3">
-<position info="not_deleted" x="430" y="0"/>
-</item>
-<item historyLabel="Game.java" index="1">
-<position info="not_deleted" x="1610" y="0"/>
-</item>
-<item historyLabel="Level.java" index="0">
-<position info="not_deleted" x="1560" y="0"/>
-</item>
-<item historyLabel="Game.java" index="1">
-<position info="not_deleted" x="1610" y="0"/>
-</item>
-<item historyLabel="Sprite.java" index="2">
-<position info="not_deleted" x="1262" y="0"/>
-</item>
-<item historyLabel="Level.java" index="0">
-<position info="not_deleted" x="1560" y="0"/>
-</item>
-<item historyLabel="Game.java" index="1">
-<position info="not_deleted" x="1610" y="0"/>
-</item>
-<item historyLabel="Actor.java" index="3">
-<position info="not_deleted" x="430" y="0"/>
-</item>
-<item historyLabel="Actor.java" index="3">
-<position info="not_deleted" x="756" y="2"/>
-</item>
-<item historyLabel="Game.java" index="1">
-<position info="not_deleted" x="1610" y="0"/>
-</item>
-<item historyLabel="Actor.java" index="3">
-<position info="not_deleted" x="507" y="0"/>
-</item>
-<item historyLabel="Game.java" index="1">
-<position info="not_deleted" x="1610" y="0"/>
-</item>
-<item historyLabel="Game.java" index="1">
-<position info="not_deleted" x="1242" y="0"/>
-</item>
-<item historyLabel="Game.java" index="1">
-<position info="not_deleted" x="1378" y="0"/>
-</item>
-<item historyLabel="Level.java" index="0">
-<position info="not_deleted" x="1560" y="0"/>
-</item>
-<item historyLabel="Level.java" index="0">
-<position info="not_deleted" x="1149" y="0"/>
-</item>
-<item historyLabel="Level.java" index="0">
-<position info="not_deleted" x="1586" y="0"/>
-</item>
-<item historyLabel="Game.java" index="1">
-<position info="not_deleted" x="1610" y="0"/>
-</item>
-<item historyLabel="Level.java" index="0">
-<position info="not_deleted" x="1586" y="0"/>
-</item>
-<item historyLabel="Level.java" index="0">
-<position info="not_deleted" x="1389" y="0"/>
-</item>
-<item historyLabel="Level.java" index="0">
-<position info="not_deleted" x="1151" y="0"/>
-</item>
-<item historyLabel="Game.java" index="4">
+<item historyLabel="Game.java" index="0">
 <position/>
 </item>
-<item historyLabel="Level.java" index="0">
+<item historyLabel="Actor.java" index="1">
+<position info="not_deleted" x="460" y="0"/>
+</item>
+<item historyLabel="Game.java" index="0">
+<position/>
+</item>
+<item historyLabel="Sprite.java" index="2">
+<position info="not_deleted" x="1099" y="0"/>
+</item>
+<item historyLabel="Game.java" index="0">
+<position info="not_deleted" x="783" y="0"/>
+</item>
+<item historyLabel="Player.java" index="5">
+<position/>
+</item>
+<item historyLabel="Sprite.java" index="2">
+<position info="not_deleted" x="1074" y="0"/>
+</item>
+<item historyLabel="Game.java" index="0">
+<position info="not_deleted" x="783" y="0"/>
+</item>
+<item historyLabel="Sprite.java" index="2">
+<position info="not_deleted" x="1954" y="0"/>
+</item>
+<item historyLabel="Game.java" index="0">
+<position info="not_deleted" x="644" y="0"/>
+</item>
+<item historyLabel="Sprite.java" index="2">
+<position info="not_deleted" x="1877" y="0"/>
+</item>
+<item historyLabel="Actor.java" index="1">
+<position info="not_deleted" x="503" y="0"/>
+</item>
+<item historyLabel="Color.java" index="3">
+<position info="not_deleted" x="174" y="0"/>
+</item>
+<item historyLabel="Game.java" index="0">
+<position info="not_deleted" x="1530" y="0"/>
+</item>
+<item historyLabel="Actor.java" index="1">
+<position info="not_deleted" x="246" y="0"/>
+</item>
+<item historyLabel="Level.java" index="4">
+<position/>
+</item>
+<item historyLabel="Sprite.java" index="2">
 <position info="not_deleted" x="1520" y="0"/>
 </item>
-<item historyLabel="Level.java" index="0">
+<item historyLabel="Player.java" index="5">
 <position/>
 </item>
-<item historyLabel="Level.java" index="0">
+<item historyLabel="Level.java" index="4">
+<position info="not_deleted" x="315" y="13"/>
+</item>
+<item historyLabel="Actor.java" index="1">
+<position info="not_deleted" x="285" y="0"/>
+</item>
+<item historyLabel="Color.java" index="3">
+<position info="not_deleted" x="174" y="0"/>
+</item>
+<item historyLabel="Player.java" index="5">
 <position/>
 </item>
-<item historyLabel="Game.java" index="5">
-<position info="not_deleted" x="1571" y="0"/>
+<item historyLabel="Color.java" index="3">
+<position info="not_deleted" x="174" y="0"/>
 </item>
-<item historyLabel="Level.java" index="0">
-<position info="not_deleted" x="1432" y="0"/>
+<item historyLabel="Game.java" index="0">
+<position info="not_deleted" x="1530" y="0"/>
 </item>
-<item historyLabel="Game.java" index="5">
-<position info="not_deleted" x="1360" y="0"/>
+<item historyLabel="Sprite.java" index="2">
+<position info="not_deleted" x="423" y="0"/>
 </item>
-<item historyLabel="Level.java" index="0">
-<position info="not_deleted" x="1432" y="0"/>
+<item historyLabel="Player.java" index="5">
+<position/>
 </item>
-<item historyLabel="Actor.java" index="6">
-<position info="not_deleted" x="507" y="0"/>
+<item historyLabel="Level.java" index="4">
+<position info="not_deleted" x="315" y="13"/>
 </item>
-<item historyLabel="Game.java" index="5">
-<position info="not_deleted" x="1571" y="0"/>
+<item historyLabel="Player.java" index="5">
+<position info="not_deleted" x="120" y="0"/>
 </item>
-<item historyLabel="Actor.java" index="6">
-<position info="not_deleted" x="634" y="0"/>
+<item historyLabel="Game.java" index="0">
+<position info="not_deleted" x="1530" y="0"/>
 </item>
-<item historyLabel="Level.java" index="0">
-<position info="not_deleted" x="1478" y="0"/>
+<item historyLabel="Game.java" index="0">
+<position info="not_deleted" x="1322" y="0"/>
 </item>
-<item historyLabel="Game.java" index="5">
-<position info="not_deleted" x="1278" y="0"/>
+<item historyLabel="Game.java" index="0">
+<position info="not_deleted" x="776" y="0"/>
 </item>
-<item historyLabel="Level.java" index="0">
-<position info="not_deleted" x="1287" y="0"/>
+<item historyLabel="Game.java" index="0">
+<position info="not_deleted" x="1349" y="0"/>
 </item>
-<item historyLabel="Game.java" index="5">
-<position info="not_deleted" x="1477" y="0"/>
+<item historyLabel="Game.java" index="0">
+<position info="not_deleted" x="1255" y="0"/>
 </item>
-<item historyLabel="Sprite.java" index="7">
-<position info="not_deleted" x="1541" y="0"/>
+<item historyLabel="Game.java" index="0">
+<position info="not_deleted" x="1399" y="0"/>
 </item>
-<item active="true" historyLabel="Input.java" index="8">
+<item historyLabel="Gem.java" index="6">
+<position info="not_deleted" x="737" y="0"/>
+</item>
+<item historyLabel="Gem.java" index="6">
+<position info="not_deleted" x="283" y="0"/>
+</item>
+<item historyLabel="Actor.java" index="1">
+<position info="not_deleted" x="285" y="0"/>
+</item>
+<item historyLabel="Gem.java" index="6">
+<position info="not_deleted" x="283" y="0"/>
+</item>
+<item historyLabel="Gem.java" index="6">
+<position info="not_deleted" x="675" y="0"/>
+</item>
+<item historyLabel="Gem.java" index="6">
+<position info="not_deleted" x="637" y="0"/>
+</item>
+<item historyLabel="Gem.java" index="6">
+<position info="not_deleted" x="428" y="0"/>
+</item>
+<item historyLabel="Gem.java" index="6">
+<position info="not_deleted" x="599" y="0"/>
+</item>
+<item historyLabel="Gem.java" index="6">
+<position info="not_deleted" x="723" y="0"/>
+</item>
+<item historyLabel="Gem.java" index="6">
+<position info="not_deleted" x="250" y="0"/>
+</item>
+<item historyLabel="Block.java" index="7">
+<position info="not_deleted" x="122" y="0"/>
+</item>
+<item historyLabel="Actor.java" index="1">
+<position info="not_deleted" x="285" y="0"/>
+</item>
+<item historyLabel="Game.java" index="8">
+<position/>
+</item>
+<item active="true" historyLabel="Player.java" index="9">
 <position/>
 </item>
 </navigationHistory>
@@ -538,17 +545,32 @@
 </trimLayout>
 </window>
 <mruList>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Input.java" tooltip="Spectrum/src/spectrum/Input.java">
-<persistable path="/Spectrum/src/spectrum/Input.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Actor.java" tooltip="Spectrum/src/spectrum/Actor.java">
-<persistable path="/Spectrum/src/spectrum/Actor.java"/>
-</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Sprite.java" tooltip="Spectrum/src/spectrum/Sprite.java">
 <persistable path="/Spectrum/src/spectrum/Sprite.java"/>
 </file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Player.java" tooltip="Spectrum/src/spectrum/Player.java">
+<persistable path="/Spectrum/src/spectrum/Player.java"/>
+</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Level.java" tooltip="Spectrum/src/spectrum/Level.java">
 <persistable path="/Spectrum/src/spectrum/Level.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Input.java" tooltip="Spectrum/src/spectrum/Input.java">
+<persistable path="/Spectrum/src/spectrum/Input.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Goal.java" tooltip="Spectrum/src/spectrum/Goal.java">
+<persistable path="/Spectrum/src/spectrum/Goal.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Game.java" tooltip="Spectrum/src/spectrum/Game.java">
+<persistable path="/Spectrum/src/spectrum/Game.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Color.java" tooltip="Spectrum/src/spectrum/Color.java">
+<persistable path="/Spectrum/src/spectrum/Color.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Block.java" tooltip="Spectrum/src/spectrum/Block.java">
+<persistable path="/Spectrum/src/spectrum/Block.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Actor.java" tooltip="Spectrum/src/spectrum/Actor.java">
+<persistable path="/Spectrum/src/spectrum/Actor.java"/>
 </file>
 <file factoryID="org.eclipse.jdt.ui.ClassFileEditorInputFactory" id="org.eclipse.jdt.ui.ClassFileEditor" name="MouseEvent.class" tooltip="java.awt.event.MouseEvent">
 <persistable org.eclipse.jdt.ui.ClassFileIdentifier="=Spectrum/C:\/Program Files\/Java\/jre1.6.0_07\/lib\/rt.jar&lt;java.awt.event(MouseEvent.class"/>
@@ -561,9 +583,6 @@
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Program.java" tooltip="Spectrum/src/leveleditor/Program.java">
 <persistable path="/Spectrum/src/leveleditor/Program.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Color.java" tooltip="Spectrum/src/spectrum/Color.java">
-<persistable path="/Spectrum/src/spectrum/Color.java"/>
 </file>
 </mruList>
 </workbench>
