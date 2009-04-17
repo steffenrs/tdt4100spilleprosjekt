@@ -9,7 +9,8 @@ public class Input implements KeyListener
 	public void keyPressed(KeyEvent arg0) 
 	{
 		switch (arg0.getKeyCode()) {
-		case KeyEvent.VK_UP : break;
+		case KeyEvent.VK_UP : 
+			break;
 			
 
 		default:
