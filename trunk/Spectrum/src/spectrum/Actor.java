@@ -7,7 +7,8 @@ import java.util.ArrayList;
 public class Actor 
 {
 	public static ArrayList<Actor> actors;
-	Sprite spriteSheet;
+	private Sprite spriteSheet;
+	private Type type;
 	
 	private int xPos;
 	private int yPos;
@@ -37,15 +38,16 @@ public class Actor
 		actors = new ArrayList<Actor>();
 	}
 	
-	public Actor(Sprite sprite)
+	public Actor(Sprite sprite, Type type)
 	{
 		actors.add(this);
 		this.spriteSheet = sprite;
+		this.type = type;
 	}
 	
-	public Actor(Sprite sprite, int x, int y)
+	public Actor(Sprite sprite, int x, int y, Type type)
 	{
-		this(sprite);
+		this(sprite, type);
 		this.xPos = x;
 		this.yPos = y;
 	}

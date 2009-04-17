@@ -54,13 +54,13 @@ public class Game extends JFrame
 	public void createTestActor()
 	{
 		String path = System.getProperty("user.dir") + "\\Content\\";
-		ImageIcon ic = new ImageIcon(path + "explode01.png");
+		ImageIcon ic = new ImageIcon(path + "explode_01.png");
 		Sprite sprite = new Sprite(ic.getImage(), 8, 4, this.observer);
 		
 		
 		testLevel = new Level(this.observer);
 		testLevel.Load(System.getProperty("user.dir") + "\\Content\\test.layer");
-		test = new Actor(sprite, 32, 32);
+		test = new Actor(sprite, 32, 32, Type.PLAYER);
 		
 		 
 		ImageIcon playerImage = new ImageIcon(path + "player.png");
