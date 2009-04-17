@@ -1,5 +1,4 @@
-INDEX VERSION 1.125+C:\Users\Steffen R. Stenersen\Documents\NTNU\Java\SpilleProsjekt\.metadata\.plugins\org.eclipse.jdt.core
-3977662550.index
+INDEX VERSION 1.125+C:\Spillprosjekt\.metadata\.plugins\org.eclipse.jdt.core
 2174496293.index
 49515795.index
 3309190023.index
@@ -10,3 +9,4 @@ INDEX VERSION 1.125+C:\Users\Steffen R. Stenersen\Documents\NTNU\Java\SpillePros
 291899925.index
 1375628931.index
 2828031126.index
+3977662550.index
