@@ -39,7 +39,7 @@ public class Gem extends Actor
 	
 	public void applyProperties()
 	{
-		
+		dsf
 	}
 	
 	public void removeProperties()
