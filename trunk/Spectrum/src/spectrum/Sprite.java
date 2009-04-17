@@ -15,7 +15,7 @@ public class Sprite
 	private int frameInterval;
 	private int frameTimeRemaining;
 	
-	/**
+	/**sdfsdfdsf
 	 * @author Steffen R. Stenersen
 	 * @return the width of each sprite
 	 */
