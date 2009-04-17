@@ -53,7 +53,7 @@ public class Sprite
 	/**
 	 * @author Steffen R. Stenersen
 	 */
-	public void Update()
+	public void update()
 	{
 		this.frameTimeRemaining--;
 		if(this.frameTimeRemaining <= 0)
@@ -73,7 +73,7 @@ public class Sprite
 	 * @param x position x that the frame will be drawn at
 	 * @param y position y that the frame will be drawn at
 	 */
-	public void Draw(Graphics g, ImageObserver observer, int x, int y)
+	public void draw(Graphics g, ImageObserver observer, int x, int y)
 	{
 		g.drawImage(spriteSheet, 
 					x, 

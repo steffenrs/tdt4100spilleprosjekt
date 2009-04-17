@@ -18,7 +18,7 @@ public class Gem extends Actor
 	
 	public void update()
 	{
-		super.Update();
+		super.update();
 	}
 	
 	public void activate()
