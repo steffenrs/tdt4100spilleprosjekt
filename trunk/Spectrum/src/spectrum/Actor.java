@@ -12,24 +12,25 @@ public class Actor
 	private int xPos;
 	private int yPos;
 	
-	public void setXPos(int x){
+	public void setXPos(int x)
+	{
 		xPos = x;	
 	}
 	
-	public int getXPos(){
+	public int getXPos()
+	{
 		return xPos;
 	}
 	
-	public void setYPos(int y){
+	public void setYPos(int y)
+	{
 		yPos = y;
 	}
 	
-	public int getYPos(){
+	public int getYPos()
+	{
 		return yPos;
 	}
-	
-	
-	
 	
 	static
 	{
@@ -48,7 +49,6 @@ public class Actor
 		this.xPos = x;
 		this.yPos = y;
 	}
-	
 	
 	public void Update()
 	{

@@ -8,5 +8,4 @@ public class Player extends Actor
 		super(sprite);
 
 	}
-	
 }
