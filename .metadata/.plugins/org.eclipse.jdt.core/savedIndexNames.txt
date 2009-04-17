@@ -6,7 +6,6 @@ INDEX VERSION 1.125+C:\Spillprosjekt\.metadata\.plugins\org.eclipse.jdt.core
 4160647193.index
 4072971665.index
 1067421443.index
-291899925.index
 1375628931.index
 2828031126.index
 3083926301.index
