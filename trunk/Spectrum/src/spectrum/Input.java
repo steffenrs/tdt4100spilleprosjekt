@@ -1,31 +1,44 @@
 package spectrum;
 
+import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 
-public class Input implements KeyListener
+public class Input extends KeyAdapter
 {
-
-	public void keyPressed(KeyEvent arg0) 
+	private Player player;
+	
+	public Input(Player player)
 	{
-		switch (arg0.getKeyCode()) {
+		this.player = player;
+	}
+
+	public void keyPressed(KeyEvent ke) 
+	{
+		switch (ke.getKeyCode()) {
 		case KeyEvent.VK_UP : 
+			player.doJump();
+			break;
+		
+		case KeyEvent.VK_LEFT:
+			player.doMove(-1);
 			break;
 			
-
+		case KeyEvent.VK_RIGHT:
+			player.doMove(1);
+			break;
+			
 		default:
 			break;
 		}
 	}
-
-	public void keyReleased(KeyEvent arg0) 
-	{
-
-	}
-
-	public void keyTyped(KeyEvent arg0) 
-	{
-
-	}
-
+	
+//	public void keyReleased(KeyEvent arg0) 
+//	{
+//
+//	}
+//
+//	public void keyTyped(KeyEvent arg0) 
+//	{
+//
+//	}
 }

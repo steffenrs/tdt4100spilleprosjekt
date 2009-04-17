@@ -10,27 +10,32 @@ public class Actor
 	private Sprite spriteSheet;
 	private Type type;
 	
-	private int xPos;
-	private int yPos;
+	private float posX;
+	private float posY;
 	
-	public void setXPos(int x)
+	public void setposX(float x)
 	{
-		xPos = x;	
+		posX = x;	
 	}
 	
-	public int getXPos()
+	public float getPosX()
 	{
-		return xPos;
+		return posX;
 	}
 	
-	public void setYPos(int y)
+	public void setPosY(float y)
 	{
-		yPos = y;
+		posY = y;
 	}
 	
-	public int getYPos()
+	public float getPosY()
 	{
-		return yPos;
+		return posY;
+	}
+	
+	public Sprite getSprite()
+	{
+		return this.spriteSheet;
 	}
 	
 	static
@@ -48,23 +53,17 @@ public class Actor
 	public Actor(Sprite sprite, int x, int y, Type type)
 	{
 		this(sprite, type);
-		this.xPos = x;
-		this.yPos = y;
+		this.posX = x;
+		this.posY = y;
 	}
 	
-	public void Update()
+	public void update()
 	{
-		spriteSheet.Update();
+		spriteSheet.update();
 	}
 	
-	public void Draw(Graphics g, ImageObserver observer)
+	public void draw(Graphics g, ImageObserver observer)
 	{
-		spriteSheet.Draw(g, observer, xPos, yPos);
-	}
-	
-	public void Draw(Graphics g, ImageObserver observer, int x, int y)
-	{
-		spriteSheet.Draw(g, observer, x, y);
-		
+		spriteSheet.draw(g, observer, (int)posX, (int)posY);
 	}
 }

@@ -1,5 +1,6 @@
 package spectrum;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.ImageObserver;
 import java.util.Iterator;
@@ -11,12 +12,15 @@ public class Game extends JFrame
 {
 	private ImageObserver observer;
 	private Graphics graphics;
+	private Input input;
 	
 	private Actor test;
 	private Level testLevel;
+	private Player player;
 	
 	//Game Loop
-	float updateInterval = 1000/60;
+	static final double UPDATE_INTERVAL = 16.67;
+	
 	long start = System.currentTimeMillis();
 	long current = 0;
 	
@@ -34,17 +38,16 @@ public class Game extends JFrame
 		this.setVisible(true);
 		this.setResizable(false);
 		
+		createTestActor();
+		
+		input = new Input(player);
+		this.addKeyListener(input);
 		graphics = this.getGraphics();
 	}
 	
 	public void run()
 	{
-		//temp
-		createTestActor();
-		
-		//Game Loop
-			this.Update();
-		
+		this.update();
 	}
 	
 	//temp code
@@ -63,28 +66,29 @@ public class Game extends JFrame
 		test = new Actor(sprite, 32, 32, Type.PLAYER);
 		
 		 
-		ImageIcon playerImage = new ImageIcon(path + "player.png");
+		ImageIcon playerImage = new ImageIcon(path + "player_awsome.png");
 		Sprite playerSprite = new Sprite(playerImage.getImage(), 1, 1, this.observer);
-		Player player = new Player(playerSprite, 700, 700);
+		player = new Player(playerSprite, 700, 700);
 		
 		
 	}
 	
-	public void Update()
+	public void update()
 	{
 		while(true)
 		{
 			current = System.currentTimeMillis() - start;
-			if(current > updateInterval)
+			if(current > UPDATE_INTERVAL)
 			{
-				test.Update();
-				this.Draw();
+				test.update();
+				player.update();
+				this.draw();
 				start = System.currentTimeMillis();
 			}
 		}
 	}
 	
-	public void Draw()
+	public void draw()
 	{
 		//super.paintComponents(this.graphics);
 		Actor actor;	
@@ -93,7 +97,15 @@ public class Game extends JFrame
 		while(it.hasNext())
 		{
 			actor = it.next();
-			actor.Draw(this.graphics, this);
+			actor.draw(this.graphics, this);
 		}
+		drawDebug();
+	}
+	
+	public void drawDebug()
+	{
+		graphics.setColor(Color.WHITE);
+		graphics.drawString("Debug:", 10, 80);
+		graphics.drawString("Player pos: " + Float.toString(player.getPosX()) + "," + Float.toString(player.getPosY()), 10, 100);	
 	}
 }
