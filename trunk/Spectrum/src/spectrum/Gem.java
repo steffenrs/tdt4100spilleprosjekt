@@ -4,13 +4,15 @@ import java.util.ArrayList;
 
 public class Gem extends Actor
 {
+	Player player;
 	private boolean active = false;
 	public static ArrayList<Gem> activeGems;
 	private final int limit = 2;
 	
-	public Gem(Sprite sprite) 
+	public Gem(Sprite sprite, Player player) 
 	{
 		super(sprite);
+		this.player = player;
 		activeGems = new ArrayList<Gem>();	
 	}
 	
@@ -39,10 +41,11 @@ public class Gem extends Actor
 	
 	public void applyProperties()
 	{
-		dsf
+		
 	}
 	
 	public void removeProperties()
 	{
+		
 	}
 }

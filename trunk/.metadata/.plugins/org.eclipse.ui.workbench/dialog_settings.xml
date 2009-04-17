@@ -4,8 +4,8 @@
 		<item value="280" key="DIALOG_WIDTH"/>
 		<item value="com.cloudgarden.jigloo.views.FormView" key="ShowViewDialog.STORE_SELECTED_VIEW_ID"/>
 		<item value="178" key="DIALOG_Y_ORIGIN"/>
-		<item value="584" key="DIALOG_X_ORIGIN"/>
 		<item value="414" key="DIALOG_HEIGHT"/>
+		<item value="584" key="DIALOG_X_ORIGIN"/>
 		<item value="1|Tahoma|8.25|0|WINDOWS|1|-11|0|0|0|400|0|0|0|1|0|0|0|0|Tahoma" key="DIALOG_FONT_NAME"/>
 		<list key="ShowViewDialog.STORE_EXPANDED_CATEGORIES_ID">
 			<item value="jigloo"/>
