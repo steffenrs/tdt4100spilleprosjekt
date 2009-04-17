@@ -39,10 +39,8 @@ public class Game extends JFrame
 		createTestActor();
 		
 		//Game Loop
-		while(true)
-		{
 			this.Update();
-		}
+		
 	}
 	
 	//temp code
@@ -68,16 +66,23 @@ public class Game extends JFrame
 		
 	}
 	
+	
+	
+	float updateInterval = 1000/60;
+	long start = System.currentTimeMillis();
+	long current = 0;
+	
 	public void Update()
-	{            
-		int limit = 2000000;
-		
-		counter++;
-		if(counter > limit)
+	{
+		while(true)
 		{
-			test.Update();
-			this.Draw();
-			counter = 0;	
+			current = System.currentTimeMillis() - start;
+			if(current > updateInterval)
+			{
+				test.Update();
+				this.Draw();
+				start = System.currentTimeMillis();
+			}
 		}
 	}
 	
