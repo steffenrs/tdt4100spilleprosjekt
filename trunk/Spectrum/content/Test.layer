@@ -1,6 +1,6 @@
 [Textures]
-block
-block2
+block_01
+block_02
 
 [Properties]
 Alpha = 1
