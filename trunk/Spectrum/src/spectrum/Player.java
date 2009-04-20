@@ -5,7 +5,6 @@ public class Player extends Actor
 	//Physics
 	private float gravity = 10f;
 	private float jumpPower = -6.66f;
-	private float maxJumpTime = 1.5f;
 	private float jumpTime = 0f;
 	private boolean isOnGround = true;
 	private boolean jump = false;
@@ -57,14 +56,14 @@ public class Player extends Actor
 		{
 			jump = false;
 			jumpTime += Game.UPDATE_INTERVAL / 1000;
-			if(jumpTime < maxJumpTime)
-			{
+			
 					this.setPosY(this.getPosY() + jumpPower + gravity * jumpTime);
-			}
+			
 		}
 		
-		checkWallCollision();
+		
 		checkActorCollision();
+		checkWallCollision();
 	}
 
 	private void checkActorCollision() 
@@ -81,14 +80,24 @@ public class Player extends Actor
 			if (actor.getCollidable()) {
 				if (this.getRectangle().intersects(actor.getRectangle())) 
 				{
-					if(this.getPosX() > actor.getPosX())
+					 if(this.getPosY() < actor.getPosY()){
+						this.setPosY(actor.getPosY() - this.getSprite().getHeight());
+						isOnGround = true;
+					}
+					
+					
+					 else if(this.getPosX() > actor.getPosX())
 						this.setPosX(actor.getPosX() + actor.getSprite().getWidth());
+					
 					
 					else if(this.getPosX() < actor.getPosX())
 						this.setPosX(actor.getPosX() - this.getSprite().getWidth());
 					
-					else if(this.getPosY() < actor.getPosY())
+					else if(this.getPosY() > actor.getPosY()){
 						this.setPosY(actor.getPosY() - this.getSprite().getHeight());
+						
+					}
+					
 					
 					return;
 
@@ -97,7 +106,8 @@ public class Player extends Actor
 			
 		}
 		
-			
+		isOnGround = false;
+				
 	}
 
 	private void checkWallCollision() 
