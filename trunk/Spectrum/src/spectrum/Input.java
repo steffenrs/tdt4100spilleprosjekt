@@ -27,18 +27,15 @@ public class Input extends KeyAdapter
 			player.doMove(1);
 			break;
 			
+		case KeyEvent.VK_P:
+			if(Game.gs == GameState.PLAYING)
+				Game.gs = GameState.PAUSED;
+			else if(Game.gs == GameState.PAUSED)
+				Game.gs = GameState.PLAYING;
+			break;
+			
 		default:
 			break;
 		}
 	}
-	
-//	public void keyReleased(KeyEvent arg0) 
-//	{
-//
-//	}
-//
-//	public void keyTyped(KeyEvent arg0) 
-//	{
-//
-//	}
 }
