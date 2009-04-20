@@ -1,8 +1,7 @@
 package spectrum;
 
-public class Green extends Gem {
-	
-	
+public class Green extends Gem 
+{
 	public Green(Sprite sprite, Player player, int x, int y) 
 	{
 		super(sprite, player);
