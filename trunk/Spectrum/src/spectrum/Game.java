@@ -17,6 +17,7 @@ public class Game extends JFrame
 	private Actor test;
 	private Level testLevel;
 	private Player player;
+	private Gem gem;
 	
 	//Game Loop
 	static final double UPDATE_INTERVAL = 16.67;
@@ -63,13 +64,17 @@ public class Game extends JFrame
 		
 		
 		testLevel = new Level(this.observer);
-		testLevel.Load(System.getProperty("user.dir") + "\\Content\\test.layer");
+		testLevel.Load(path + "test.layer");
 		test = new Actor(sprite, 32, 32, Type.PLAYER);
 		
 		 
 		ImageIcon playerImage = new ImageIcon(path + "player_awsome.png");
 		Sprite playerSprite = new Sprite(playerImage.getImage(), 1, 1, this.observer);
 		player = new Player(playerSprite, 700, 700);
+		ImageIcon green = new ImageIcon(path + "green.png");
+		Sprite greenSprite = new Sprite(green.getImage(), 1, 1, this.observer);
+		gem = new Green(greenSprite, player, 600, 700);
+		
 	}
 	
 	public void update()

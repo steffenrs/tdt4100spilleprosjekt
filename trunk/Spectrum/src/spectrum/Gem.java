@@ -39,6 +39,11 @@ public class Gem extends Actor
 		this.applyProperties();
 	}
 	
+	public boolean checkDistance()
+	{
+		return(this.getSprite().getRectangle().intersects(this.player.getSprite().getRectangle()));
+	}
+	
 	public void applyProperties()
 	{
 		
