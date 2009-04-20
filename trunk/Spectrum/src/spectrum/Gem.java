@@ -6,14 +6,18 @@ public class Gem extends Actor
 {
 	Player player;
 	private boolean active = false;
-	public static ArrayList<Gem> activeGems;
+	public static ArrayList<Gem> gems;
 	private final int limit = 2;
 	
 	public Gem(Sprite sprite, Player player) 
 	{
 		super(sprite);
 		this.player = player;
-		activeGems = new ArrayList<Gem>();	
+	}
+	
+	static
+	{
+		gems = new ArrayList<Gem>();	
 	}
 	
 	public void update()
@@ -26,14 +30,13 @@ public class Gem extends Actor
 		if(active)
 			return;
 		
-		activeGems.add(this);
 		this.active = true;
 		
-		if(activeGems.size() > limit)
+		if(gems.size() > limit)
 		{
-			activeGems.get(0).removeProperties();
-			activeGems.get(0).active = false;
-			activeGems.remove(0);
+			gems.get(0).removeProperties();
+			gems.get(0).active = false;
+			gems.remove(0);
 		}
 		
 		this.applyProperties();

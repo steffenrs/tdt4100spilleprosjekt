@@ -34,6 +34,9 @@ public class Input extends KeyAdapter
 				Game.gs = GameState.PLAYING;
 			break;
 			
+		case KeyEvent.VK_SPACE:
+			break;
+			
 		default:
 			break;
 		}
