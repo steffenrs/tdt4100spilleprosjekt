@@ -68,6 +68,25 @@ public class Player extends Actor
 	private void checkActorCollision() 
 	{
 		//husk å sett isOnGround=true når han står på en collidable actor
+		for (Actor actor : actors) 
+		{
+			if (actor == this) {
+				continue;
+			}
+			if (actor.getType() == Type.BLOCK) {
+				if () {
+					this.setPosY(actor.getPosY());
+					isOnGround = true;
+					
+				}
+				
+			}
+			
+			
+			
+		}
+		
+		
 	}
 
 	private void checkWallCollision() 
@@ -78,5 +97,16 @@ public class Player extends Actor
 			this.setPosY(800 - this.getSprite().getHeight() - 4); //-4 er temp
 			this.isOnGround = true;
 		}
+		
+		//check right wall
+		if (this.getPosX() >= 800 - this.getSprite().getWidth() ) {
+			this.setposX(800 - this.getSprite().getWidth());	
+		}
+		
+		if (this.getPosX() <= 0 + this.getSprite().getWidth() / 5) {
+			this.setposX(0 + this.getSprite().getWidth() / 5);
+		}
 	}
+
+	
 }
