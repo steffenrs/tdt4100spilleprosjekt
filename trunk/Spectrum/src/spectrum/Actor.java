@@ -1,6 +1,7 @@
 package spectrum;
 
 import java.awt.Graphics;
+import java.awt.Rectangle;
 import java.awt.image.ImageObserver;
 import java.util.ArrayList;
 
@@ -57,6 +58,11 @@ public class Actor
 	public Sprite getSprite()
 	{
 		return this.spriteSheet;
+	}
+	
+	public Rectangle getRectangle()
+	{
+		return new Rectangle((int)this.posX, (int)this.posY, this.spriteSheet.getWidth(), this.spriteSheet.getHeight());
 	}
 	
 	static

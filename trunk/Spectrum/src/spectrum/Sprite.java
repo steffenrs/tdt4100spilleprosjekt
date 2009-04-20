@@ -28,14 +28,19 @@ public class Sprite
 	 * @author Steffen R. Stenersen
 	 * @return the height of each sprite
 	 */
-	public int getHeight() 
+	public int getHeight()
 	{
 		return rectangle.height;
 	}
 	
-	public Rectangle getRectangle()
+	public void setRectX()
 	{
-		return this.rectangle;
+		
+	}
+	
+	public void setRectY()
+	{
+		
 	}
 
 	/**
@@ -49,6 +54,7 @@ public class Sprite
 	public Sprite(Image image, int tilesX, int frameInterval, ImageObserver imageObserver)
 	{
 		this.rectangle = new Rectangle(0, 0, image.getWidth(imageObserver), image.getHeight(imageObserver));
+
 		this.spriteSheet = image;
 		this.tilesX = tilesX;
 		this.frameInterval = frameInterval;
