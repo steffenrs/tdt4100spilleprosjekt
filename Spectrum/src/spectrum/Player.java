@@ -25,6 +25,11 @@ public class Player extends Actor
 		this.playerSmall = playerSmall;
 	}
 	
+	public Sprite getSmall()
+	{
+		return this.playerSmall;
+	}
+	
 	public void doJump()
 	{
 		this.jump = true;
