@@ -78,14 +78,8 @@ public class Player extends Actor
 			if (true) {
 				if (this.getSprite().getRectangle().intersects(actor.getSprite().getRectangle())) {
 					this.setPosY(actor.getPosY() - actor.getSprite().getHeight() / 2);
-					
 				}
 			}
-				
-			
-			
-			
-			
 		}
 		
 		

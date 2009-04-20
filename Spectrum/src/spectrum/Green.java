@@ -10,8 +10,6 @@ public class Green extends Gem {
 		this.setPosY(y);
 	}
 
-	
-	
 	public void applyProperties()
 	{
 		player.setGravity(6f);
