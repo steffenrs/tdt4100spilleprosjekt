@@ -20,7 +20,7 @@ public class Player extends Actor
 	public Player(Sprite sprite, float x, float y)
 	{
 		super(sprite, Type.PLAYER);
-		this.setposX(x);
+		this.setPosX(x);
 		this.setPosY(y);
 	}
 	
@@ -31,7 +31,7 @@ public class Player extends Actor
 	
 	public void doMove(int direction)
 	{
-		this.setposX(this.getPosX() + direction*moveSpeed);
+		this.setPosX(this.getPosX() + direction*moveSpeed);
 	}
 	
 	public void update()

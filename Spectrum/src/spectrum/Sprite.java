@@ -32,6 +32,11 @@ public class Sprite
 	{
 		return rectangle.height;
 	}
+	
+	public Rectangle getRectangle()
+	{
+		return this.rectangle;
+	}
 
 	/**
 	 * @author Steffen R. Stenersen

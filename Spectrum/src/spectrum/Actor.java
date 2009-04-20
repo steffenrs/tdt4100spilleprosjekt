@@ -34,7 +34,7 @@ public class Actor
 	}
 
 	
-	public void setposX(float x)
+	public void setPosX(float x)
 	{
 		posX = x;	
 	}
