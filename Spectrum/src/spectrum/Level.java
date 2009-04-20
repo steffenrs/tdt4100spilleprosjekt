@@ -81,7 +81,13 @@ public class Level
 						ImageIcon ic = textures.get(current);
 						Sprite sprite = new Sprite(ic.getImage(), 1, 1, io);
 						ic.getDescription();
-						new Actor(sprite, x * 32, y * 32);
+						if (ic.getDescription() == "block") {
+							new Actor(sprite, x * 32, y * 32, true);
+						}
+						else{
+							new Actor(sprite, x * 32, y * 32, false);
+						}
+						
 					}
 				}
 			}
