@@ -13,6 +13,7 @@ public class Gem extends Actor
 	{
 		super(sprite);
 		this.player = player;
+		gems.add(this);
 	}
 	
 	static
@@ -40,6 +41,17 @@ public class Gem extends Actor
 		}
 		
 		this.applyProperties();
+	}
+	
+	public static void activateGem()
+	{
+		for (Gem gem : gems) 
+		{
+			if(gem.checkDistance())
+			{
+				gem.activate();
+			}
+		}
 	}
 	
 	public boolean checkDistance()

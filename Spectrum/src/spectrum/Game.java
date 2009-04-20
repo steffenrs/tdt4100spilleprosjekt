@@ -69,11 +69,16 @@ public class Game extends JFrame
 		
 		 
 		ImageIcon playerImage = new ImageIcon(path + "player_awsome.png");
+		ImageIcon playerSmall = new ImageIcon(path + "small.png");
 		Sprite playerSprite = new Sprite(playerImage.getImage(), 1, 1, this.observer);
-		player = new Player(playerSprite, 700, 700);
+		Sprite playerSmallSprite = new Sprite(playerSmall.getImage(), 1, 1, this.observer);
+		player = new Player(playerSprite, playerSmallSprite, 700, 700);
+		
 		ImageIcon green = new ImageIcon(path + "green.png");
 		Sprite greenSprite = new Sprite(green.getImage(), 1, 1, this.observer);
 		gem = new Green(greenSprite, player, 600, 700);
+		
+		
 		
 	}
 	
