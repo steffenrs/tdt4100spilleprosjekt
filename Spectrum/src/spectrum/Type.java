@@ -10,7 +10,7 @@ public enum Type
 	
 	final boolean collidable;
 	final String name;
-	
+	//j
 	public boolean getCollidable()
 	{
 		return this.collidable;
