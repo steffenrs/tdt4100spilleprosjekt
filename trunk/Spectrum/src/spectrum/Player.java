@@ -9,6 +9,7 @@ public class Player extends Actor
 	private float jumpTime = 0f;
 	private boolean isOnGround = true;
 	private boolean jump = false;
+	private Sprite playerSmall;
 	
 	private float moveSpeed = 3f;
 	
@@ -17,11 +18,12 @@ public class Player extends Actor
 		this.gravity = value;
 	}
 	
-	public Player(Sprite sprite, float x, float y)
+	public Player(Sprite sprite, Sprite playerSmall, float x, float y)
 	{
 		super(sprite);
 		this.setPosX(x);
 		this.setPosY(y);
+		this.playerSmall = playerSmall;
 	}
 	
 	public void doJump()
