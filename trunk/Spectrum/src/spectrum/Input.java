@@ -35,6 +35,7 @@ public class Input extends KeyAdapter
 			break;
 			
 		case KeyEvent.VK_SPACE:
+			Gem.activateGem();
 			break;
 			
 		default:
