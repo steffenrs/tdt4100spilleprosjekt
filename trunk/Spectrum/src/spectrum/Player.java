@@ -19,7 +19,7 @@ public class Player extends Actor
 	
 	public Player(Sprite sprite, float x, float y)
 	{
-		super(sprite, Type.PLAYER);
+		super(sprite);
 		this.setPosX(x);
 		this.setPosY(y);
 	}
@@ -70,17 +70,19 @@ public class Player extends Actor
 		//husk å sett isOnGround=true når han står på en collidable actor
 		for (Actor actor : actors) 
 		{
-			if (actor == this) {
+			if (this == actor) {
 				continue;
-			}
-			if (actor.getType() == Type.BLOCK) {
-				if () {
-					this.setPosY(actor.getPosY());
-					isOnGround = true;
-					
-				}
 				
 			}
+			
+			if (true) {
+				if (this.getSprite().getRectangle().intersects(actor.getSprite().getRectangle())) {
+					this.setPosY(actor.getPosY() - actor.getSprite().getHeight() / 2);
+					
+				}
+			}
+				
+			
 			
 			
 			
@@ -100,11 +102,11 @@ public class Player extends Actor
 		
 		//check right wall
 		if (this.getPosX() >= 800 - this.getSprite().getWidth() ) {
-			this.setposX(800 - this.getSprite().getWidth());	
+			this.setPosX(800 - this.getSprite().getWidth());	
 		}
 		
 		if (this.getPosX() <= 0 + this.getSprite().getWidth() / 5) {
-			this.setposX(0 + this.getSprite().getWidth() / 5);
+			this.setPosX(0 + this.getSprite().getWidth() / 5);
 		}
 	}
 

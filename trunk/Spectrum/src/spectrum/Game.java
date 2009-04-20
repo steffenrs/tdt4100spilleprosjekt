@@ -65,7 +65,7 @@ public class Game extends JFrame
 		
 		testLevel = new Level(this.observer);
 		testLevel.Load(path + "test.layer");
-		test = new Actor(sprite, 32, 32, Type.PLAYER);
+		test = new Actor(sprite, 32, 32);
 		
 		 
 		ImageIcon playerImage = new ImageIcon(path + "player_awsome.png");
