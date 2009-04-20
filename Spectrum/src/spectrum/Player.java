@@ -74,19 +74,28 @@ public class Player extends Actor
 				continue;
 				
 			}
-			
+
+
 			if (actor.getCollidable()) {
 				if (this.getRectangle().intersects(actor.getRectangle())) 
 				{
 					if(this.getPosX() > actor.getPosX())
 						this.setPosX(actor.getPosX() + actor.getSprite().getWidth());
+					
 					else if(this.getPosX() < actor.getPosX())
-						this.setPosX(actor.getPosX() - 1);
+						this.setPosX(actor.getPosX() - this.getSprite().getWidth());
+					
+					else if(this.getPosY() < actor.getPosY())
+						this.setPosY(actor.getPosY() - this.getSprite().getHeight());
 					
 					return;
+
 				}
 			}
+			
 		}
+		
+			
 	}
 
 	private void checkWallCollision() 
