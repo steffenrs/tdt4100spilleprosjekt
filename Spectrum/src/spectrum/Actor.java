@@ -42,7 +42,7 @@ public class Actor
 	{
 		actors = new ArrayList<Actor>();
 	}
-	//j
+	
 	public Actor(Sprite sprite, Type type)
 	{
 		actors.add(this);

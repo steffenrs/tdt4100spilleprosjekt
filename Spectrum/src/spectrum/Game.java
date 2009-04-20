@@ -20,9 +20,9 @@ public class Game extends JFrame
 	
 	//Game Loop
 	static final double UPDATE_INTERVAL = 16.67;
-	
 	long start = System.currentTimeMillis();
 	long current = 0;
+	public static GameState gs;
 	
 	public static void main(String[] args) 
 	{
@@ -39,7 +39,8 @@ public class Game extends JFrame
 		this.setResizable(false);
 		
 		createTestActor();
-		
+
+		this.gs = GameState.PLAYING;
 		input = new Input(player);
 		this.addKeyListener(input);
 		graphics = this.getGraphics();
@@ -69,22 +70,33 @@ public class Game extends JFrame
 		ImageIcon playerImage = new ImageIcon(path + "player_awsome.png");
 		Sprite playerSprite = new Sprite(playerImage.getImage(), 1, 1, this.observer);
 		player = new Player(playerSprite, 700, 700);
-		
-		
 	}
 	
 	public void update()
 	{
 		while(true)
 		{
-			current = System.currentTimeMillis() - start;
-			if(current > UPDATE_INTERVAL)
+			switch(gs)
 			{
-				test.update();
-				player.update();
-				this.draw();
-				start = System.currentTimeMillis();
+			case PLAYING:
+				current = System.currentTimeMillis() - start;
+				if(current > UPDATE_INTERVAL)
+				{
+					test.update();
+					player.update();
+					this.draw();
+					start = System.currentTimeMillis();
+				}
+				break;
+				
+			case MENU:
+				break;
+			case PAUSED:
+				break;
+			case WON:
+				break;
 			}
+
 		}
 	}
 	
