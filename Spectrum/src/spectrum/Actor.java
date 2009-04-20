@@ -9,9 +9,30 @@ public class Actor
 	public static ArrayList<Actor> actors;
 	private Sprite spriteSheet;
 	private Type type;
+	private boolean collidable;
 	
+
 	private float posX;
 	private float posY;
+	
+	public Actor(Sprite sprite, Type type)
+	{
+		actors.add(this);
+		this.spriteSheet = sprite;
+		this.type = type;
+	}
+	
+	public Actor(Sprite sprite, int x, int y, Type type)
+	{
+		this(sprite, type);
+		this.posX = x;
+		this.posY = y;
+	}
+	
+	public Type getType(){
+		return this.type;
+	}
+
 	
 	public void setposX(float x)
 	{
@@ -43,19 +64,7 @@ public class Actor
 		actors = new ArrayList<Actor>();
 	}
 	
-	public Actor(Sprite sprite, Type type)
-	{
-		actors.add(this);
-		this.spriteSheet = sprite;
-		this.type = type;
-	}
 	
-	public Actor(Sprite sprite, int x, int y, Type type)
-	{
-		this(sprite, type);
-		this.posX = x;
-		this.posY = y;
-	}
 	
 	public void update()
 	{
