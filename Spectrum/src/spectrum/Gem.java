@@ -27,7 +27,7 @@ public class Gem extends Actor
 	
 	public void activate()
 	{
-		if(active)
+		if(active || !checkDistance())
 			return;
 		
 		this.active = true;
@@ -44,7 +44,7 @@ public class Gem extends Actor
 	
 	public boolean checkDistance()
 	{
-		return(this.getSprite().getRectangle().intersects(this.player.getSprite().getRectangle()));
+		return(this.getRectangle().intersects(this.player.getRectangle()));
 	}
 	
 	public void applyProperties()
