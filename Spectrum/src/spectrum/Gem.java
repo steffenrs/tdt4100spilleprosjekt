@@ -11,7 +11,7 @@ public class Gem extends Actor
 	
 	public Gem(Sprite sprite, Player player) 
 	{
-		super(sprite, Type.GEM);
+		super(sprite);
 		this.player = player;
 		activeGems = new ArrayList<Gem>();	
 	}

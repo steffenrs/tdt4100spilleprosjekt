@@ -80,8 +80,8 @@ public class Level
 					{
 						ImageIcon ic = textures.get(current);
 						Sprite sprite = new Sprite(ic.getImage(), 1, 1, io);
-						//FIKS TYPE HER
-						new Actor(sprite, x * 32, y*32, Type.typeOf(ic.getDescription()));
+						ic.getDescription();
+						new Actor(sprite, x * 32, y * 32);
 					}
 				}
 			}

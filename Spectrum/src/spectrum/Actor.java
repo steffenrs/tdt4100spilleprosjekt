@@ -8,30 +8,27 @@ public class Actor
 {
 	public static ArrayList<Actor> actors;
 	private Sprite spriteSheet;
-	private Type type;
 	private boolean collidable;
 	
 
 	private float posX;
 	private float posY;
 	
-	public Actor(Sprite sprite, Type type)
+	public Actor(Sprite sprite)
 	{
 		actors.add(this);
 		this.spriteSheet = sprite;
-		this.type = type;
+		
 	}
 	
-	public Actor(Sprite sprite, int x, int y, Type type)
+	public Actor(Sprite sprite, int x, int y)
 	{
-		this(sprite, type);
+		this(sprite);
 		this.posX = x;
 		this.posY = y;
 	}
 	
-	public Type getType(){
-		return this.type;
-	}
+	
 
 	
 	public void setPosX(float x)
