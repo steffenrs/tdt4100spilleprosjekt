@@ -60,6 +60,11 @@ public class Actor
 		return this.spriteSheet;
 	}
 	
+	public Sprite setSprite(Sprite sprite)
+	{
+		return this.spriteSheet = sprite;
+	}
+	
 	public Rectangle getRectangle()
 	{
 		return new Rectangle((int)this.posX, (int)this.posY, this.spriteSheet.getWidth(), this.spriteSheet.getHeight());

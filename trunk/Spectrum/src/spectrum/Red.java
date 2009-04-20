@@ -11,7 +11,7 @@ public class Red extends Gem {
 	
 	public void applyProperties()
 	{
-		
+		this.setSprite(player.getSmall());
 	}
 
 }
