@@ -21,14 +21,17 @@ public class Actor
 		
 	}
 	
-	public Actor(Sprite sprite, int x, int y)
+	public Actor(Sprite sprite, int x, int y, boolean collidable)
 	{
 		this(sprite);
 		this.posX = x;
 		this.posY = y;
+		this.collidable = collidable;
 	}
 	
-	
+	public boolean getCollidable(){
+		return collidable;
+	}
 
 	
 	public void setPosX(float x)
