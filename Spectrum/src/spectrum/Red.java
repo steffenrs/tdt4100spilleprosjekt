@@ -1,7 +1,7 @@
 package spectrum;
 
-public class Red extends Gem {
-
+public class Red extends Gem 
+{
 	public Red(Sprite sprite, Player player, int x, int y) 
 	{
 		super(sprite, player);
@@ -13,5 +13,4 @@ public class Red extends Gem {
 	{
 		this.setSprite(player.getSmall());
 	}
-
 }

@@ -4,7 +4,7 @@ public class Player extends Actor
 {
 	//Physics
 	private float gravity = 10f;
-	private float jumpPower = -6.66f;
+	private float jumpPower = -10f;
 	private float jumpTime = 0f;
 	private boolean isOnGround = true;
 	private boolean jump = false;
@@ -15,6 +15,22 @@ public class Player extends Actor
 	public void setGravity(float value)
 	{
 		this.gravity = value;
+	}
+	
+	public float getGravity()
+	{
+		return this.gravity;
+	}
+	
+	private void setIsOnGround(boolean value)
+	{
+		if(value)
+		{
+			jumpTime = 0f;
+			jump = false;
+		}
+			
+		this.isOnGround = value;
 	}
 	
 	public Player(Sprite sprite, Sprite playerSmall, float x, float y)
@@ -32,7 +48,8 @@ public class Player extends Actor
 	
 	public void doJump()
 	{
-		this.jump = true;
+		if(isOnGround)
+			this.jump = true;
 	}
 	
 	public void doMove(int direction)
@@ -49,70 +66,59 @@ public class Player extends Actor
 	
 	private void applyPhysics()
 	{
-		//ready to jump
-		if(jump && isOnGround)
-		{
-			jump = false;
-			jumpTime = 0;
-			isOnGround = false;
-		}
-		//apply gravity (and other forces)
-		else if(!isOnGround)
-		{
-			jump = false;
+		if(!isOnGround)
 			jumpTime += Game.UPDATE_INTERVAL / 1000;
-			
-					this.setPosY(this.getPosY() + jumpPower + gravity * jumpTime);
-			
-		}
+
+		//Gravity + jumppower
+		if(jump)			
+			this.setPosY(this.getPosY() + jumpPower + gravity * jumpTime);
+		//Only gravity
+		else
+			this.setPosY(this.getPosY() + gravity * jumpTime);
 		
-		
+		if(!isOnGround)
+			jumpTime += Game.UPDATE_INTERVAL / 1000;
+
 		checkActorCollision();
 		checkWallCollision();
 	}
 
 	private void checkActorCollision() 
 	{
-		//husk å sett isOnGround=true når han står på en collidable actor
 		for (Actor actor : actors) 
 		{
 			if (this == actor) {
 				continue;
-				
 			}
-
 
 			if (actor.getCollidable()) {
 				if (this.getRectangle().intersects(actor.getRectangle())) 
 				{
-					 if(this.getPosY() < actor.getPosY()){
+					//ER EN FEIL HER. PRØV Å COMMENTE UT COLLISON right->left && left->right
+					//Collision below
+					if(this.getPosY() < actor.getPosY()){
 						this.setPosY(actor.getPosY() - this.getSprite().getHeight());
-						isOnGround = true;
+						setIsOnGround(true);
 					}
 					
-					
-					 else if(this.getPosX() > actor.getPosX())
+					//Collision right->left 
+					else if(this.getPosX() > actor.getPosX())
 						this.setPosX(actor.getPosX() + actor.getSprite().getWidth());
 					
-					
+					//Collision left->right
 					else if(this.getPosX() < actor.getPosX())
 						this.setPosX(actor.getPosX() - this.getSprite().getWidth());
 					
+					//Collision above ********FUNKER IKKE!*******
 					else if(this.getPosY() > actor.getPosY()){
-						this.setPosY(actor.getPosY() - this.getSprite().getHeight());
-						
+						this.setPosY(actor.getPosY() + this.getSprite().getHeight());
 					}
-					
-					
 					return;
-
 				}
 			}
-			
 		}
 		
-		isOnGround = false;
-				
+		setIsOnGround(false);
 	}
 
 	private void checkWallCollision() 
@@ -120,17 +126,17 @@ public class Player extends Actor
 		//check bottom
 		if(this.getPosY() > 800 - this.getSprite().getHeight())
 		{
-			this.setPosY(800 - this.getSprite().getHeight() - 4); //-4 er temp
-			this.isOnGround = true;
+			this.setPosY(800 - this.getSprite().getHeight());
+			setIsOnGround(true);
 		}
-		
+
 		//check right wall
 		if (this.getPosX() >= 800 - this.getSprite().getWidth() ) {
 			this.setPosX(800 - this.getSprite().getWidth());	
 		}
 		
-		if (this.getPosX() <= 0 + this.getSprite().getWidth() / 5) {
-			this.setPosX(0 + this.getSprite().getWidth() / 5);
+		if (this.getPosX() <= 0) {
+			this.setPosX(0);
 		}
 	}
 

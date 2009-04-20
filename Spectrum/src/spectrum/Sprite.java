@@ -7,7 +7,7 @@ import java.awt.image.ImageObserver;
 
 public class Sprite 
 {
-	private Image spriteSheet;
+	private Image image;
 	private Rectangle rectangle;
 	
 	private int frame = 0;
@@ -33,16 +33,6 @@ public class Sprite
 		return rectangle.height;
 	}
 	
-	public void setRectX()
-	{
-		
-	}
-	
-	public void setRectY()
-	{
-		
-	}
-
 	/**
 	 * @author Steffen R. Stenersen
 	 * Constructor
@@ -55,7 +45,7 @@ public class Sprite
 	{
 		this.rectangle = new Rectangle(0, 0, image.getWidth(imageObserver), image.getHeight(imageObserver));
 
-		this.spriteSheet = image;
+		this.image = image;
 		this.tilesX = tilesX;
 		this.frameInterval = frameInterval;
 		this.frameTimeRemaining = frameInterval;
@@ -86,7 +76,7 @@ public class Sprite
 	 */
 	public void draw(Graphics g, ImageObserver observer, int x, int y)
 	{
-		g.drawImage(spriteSheet, 
+		g.drawImage(image, 
 					x, 
 					y,
 					x + getWidth(),
