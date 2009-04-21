@@ -1,5 +1,8 @@
 package spectrum;
 
+import java.awt.Graphics;
+import java.awt.image.ImageObserver;
+
 public class Player extends Actor
 {
 	//Physics
@@ -8,9 +11,11 @@ public class Player extends Actor
 	private float jumpTime = 0f;
 	private boolean isOnGround = true;
 	private boolean jump = false;
-	private Sprite playerSmall;
-	
 	private float moveSpeed = 3f;
+	
+	private Sprite playerSmall;
+	private boolean isSmall;
+	
 	
 	public void setGravity(float value)
 	{
@@ -140,5 +145,11 @@ public class Player extends Actor
 		}
 	}
 
-	
+	public void draw(Graphics g, ImageObserver observer)
+	{
+		if(this.isSmall)
+			playerSmall.draw(g, observer, (int)this.getPosX(), (int)this.getPosY());
+		else
+			super.draw(g, observer);
+	}
 }
