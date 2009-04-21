@@ -28,6 +28,7 @@ public class Gem extends Actor
 	
 	public void activate()
 	{
+		//Jon: Fiks slik at vi kan deaktivere effekten til Gem'en dersom den er aktiv
 		if(active || !checkDistance())
 			return;
 		

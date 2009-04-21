@@ -31,7 +31,6 @@ public class Game extends JFrame implements Runnable
 	public static void main(String[] args) 
 	{
 		Game game = new Game();
-		game.run();
 	}
 	
 	public Game()
@@ -49,14 +48,14 @@ public class Game extends JFrame implements Runnable
 		input = new Input(player);
 		this.addKeyListener(input);
 		graphics = this.getGraphics();
+	
+		//Double Buffering
+		offscreenImage = createImage(800, 800);
+		offscreen = offscreenImage.getGraphics();
 		
 		//Thread
 		thread = new Thread(this);
 		thread.start();
-		
-		//Double Buffering
-		offscreenImage = createImage(800, 800);
-		offscreen = offscreenImage.getGraphics();
 	}
 	
 	public void run()
@@ -115,7 +114,7 @@ public class Game extends JFrame implements Runnable
 					Thread.sleep(1000 / 60);
 				}
 				catch(InterruptedException e) {; }
-				break;
+					break;
 			}
 		}
 	}
