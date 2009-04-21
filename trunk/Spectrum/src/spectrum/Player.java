@@ -107,16 +107,22 @@ public class Player extends Actor
 					}
 					
 					//Collision right->left 
-					else if(this.getPosX() > actor.getPosX())
+					else if(this.getPosX() > actor.getPosX() + actor.getSprite().getWidth() - 5)
 						this.setPosX(actor.getPosX() + actor.getSprite().getWidth());
 					
 					//Collision left->right
-					else if(this.getPosX() < actor.getPosX())
+					else if(this.getPosX() + this.getSprite().getWidth() - 5 < actor.getPosX()){
+						
 						this.setPosX(actor.getPosX() - this.getSprite().getWidth());
+					
+						
+					}
+						
 					
 					//Collision above ********FUNKER IKKE!*******
 					else if(this.getPosY() > actor.getPosY()){
-						this.setPosY(actor.getPosY() + this.getSprite().getHeight());
+						this.setPosY(actor.getPosY() + actor.getSprite().getHeight() + 1);
+						jump = false;
 					}
 					return;
 				}
