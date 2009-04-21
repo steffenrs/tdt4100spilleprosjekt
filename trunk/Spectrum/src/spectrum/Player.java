@@ -149,6 +149,12 @@ public class Player extends Actor
 		if (this.getPosX() <= 0) {
 			this.setPosX(0);
 		}
+		
+		if (this.getPosY() <= 0 + 20) {
+			this.setPosY(0 + 20);
+			jump = false;
+			
+		}
 	}
 
 	public void draw(Graphics g, ImageObserver observer)
