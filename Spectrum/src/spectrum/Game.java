@@ -4,7 +4,6 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.image.ImageObserver;
-import java.util.Iterator;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -34,25 +33,7 @@ public class Game extends JFrame implements Runnable
 	}
 	
 	public Game()
-	{
-		//Window settings
-		this.setTitle("Spectrum");
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setSize(800, 800);
-		this.setVisible(true);
-		this.setResizable(false);
-		
-		createTestActor();
-
-		gs = GameState.PLAYING;
-		input = new Input(player);
-		this.addKeyListener(input);
-		graphics = this.getGraphics();
-	
-		//Double Buffering
-		offscreenImage = createImage(800, 800);
-		offscreen = offscreenImage.getGraphics();
-		
+	{		
 		//Thread
 		thread = new Thread(this);
 		thread.start();
@@ -60,6 +41,24 @@ public class Game extends JFrame implements Runnable
 	
 	public void run()
 	{
+		//Window settings
+		this.setTitle("Spectrum");
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setSize(800, 800);
+		this.setResizable(false);
+	
+		this.setVisible(true);
+		
+		//Double Buffering
+		offscreenImage = createImage(800, 800);
+		offscreen = offscreenImage.getGraphics();
+		createTestActor();
+
+		gs = GameState.PLAYING;
+		input = new Input(player);
+		this.addKeyListener(input);
+		graphics = this.getGraphics();
+		
 		this.update();
 	}
 	
@@ -148,6 +147,9 @@ public class Game extends JFrame implements Runnable
 	
 	public void paint(Graphics g)
 	{
+		if(offscreen == null)
+			return;
+		
 		offscreen.setColor(Color.BLACK);
 		
 		for (Actor actor : Actor.actors) 
