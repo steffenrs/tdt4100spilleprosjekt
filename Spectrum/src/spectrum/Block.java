@@ -2,10 +2,8 @@ package spectrum;
 
 public class Block extends Actor
 {
-
-	public Block(Sprite sprite) 
+	public Block(Sprite sprite, int x, int y, boolean collidable) 
 	{
-		super(sprite);
+		super(sprite, x, y, collidable);
 	}
-
 }

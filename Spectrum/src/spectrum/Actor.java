@@ -30,6 +30,11 @@ public class Actor
 		this.collidable = collidable;
 	}
 	
+	static
+	{
+		actors = new ArrayList<Actor>();
+	}
+	
 	public boolean getCollidable(){
 		return collidable;
 	}
@@ -70,13 +75,6 @@ public class Actor
 		return new Rectangle((int)this.posX, (int)this.posY, this.spriteSheet.getWidth(), this.spriteSheet.getHeight());
 	}
 	
-	static
-	{
-		actors = new ArrayList<Actor>();
-	}
-	
-	
-	
 	public void update()
 	{
 		spriteSheet.update();
@@ -85,5 +83,43 @@ public class Actor
 	public void draw(Graphics g, ImageObserver observer)
 	{
 		spriteSheet.draw(g, observer, (int)posX, (int)posY);
+	}
+	
+	public static Rectangle intersects(Rectangle a, Rectangle b)
+	{
+		int x1 = Math.max((int)a.getMinX(), (int)b.getMinX());
+		int y1 = Math.max((int)a.getMinY(), (int)b.getMinY());
+		int x2 = Math.min((int)a.getMaxX(), (int)b.getMaxX());
+		int y2 = Math.min((int)a.getMaxY(), (int)b.getMaxY());
+		
+		int width = x2 - x1;
+		int height = y2 - y1;
+		
+		if(width > 0 && height > 0)
+			return new Rectangle(x1, y1, width, height);
+		else
+			return null;
+	}
+	
+	public static boolean checkCollision(Actor a, Actor b)
+	{
+		final int ALPHA_THRESHOLD = 48;
+		
+		Rectangle collisionRect = intersects(a.getRectangle(), b.getRectangle());
+		if(collisionRect == null)
+			return false;
+		
+		Rectangle rA = new Rectangle((int)(collisionRect.x - a.posX), (int)(collisionRect.y - a.posY), collisionRect.width, collisionRect.height);
+		Rectangle rB = new Rectangle((int)(collisionRect.x - b.posX), (int)(collisionRect.y - b.posY), collisionRect.width, collisionRect.height);
+		
+		int[] alphaA = a.getSprite().getAlpha(rA);
+		int[] alphaB = b.getSprite().getAlpha(rB);
+		
+		for (int i = 0; i < alphaB.length; i++) {
+			if(alphaA[i] > ALPHA_THRESHOLD && alphaB[i] > ALPHA_THRESHOLD)
+				return true;
+		}
+		
+		return false;
 	}
 }
