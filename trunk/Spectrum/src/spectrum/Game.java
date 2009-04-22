@@ -84,7 +84,7 @@ public class Game extends JFrame implements Runnable
 		testLevel.Load(getClass().getResource("content/Test.layer"));
 		this.goal = Goal.getGoal();
 		
-		ImageIcon playerImage = new ImageIcon(getClass().getResource("content//player_02.png"));
+		ImageIcon playerImage = new ImageIcon(getClass().getResource("content//player_jostein.png"));
 		ImageIcon playerSmall = new ImageIcon(getClass().getResource("content//small.png"));
 		Sprite playerSprite = new Sprite(playerImage.getImage(), 1, 1, this.observer);
 		Sprite playerSmallSprite = new Sprite(playerSmall.getImage(), 1, 1, this.observer);
