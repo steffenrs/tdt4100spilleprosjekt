@@ -3,7 +3,15 @@ package spectrum;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Rectangle;
+import java.awt.image.BufferedImage;
+import java.awt.image.ColorModel;
+import java.awt.image.DirectColorModel;
 import java.awt.image.ImageObserver;
+import java.awt.image.PixelGrabber;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
 
 public class Sprite 
 {
@@ -14,6 +22,10 @@ public class Sprite
 	private int tilesX;
 	private int frameInterval;
 	private int frameTimeRemaining;
+	
+	private PixelGrabber pg;
+	ColorModel cm;
+	int[] pixels;
 	
 	/**
 	 * @author Steffen R. Stenersen
@@ -33,6 +45,36 @@ public class Sprite
 		return rectangle.height;
 	}
 	
+	public int[] getAlpha(Rectangle rect)
+	{
+		pg = new PixelGrabber(image, rect.x, rect.y, rect.width, rect.height, false);
+		
+		try
+		{
+			pg.grabPixels();
+		}
+		catch(Exception e) { ; };
+		
+		ColorModel cm = pg.getColorModel();
+		boolean isByte;
+		isByte = pg.getPixels() instanceof byte[] ? true : false;
+		
+		pixels = (int[])pg.getPixels();
+		
+		int[] pixels2;
+		int[] alpha;
+		
+		pixels2 = (int[])pixels;
+			
+		alpha = new int[pixels2.length];
+
+		
+		for(int i= 0; i < pixels2.length; i++)
+			alpha[i] = cm.getAlpha(pixels2[i]);
+		
+		return alpha;
+	}
+	
 	/**
 	 * @author Steffen R. Stenersen
 	 * Constructor
@@ -50,7 +92,7 @@ public class Sprite
 		this.frameInterval = frameInterval;
 		this.frameTimeRemaining = frameInterval;
 	}
-	
+
 	/**
 	 * @author Steffen R. Stenersen
 	 */

@@ -4,15 +4,14 @@ import java.util.ArrayList;
 
 public class Gem extends Actor
 {
-	Player player;
+//	Player player;
 	private boolean active = false;
 	public static ArrayList<Gem> gems;
 	private final int limit = 2;
 	
-	public Gem(Sprite sprite, Player player) 
+	public Gem(Sprite sprite) 
 	{
 		super(sprite);
-		this.player = player;
 		gems.add(this);
 	}
 	
@@ -26,10 +25,10 @@ public class Gem extends Actor
 		super.update();
 	}
 	
-	public void activate()
+	private void activate()
 	{
 		//Jon: Fiks slik at vi kan deaktivere effekten til Gem'en dersom den er aktiv
-		if(active || !checkDistance())
+		if(active)
 			return;
 		
 		this.active = true;
@@ -48,16 +47,9 @@ public class Gem extends Actor
 	{
 		for (Gem gem : gems) 
 		{
-			if(gem.checkDistance())
-			{
+			if(Actor.checkCollision(Game.getPlayer(), gem))
 				gem.activate();
-			}
 		}
-	}
-	
-	public boolean checkDistance()
-	{
-		return(this.getRectangle().intersects(this.player.getRectangle()));
 	}
 	
 	public void applyProperties()

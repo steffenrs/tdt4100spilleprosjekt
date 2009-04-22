@@ -2,16 +2,16 @@ package spectrum;
 
 public class Green extends Gem 
 {
-	public Green(Sprite sprite, Player player, int x, int y) 
+	public Green(Sprite sprite, int x, int y) 
 	{
-		super(sprite, player);
+		super(sprite);
 		this.setPosX(x);
 		this.setPosY(y);
 	}
 
 	public void applyProperties()
 	{
-		player.setGravity(6f);
+		Game.getPlayer().setGravity(6f);
 	}
 
 }

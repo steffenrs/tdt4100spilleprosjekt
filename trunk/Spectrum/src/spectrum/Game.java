@@ -1,9 +1,12 @@
 package spectrum;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.Rectangle;
 import java.awt.image.ImageObserver;
+import java.text.AttributedCharacterIterator;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -21,11 +24,23 @@ public class Game extends JFrame implements Runnable
 	//Temp code
 	private Actor test;
 	private Level testLevel;
-	private Player player;
+	Gem gem;
+	
+	private static Player player;
+	private Goal goal;
 	
 	//Game Loop
 	Thread thread;
+	
+	//Game Constants
 	static final double UPDATE_INTERVAL = 16.67;
+	static final int SCREEN_WIDTH = 800;
+	static final int SCREEN_HEIGHT = 800;
+	
+	public static Player getPlayer()
+	{
+		return player;
+	}
 	
 	public static void main(String[] args) 
 	{
@@ -44,7 +59,7 @@ public class Game extends JFrame implements Runnable
 		//Window settings
 		this.setTitle("Spectrum");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setSize(800, 800);
+		this.setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
 		this.setResizable(false);
 	
 		this.setVisible(true);
@@ -66,13 +81,10 @@ public class Game extends JFrame implements Runnable
 	public void createTestActor()
 	{
 		String path = System.getProperty("user.dir") + "\\Content\\";
-		ImageIcon ic = new ImageIcon(path + "explode_01.png");
-		Sprite sprite = new Sprite(ic.getImage(), 8, 4, this.observer);
 		
 		testLevel = new Level(this.observer);
 		testLevel.Load(path + "test.layer");
-		test = new Actor(sprite, 32, 32, false);
-		
+		this.goal = Goal.getGoal();
 		 
 		ImageIcon playerImage = new ImageIcon(path + "player_02.png");
 		ImageIcon playerSmall = new ImageIcon(path + "small.png");
@@ -82,11 +94,11 @@ public class Game extends JFrame implements Runnable
 		
 		ImageIcon green = new ImageIcon(path + "green.png");
 		Sprite greenSprite = new Sprite(green.getImage(), 1, 1, this.observer);
-		Gem gem = new Green(greenSprite, player, 600, 700);
+		gem = new Green(greenSprite, 600, 700);
 		
 		ImageIcon red = new ImageIcon(path + "red.png");
 		Sprite redSprite = new Sprite(red.getImage(), 1, 1, this.observer);
-		gem = new Red(redSprite, player, 500, 700);
+		gem = new Red(redSprite, 600, 770);
 		
 	}
 	
@@ -127,27 +139,42 @@ public class Game extends JFrame implements Runnable
 		
 		if(input.isUpKeyDown())
 			player.doJump();
-		if(!input.isPKeyDown() && input.isLastPKeyDown())
-			if(gs == GameState.PLAYING)
-				gs = GameState.PAUSED;
-			else if(gs == GameState.PAUSED)
-				gs = GameState.PLAYING;
+		
+//		if(!input.isPKeyDown() && input.isLastPKeyDown())
+//			if(gs == GameState.PLAYING)
+//				gs = GameState.PAUSED;
+//			else if(gs == GameState.PAUSED)
+//				gs = GameState.PLAYING;
+		
+		if(input.isPKeyDown())
+			Actor.checkCollision(player, gem);
 		
 		if(input.isSpaceKeyDown())
 			Gem.activateGem();
 	}
 
-	public void updateActors()
+	private void updateActors()
 	{
 		for (Actor actor : Actor.actors) 
 		{
 			actor.update();
 		}
+		
+		checkWin();
+	}
+	
+	private void checkWin()
+	{
+		if(goal == null)
+			return;
+		
+		if(player.getRectangle().intersects(goal.getRectangle()))
+			gs = GameState.WON;
 	}
 	
 	public void paint(Graphics g)
 	{
-		if(offscreen == null)
+		if(offscreen == null || gs == null)
 			return;
 		
 		offscreen.setColor(Color.BLACK);
@@ -156,17 +183,41 @@ public class Game extends JFrame implements Runnable
 		{
 			actor.draw(offscreen, this);
 		}
-		
-		g.drawImage(offscreenImage, 0, 0, this);
 
+		switch(gs)
+		{
+			case WON:
+				offscreen.setColor(Color.WHITE);
+				offscreen.drawString("NICE", SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2);
+				break;
+			case MENU:
+				break;
+			case PAUSED:
+				break;
+			case PLAYING:
+				break;
+		}
 		drawDebug();
+		g.drawImage(offscreenImage, 0, 0, this);
 	}
 	
 	public void drawDebug()
 	{
-		graphics.setColor(Color.WHITE);
-		graphics.drawString("Debug:", 10, 80);
-		graphics.drawString("Player pos: " + Float.toString(player.getPosX()) + "," + Float.toString(player.getPosY()), 10, 100);	
-		graphics.drawString("Player grav; " + Float.toString(player.getGravity()), 10, 120);
+		if(Actor.checkCollision(player, gem))
+			offscreen.setColor(Color.red);
+		else
+			offscreen.setColor(Color.black);
+		
+		Rectangle r = Actor.intersects(player.getRectangle(), gem.getRectangle());
+		
+		if(r != null)
+		{
+			offscreen.fillRect(r.x, r.y, r.width, r.height);
+		}
+		
+		offscreen.setColor(Color.WHITE);
+		offscreen.drawString("Debug:", 10, 80);
+		offscreen.drawString("Player pos: " + Float.toString(player.getPosX()) + "," + Float.toString(player.getPosY()), 10, 100);	
+		offscreen.drawString("Player grav; " + Float.toString(player.getGravity()), 10, 120);
 	}
 }

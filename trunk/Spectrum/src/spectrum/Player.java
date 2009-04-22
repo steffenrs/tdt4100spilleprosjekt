@@ -1,6 +1,7 @@
 package spectrum;
 
 import java.awt.Graphics;
+import java.awt.Rectangle;
 import java.awt.image.ImageObserver;
 
 public class Player extends Actor
@@ -97,32 +98,33 @@ public class Player extends Actor
 			}
 
 			if (actor.getCollidable()) {
-				if (this.getRectangle().intersects(actor.getRectangle())) 
+				if(Actor.checkCollision(this, actor))
 				{
-					//ER EN FEIL HER. PRØV Å COMMENTE UT COLLISON right->left && left->right
-					//Collision below
+					Rectangle r = Actor.intersects(this.getRectangle(), actor.getRectangle());
+					
 					if(this.getPosY() < actor.getPosY()){
 						this.setPosY(actor.getPosY() - this.getSprite().getHeight());
 						setIsOnGround(true);
 					}
 					
-					//Collision right->left 
+					//Collision right->left
 					else if(this.getPosX() > actor.getPosX() + actor.getSprite().getWidth() - 5)
 						this.setPosX(actor.getPosX() + actor.getSprite().getWidth());
 					
 					//Collision left->right
-					else if(this.getPosX() + this.getSprite().getWidth() - 5 < actor.getPosX()){
-						
-						this.setPosX(actor.getPosX() - this.getSprite().getWidth());
+//					else if(this.getPosX() + this.getSprite().getWidth() - 5 < actor.getPosX()){
+//						
+//						this.setPosX(actor.getPosX() - this.getSprite().getWidth());	
+//					}
 					
-						
-					}
-						
+					else if(actor.getPosX() + actor.getSprite().getWidth() > this.getPosX())
+						this.setPosX(actor.getPosX() + actor.getSprite().getWidth());
 					
-					//Collision above ********FUNKER IKKE!*******
-					else if(this.getPosY() > actor.getPosY()){
+
+
+					if(this.getPosY() > actor.getPosY()){
 						this.setPosY(actor.getPosY() + actor.getSprite().getHeight() + 1);
-						jump = false;
+					
 					}
 					return;
 				}

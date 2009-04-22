@@ -80,18 +80,15 @@ public class Level
 					{
 						ImageIcon ic = textures.get(current);
 						Sprite sprite = new Sprite(ic.getImage(), 1, 1, io);
-						ic.getDescription();
-
-						
-						
 
 						if (ic.getDescription().equals("block")) {
-
-							new Actor(sprite, x * 32, y * 32, true);
+							new Block(sprite, x * 32, y * 32, true);
 						}
-						else{
+						else if(ic.getDescription().equals("goal")){
+							new Goal(sprite, x * 32, y * 32, false);
+						}
+						else
 							new Actor(sprite, x * 32, y * 32, false);
-						}
 						
 					}
 				}
