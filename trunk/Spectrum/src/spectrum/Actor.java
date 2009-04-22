@@ -9,8 +9,8 @@ public class Actor
 {
 	public static ArrayList<Actor> actors;
 	private Sprite spriteSheet;
-	private boolean collidable;
-	
+	public boolean collidable;
+	public boolean colliding;
 
 	private float posX;
 	private float posY;
