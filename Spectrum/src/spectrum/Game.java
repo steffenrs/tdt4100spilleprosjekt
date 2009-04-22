@@ -89,6 +89,7 @@ public class Game extends JFrame implements Runnable
 		Sprite playerSprite = new Sprite(playerImage.getImage(), 1, 1, this.observer);
 		Sprite playerSmallSprite = new Sprite(playerSmall.getImage(), 1, 1, this.observer);
 		player = new Player(playerSprite, playerSmallSprite, 700, 700);
+		player.collidable = true;
 		
 		ImageIcon green = new ImageIcon(getClass().getResource("content//green.png"));
 		Sprite greenSprite = new Sprite(green.getImage(), 1, 1, this.observer);
@@ -178,7 +179,17 @@ public class Game extends JFrame implements Runnable
 		
 		for (Actor actor : Actor.actors) 
 		{
-			actor.draw(offscreen, this);
+//			if(actor.colliding)
+//			{
+//				offscreen.setColor(Color.red);
+//				offscreen.fillRect(actor.getRectangle().x, actor.getRectangle().y, actor.getRectangle().width, actor.getRectangle().height);
+//				offscreen.drawString(Float.toString(actor.getPosY()), 10, 140);
+//			}
+//			else
+				actor.draw(offscreen, this);
+				offscreen.setColor(Color.red);
+				if(actor.getCollidable())
+					offscreen.drawRect((int)actor.getPosX(), (int)actor.getPosY(), 1, 1);
 		}
 
 		switch(gs)

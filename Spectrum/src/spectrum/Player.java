@@ -89,7 +89,7 @@ public class Player extends Actor
 		checkWallCollision();
 	}
 
-	private void checkActorCollision() 
+	private void checkActorCollision2() 
 	{
 		for (Actor actor : actors) 
 		{
@@ -99,9 +99,7 @@ public class Player extends Actor
 
 			if (actor.getCollidable()) {
 				if(Actor.checkCollision(this, actor))
-				{
-					Rectangle r = Actor.intersects(this.getRectangle(), actor.getRectangle());
-					
+				{	
 					if(this.getPosY() < actor.getPosY()){
 						this.setPosY(actor.getPosY() - this.getSprite().getHeight());
 						setIsOnGround(true);
@@ -112,10 +110,10 @@ public class Player extends Actor
 						this.setPosX(actor.getPosX() + actor.getSprite().getWidth());
 					
 					//Collision left->right
-//					else if(this.getPosX() + this.getSprite().getWidth() - 5 < actor.getPosX()){
-//						
-//						this.setPosX(actor.getPosX() - this.getSprite().getWidth());	
-//					}
+					else if(this.getPosX() + this.getSprite().getWidth() - 5 < actor.getPosX()){
+						
+						this.setPosX(actor.getPosX() - this.getSprite().getWidth());	
+					}
 					
 					else if(actor.getPosX() + actor.getSprite().getWidth() > this.getPosX())
 						this.setPosX(actor.getPosX() + actor.getSprite().getWidth());
@@ -134,6 +132,42 @@ public class Player extends Actor
 		setIsOnGround(false);
 	}
 
+	private void checkActorCollision() 
+	{
+		for (Actor actor : actors) 
+		{
+			if (this == actor) {
+				continue;
+			}
+
+			if (actor.getCollidable()) 
+			{
+				if(Actor.checkCollision(this, actor))
+				{	
+					if(this.getPosY() + this.getSprite().getHeight() > actor.getPosY())
+					{
+						actor.colliding = true;
+						this.setPosY(actor.getPosY() - this.getSprite().getHeight());
+						setIsOnGround(true);
+					}
+					
+					//check top
+					
+					else if(this.getPosX() + this.getSprite().getWidth() > actor.getPosX())
+					{
+						this.setPosX(actor.getPosX() - this.getSprite().getWidth());
+					}
+					
+					
+					return;
+				}
+			}
+		}
+		
+		setIsOnGround(false);
+	}
+
+	
 	private void checkWallCollision() 
 	{
 		//check bottom
