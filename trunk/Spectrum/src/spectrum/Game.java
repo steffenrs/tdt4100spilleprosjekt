@@ -6,6 +6,7 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Rectangle;
 import java.awt.image.ImageObserver;
+import java.net.URL;
 import java.text.AttributedCharacterIterator;
 
 import javax.swing.ImageIcon;
@@ -77,29 +78,25 @@ public class Game extends JFrame implements Runnable
 		this.update();
 	}
 	
-	//temp code
 	public void createTestActor()
-	{
-		String path = System.getProperty("user.dir") + "\\Content\\";
-		
+	{		
 		testLevel = new Level(this.observer);
-		testLevel.Load(path + "test.layer");
+		testLevel.Load(getClass().getResource("content/Test.layer"));
 		this.goal = Goal.getGoal();
-		 
-		ImageIcon playerImage = new ImageIcon(path + "player_02.png");
-		ImageIcon playerSmall = new ImageIcon(path + "small.png");
+		
+		ImageIcon playerImage = new ImageIcon(getClass().getResource("content//player_02.png"));
+		ImageIcon playerSmall = new ImageIcon(getClass().getResource("content//small.png"));
 		Sprite playerSprite = new Sprite(playerImage.getImage(), 1, 1, this.observer);
 		Sprite playerSmallSprite = new Sprite(playerSmall.getImage(), 1, 1, this.observer);
 		player = new Player(playerSprite, playerSmallSprite, 700, 700);
 		
-		ImageIcon green = new ImageIcon(path + "green.png");
+		ImageIcon green = new ImageIcon(getClass().getResource("content//green.png"));
 		Sprite greenSprite = new Sprite(green.getImage(), 1, 1, this.observer);
 		gem = new Green(greenSprite, 600, 700);
 		
-		ImageIcon red = new ImageIcon(path + "red.png");
+		ImageIcon red = new ImageIcon(getClass().getResource("content//red.png"));
 		Sprite redSprite = new Sprite(red.getImage(), 1, 1, this.observer);
 		gem = new Red(redSprite, 600, 770);
-		
 	}
 	
 	public void update()
@@ -197,6 +194,7 @@ public class Game extends JFrame implements Runnable
 			case PLAYING:
 				break;
 		}
+		
 		drawDebug();
 		g.drawImage(offscreenImage, 0, 0, this);
 	}
