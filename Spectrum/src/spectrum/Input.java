@@ -100,7 +100,6 @@ public class Input extends KeyAdapter
 			
 		case KeyEvent.VK_P:
 			pKeyDown = true;
-
 			break;
 			
 		case KeyEvent.VK_SPACE:
@@ -143,7 +142,6 @@ public class Input extends KeyAdapter
 		case KeyEvent.VK_P :
 			pKeyDown = false;
 			break;
-	
 		default:
 			break;
 		}
