@@ -252,5 +252,6 @@ public class Game extends JFrame implements Runnable
 		offscreen.drawString("Debug:", 10, 80);
 		offscreen.drawString("Player pos: " + Float.toString(player.getPosX()) + "," + Float.toString(player.getPosY()), 10, 100);	
 		offscreen.drawString("Player grav; " + Float.toString(player.getGravity()), 10, 120);
+		offscreen.drawString("Player rest; " + Float.toString(player.restTime), 10, 140);
 	}
 }
