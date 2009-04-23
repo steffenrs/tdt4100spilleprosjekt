@@ -95,14 +95,6 @@ public class Game extends JFrame implements Runnable
 		Sprite playerSmallSprite = new Sprite(playerSmall.getImage(), 1, 1, this.observer);
 		player = new Player(playerSprite, playerSmallSprite, 700, 700);
 		player.collidable = true;
-		
-		ImageIcon green = new ImageIcon(getClass().getResource("content//green_gem.png"));
-		Sprite greenSprite = new Sprite(green.getImage(), 1, 1, this.observer);
-		gem = new Green(greenSprite, 600, 700, false);
-		
-		ImageIcon red = new ImageIcon(getClass().getResource("content//gem_red2.png"));
-		Sprite redSprite = new Sprite(red.getImage(), 1, 1, this.observer);
-		gem = new Red(redSprite, 600, 770);
 	}
 	
 	public void createMenu()
@@ -251,10 +243,7 @@ public class Game extends JFrame implements Runnable
 	
 	public void drawDebug()
 	{
-		if(Actor.checkCollision(player, gem))
-			offscreen.setColor(Color.red);
-		else
-			offscreen.setColor(Color.black);
+		offscreen.setColor(Color.black);
 		
 		offscreen.setColor(Color.black);
 		offscreen.drawString("Debug:", 10, 80);

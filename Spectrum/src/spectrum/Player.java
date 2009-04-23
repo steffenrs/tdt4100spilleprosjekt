@@ -121,13 +121,12 @@ public class Player extends Actor
 						 {
 							 this.setPosY(this.getPosY() + r.height);
 							 pJumpPower = 0;
+							 jumpTime = 0;
 						 }
 						 else
 						 {
 							 this.setPosY(this.getPosY() - r.height);
 							 setIsOnGround(true);
-								
-
 						 }
 						 
 					 }
@@ -189,7 +188,7 @@ public class Player extends Actor
 		if (this.getPosY() <= 0 + 20) {
 			this.setPosY(0 + 20);
 			jump = false;
-			
+			jumpTime = 0;
 		}
 	}
 
