@@ -11,6 +11,8 @@ import javax.swing.ImageIcon;
 
 public class Level 
 {
+	public static ArrayList<Level> levels;
+	
 	private ArrayList<ImageIcon> textures;
 	private ArrayList<String[]> level;
 	ImageObserver io;
@@ -24,6 +26,18 @@ public class Level
 		textures = new ArrayList<ImageIcon>();
 		level = new ArrayList<String[]>();
 		this.io = io;
+	}
+	
+	static
+	{
+		levels = new ArrayList<Level>();
+	}
+	
+	public void clear()
+	{
+		textures.clear();
+		level.clear();
+		Actor.actors.clear();
 	}
 	
 	/**
@@ -167,6 +181,7 @@ public class Level
 				}
 			}
 			reader.close();
+			levels.add(this);
 		}
 		
 		catch(IOException exc)

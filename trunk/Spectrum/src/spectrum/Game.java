@@ -23,7 +23,6 @@ public class Game extends JFrame implements Runnable
 	public static GameState gs;
 	
 	//Temp code
-	private Actor test;
 	private Level testLevel;
 	Gem gem;
 	
@@ -70,6 +69,8 @@ public class Game extends JFrame implements Runnable
 		offscreenImage = createImage(800, 800);
 		offscreen = offscreenImage.getGraphics();
 		
+		testLevel = new Level(this.observer);
+		testLevel.Load(getClass().getResource("content/Test.layer"));
 		createTestActor();
 		createMenu();
 
@@ -83,8 +84,6 @@ public class Game extends JFrame implements Runnable
 	
 	public void createTestActor()
 	{		
-		testLevel = new Level(this.observer);
-		testLevel.Load(getClass().getResource("content/Test.layer"));
 		this.goal = Goal.getGoal();
 		
 		ImageIcon playerImage = new ImageIcon(getClass().getResource("content//player_jostein.png"));
@@ -94,11 +93,11 @@ public class Game extends JFrame implements Runnable
 		player = new Player(playerSprite, playerSmallSprite, 700, 700);
 		player.collidable = true;
 		
-		ImageIcon green = new ImageIcon(getClass().getResource("content//green.png"));
+		ImageIcon green = new ImageIcon(getClass().getResource("content//gem_green2.png"));
 		Sprite greenSprite = new Sprite(green.getImage(), 1, 1, this.observer);
 		gem = new Green(greenSprite, 600, 700);
 		
-		ImageIcon red = new ImageIcon(getClass().getResource("content//red.png"));
+		ImageIcon red = new ImageIcon(getClass().getResource("content//gem_red2.png"));
 		Sprite redSprite = new Sprite(red.getImage(), 1, 1, this.observer);
 		gem = new Red(redSprite, 600, 770);
 		
@@ -177,6 +176,13 @@ public class Game extends JFrame implements Runnable
 				if(input.isEnterKeyDown())
 					menu.takeAction();
 				break;
+				
+			case WON:
+				if(input.isEnterKeyDown())
+				{
+					changeLevel();
+					gs = GameState.PLAYING;
+				}
 			}
 		
 		input.setLastKeys();
@@ -193,12 +199,20 @@ public class Game extends JFrame implements Runnable
 		checkWin();
 	}
 	
+	private void changeLevel()
+	{
+		testLevel.clear();
+		testLevel.Load(getClass().getResource("content/level2.layer"));
+		createTestActor();
+		Actor.actors.size();
+	}
+	
 	private void checkWin()
 	{
 		if(goal == null)
 			return;
 		
-		if(player.getRectangle().intersects(goal.getRectangle()))
+		if(player.isInside(goal))
 			gs = GameState.WON;
 	}
 	
@@ -240,13 +254,6 @@ public class Game extends JFrame implements Runnable
 			offscreen.setColor(Color.red);
 		else
 			offscreen.setColor(Color.black);
-		
-		Rectangle r = Actor.intersects(player.getRectangle(), gem.getRectangle());
-		
-		if(r != null)
-		{
-			offscreen.fillRect(r.x, r.y, r.width, r.height);
-		}
 		
 		offscreen.setColor(Color.WHITE);
 		offscreen.drawString("Debug:", 10, 80);
