@@ -11,7 +11,7 @@ public class Green extends Gem
 
 	public void applyProperties()
 	{
-		Game.getPlayer().setGravity(6f);
+		Game.getPlayer().setGravity(14f);
 	}
 
 }
