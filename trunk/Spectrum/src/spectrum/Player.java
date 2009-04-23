@@ -133,39 +133,48 @@ public class Player extends Actor
 	}
 
 	private void checkActorCollision() 
-	{
-		for (Actor actor : actors) 
-		{
-			if (this == actor) {
-				continue;
-			}
+    {
+            for (Actor actor : actors) 
+            {
+                    if (this == actor) {
+                            continue;
+                    }
 
-			if (actor.getCollidable()) 
-			{
-				if(Actor.checkCollision(this, actor))
-				{	
-					if(this.getPosY() + this.getSprite().getHeight() > actor.getPosY())
-					{
-						actor.colliding = true;
-						this.setPosY(actor.getPosY() - this.getSprite().getHeight());
-						setIsOnGround(true);
-					}
-					
-					//check top
-					
-					else if(this.getPosX() + this.getSprite().getWidth() > actor.getPosX())
-					{
-						this.setPosX(actor.getPosX() - this.getSprite().getWidth());
-					}
-					
-					
-					return;
-				}
-			}
-		}
-		
-		setIsOnGround(false);
-	}
+                    if (actor.getCollidable()) {
+                            if (this.getRectangle().intersects(actor.getRectangle())) 
+                            {
+                                    //ER EN FEIL HER. PRØV Å COMMENTE UT COLLISON right->left && left->right
+                                    //Collision below
+                                    if(this.getPosY() < actor.getPosY()){
+                                            this.setPosY(actor.getPosY() - this.getSprite().getHeight());
+                                            setIsOnGround(true);
+                                    }
+                                    
+                                    //Collision right->left 
+                                    else if(this.getPosX() > actor.getPosX() + actor.getSprite().getWidth() - 5)
+                                            this.setPosX(actor.getPosX() + actor.getSprite().getWidth());
+                                    
+                                    //Collision left->right
+                                    else if(this.getPosX() + this.getSprite().getWidth() - 5 < actor.getPosX()){
+                                            
+                                            this.setPosX(actor.getPosX() - this.getSprite().getWidth());
+                                    
+                                            
+                                    }
+                                            
+                                    
+                                    //Collision above ********FUNKER IKKE!*******
+                                    else if(this.getPosY() > actor.getPosY()){
+                                            this.setPosY(actor.getPosY() + actor.getSprite().getHeight() + 1);
+                                            jump = false;
+                                    }
+                                    return;
+                            }
+                    }
+            }
+            
+            setIsOnGround(false);
+    }
 
 	
 	private void checkWallCollision() 
