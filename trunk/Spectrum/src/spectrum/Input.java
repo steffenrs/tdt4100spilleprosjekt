@@ -10,19 +10,39 @@ public class Input extends KeyAdapter
 	
 	//Keys
 	private boolean upKeyDown;
+	private boolean lastUpKeyDown;
 	private boolean downKeyDown;
+	private boolean lastDownKeyDown;
 	private boolean leftKeyDown;
 	private boolean rightKeyDown;
 	private boolean pKeyDown;
 	private boolean lastPKeyDown;
 	private boolean spaceKeyDown;
+	private boolean escKeyDown;
+	private boolean enterKeyDown;
+	
+	public boolean isEnterKeyDown(){
+		return enterKeyDown;
+	}
+	
+	public boolean isEscKeyDown(){
+		return escKeyDown;
+	}
 	
 	public boolean isUpKeyDown() {
 		return upKeyDown;
 	}
+	
+	public boolean isLastUpKeyDown(){
+		return lastUpKeyDown;
+	}
 
 	public boolean isDownKeyDown() {
 		return downKeyDown;
+	}
+	
+	public boolean isLastDownKeyDown() {
+		return lastDownKeyDown;
 	}
 
 	public boolean isLeftKeyDown() {
@@ -54,9 +74,20 @@ public class Input extends KeyAdapter
 	{
 		switch (ke.getKeyCode()) 
 		{
-		case KeyEvent.VK_UP : 
+		case KeyEvent.VK_ENTER:
+			enterKeyDown = true;
+			break;
+		
+		case KeyEvent.VK_ESCAPE:
+			escKeyDown = true;
+			break;
+		
+		case KeyEvent.VK_UP :
 			upKeyDown = true;
 			break;
+			
+		case KeyEvent.VK_DOWN:
+			downKeyDown = true;
 		
 		case KeyEvent.VK_LEFT:
 			leftKeyDown = true;
@@ -67,7 +98,6 @@ public class Input extends KeyAdapter
 			break;
 			
 		case KeyEvent.VK_P:
-			lastPKeyDown = pKeyDown;
 			pKeyDown = true;
 
 			break;
@@ -85,9 +115,18 @@ public class Input extends KeyAdapter
 	{
 		switch (ke.getKeyCode()) 
 		{
+		case KeyEvent.VK_ENTER:
+			enterKeyDown = false;
+			break;
+		
+		case KeyEvent.VK_ESCAPE:
+			escKeyDown = false;
+			break;
+		
 		case KeyEvent.VK_UP :
 			upKeyDown = false;
 			break;
+			
 		case KeyEvent.VK_LEFT :
 			leftKeyDown = false;
 			break;
@@ -101,12 +140,18 @@ public class Input extends KeyAdapter
 			spaceKeyDown = false;
 			break;
 		case KeyEvent.VK_P :
-			lastPKeyDown = pKeyDown;
 			pKeyDown = false;
 			break;
 	
 		default:
 			break;
 		}
+	}
+	
+	public void setLastKeys()
+	{
+		this.lastDownKeyDown = downKeyDown;
+		this.lastPKeyDown = pKeyDown;
+		this.lastUpKeyDown = upKeyDown;
 	}
 }
