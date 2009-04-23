@@ -88,6 +88,7 @@ public class Input extends KeyAdapter
 			
 		case KeyEvent.VK_DOWN:
 			downKeyDown = true;
+			break;
 		
 		case KeyEvent.VK_LEFT:
 			leftKeyDown = true;
