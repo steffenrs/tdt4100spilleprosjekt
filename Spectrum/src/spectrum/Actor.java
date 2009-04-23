@@ -19,7 +19,6 @@ public class Actor
 	{
 		actors.add(this);
 		this.spriteSheet = sprite;
-		
 	}
 	
 	public Actor(Sprite sprite, int x, int y, boolean collidable)
@@ -83,6 +82,17 @@ public class Actor
 	public void draw(Graphics g, ImageObserver observer)
 	{
 		spriteSheet.draw(g, observer, (int)posX, (int)posY);
+	}
+	
+	public boolean isInside(Actor a)
+	{
+		if(a.getRectangle().x < this.getRectangle().x &&
+		  // a.getRectangle().y < this.getRectangle().y &&
+		   a.getRectangle().x + a.getRectangle().width > this.getRectangle().x + this.getRectangle().width &&
+		   a.getRectangle().y + a.getRectangle().height > this.getRectangle().y + this.getRectangle().height)
+			return true;
+		return false;
+			
 	}
 	
 	public static Rectangle intersects(Rectangle a, Rectangle b)
