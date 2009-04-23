@@ -29,6 +29,7 @@ public class Game extends JFrame implements Runnable
 	
 	private static Player player;
 	private Goal goal;
+	private Menu menu;
 	
 	//Game Loop
 	Thread thread;
@@ -68,7 +69,9 @@ public class Game extends JFrame implements Runnable
 		//Double Buffering
 		offscreenImage = createImage(800, 800);
 		offscreen = offscreenImage.getGraphics();
+		
 		createTestActor();
+		createMenu();
 
 		gs = GameState.PLAYING;
 		input = new Input(player);
@@ -98,58 +101,87 @@ public class Game extends JFrame implements Runnable
 		ImageIcon red = new ImageIcon(getClass().getResource("content//red.png"));
 		Sprite redSprite = new Sprite(red.getImage(), 1, 1, this.observer);
 		gem = new Red(redSprite, 600, 770);
+		
+	}
+	
+	public void createMenu()
+	{
+		menu = new Menu(this);
+		menu.add(new MenuItem("Start"));
+		menu.add(new MenuItem("Help"));
+		menu.add(new MenuItem("Exit"));
 	}
 	
 	public void update()
-	{
+	{	
 		while(true)
 		{
+			handleInput();
 			switch(gs)
 			{
 			case WON:
 				break;
 				
 			case MENU:
+				this.paint(graphics);
 				break;
 			case PAUSED:
 				break;
 			case PLAYING:
-				handleInput();
 				this.updateActors();
 				this.paint(graphics);
-				
-				try
-				{
-					Thread.sleep(1000 / 60);
-				}
-				catch(InterruptedException e) {; }
-					break;
+				break;
 			}
+			
+			try
+			{
+				Thread.sleep(1000 / 60);
+			}
+			catch(InterruptedException e) {; }
+				
 		}
 	}
 	
 	private void handleInput() 
 	{
-		if(input.isLeftKeyDown())
-			player.doMove(-1);
-		if(input.isRightKeyDown())
-			player.doMove(1);
+		switch(gs)
+		{
+			case PLAYING:
+				if(input.isLeftKeyDown())
+					player.doMove(-1);
+				if(input.isRightKeyDown())
+					player.doMove(1);
+				
+				if(input.isUpKeyDown())
+					player.doJump();
+				
+				if(!input.isPKeyDown() && input.isLastPKeyDown())
+					gs = GameState.PAUSED;
+				
+				if(input.isSpaceKeyDown())
+					Gem.activateGem();
+				
+				if(input.isEscKeyDown())
+					gs = GameState.MENU;
+			break;
+			
+			case PAUSED:
+				if(!input.isPKeyDown() && input.isLastPKeyDown())
+					gs = GameState.PLAYING;
+				break;
+			case MENU:
+				if(!input.isDownKeyDown() && input.isLastDownKeyDown())
+					menu.moveDown();
+				if(!input.isUpKeyDown() && input.isLastUpKeyDown())
+					menu.moveUp();
+				if(input.isEnterKeyDown())
+					menu.takeAction();
+				break;
+			}
 		
-		if(input.isUpKeyDown())
-			player.doJump();
-		
-//		if(!input.isPKeyDown() && input.isLastPKeyDown())
-//			if(gs == GameState.PLAYING)
-//				gs = GameState.PAUSED;
-//			else if(gs == GameState.PAUSED)
-//				gs = GameState.PLAYING;
-		
-		if(input.isPKeyDown())
-			Actor.checkCollision(player, gem);
-		
-		if(input.isSpaceKeyDown())
-			Gem.activateGem();
-	}
+		input.setLastKeys();
+		}
+
 
 	private void updateActors()
 	{
@@ -171,27 +203,13 @@ public class Game extends JFrame implements Runnable
 	}
 	
 	public void paint(Graphics g)
-	{
+	{	
 		if(offscreen == null || gs == null)
 			return;
+	
+		offscreen.setColor(Color.black);
+		offscreen.fillRect(0, 0, 800, 800);
 		
-		offscreen.setColor(Color.BLACK);
-		
-		for (Actor actor : Actor.actors) 
-		{
-//			if(actor.colliding)
-//			{
-//				offscreen.setColor(Color.red);
-//				offscreen.fillRect(actor.getRectangle().x, actor.getRectangle().y, actor.getRectangle().width, actor.getRectangle().height);
-//				offscreen.drawString(Float.toString(actor.getPosY()), 10, 140);
-//			}
-//			else
-				actor.draw(offscreen, this);
-				offscreen.setColor(Color.red);
-				if(actor.getCollidable())
-					offscreen.drawRect((int)actor.getPosX(), (int)actor.getPosY(), 1, 1);
-		}
-
 		switch(gs)
 		{
 			case WON:
@@ -199,10 +217,16 @@ public class Game extends JFrame implements Runnable
 				offscreen.drawString("NICE", SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2);
 				break;
 			case MENU:
+				menu.drawString(offscreen);
 				break;
 			case PAUSED:
-				break;
-			case PLAYING:
+			case PLAYING:				
+				offscreen.setColor(Color.BLACK);
+				
+				for (Actor actor : Actor.actors) 
+				{
+					actor.draw(offscreen, this);
+				}
 				break;
 		}
 		
