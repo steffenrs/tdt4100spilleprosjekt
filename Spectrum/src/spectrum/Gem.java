@@ -14,6 +14,12 @@ public class Gem extends Actor
 		super(sprite);
 		gems.add(this);
 	}
+
+	public Gem(Sprite sprite, int x, int y, boolean collidable)
+	{
+		super(sprite, x, y, collidable);
+		gems.add(this);
+	}
 	
 	static
 	{
@@ -48,7 +54,10 @@ public class Gem extends Actor
 		for (Gem gem : gems) 
 		{
 			if(Actor.checkCollision(Game.getPlayer(), gem))
+			{
 				gem.activate();
+				return;
+			}
 		}
 	}
 	

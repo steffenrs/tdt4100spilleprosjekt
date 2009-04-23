@@ -26,6 +26,7 @@ public class Game extends JFrame implements Runnable
 	private Level testLevel;
 	Gem gem;
 	
+	Image background;
 	private static Player player;
 	private Goal goal;
 	private Menu menu;
@@ -86,6 +87,8 @@ public class Game extends JFrame implements Runnable
 	{		
 		this.goal = Goal.getGoal();
 		
+		background = new ImageIcon(getClass().getResource("content//background.png")).getImage();
+		
 		ImageIcon playerImage = new ImageIcon(getClass().getResource("content//player_jostein.png"));
 		ImageIcon playerSmall = new ImageIcon(getClass().getResource("content//small.png"));
 		Sprite playerSprite = new Sprite(playerImage.getImage(), 1, 1, this.observer);
@@ -93,14 +96,13 @@ public class Game extends JFrame implements Runnable
 		player = new Player(playerSprite, playerSmallSprite, 700, 700);
 		player.collidable = true;
 		
-		ImageIcon green = new ImageIcon(getClass().getResource("content//gem_green2.png"));
+		ImageIcon green = new ImageIcon(getClass().getResource("content//green_gem.png"));
 		Sprite greenSprite = new Sprite(green.getImage(), 1, 1, this.observer);
-		gem = new Green(greenSprite, 600, 700);
+		gem = new Green(greenSprite, 600, 700, false);
 		
 		ImageIcon red = new ImageIcon(getClass().getResource("content//gem_red2.png"));
 		Sprite redSprite = new Sprite(red.getImage(), 1, 1, this.observer);
 		gem = new Red(redSprite, 600, 770);
-		
 	}
 	
 	public void createMenu()
@@ -221,8 +223,7 @@ public class Game extends JFrame implements Runnable
 		if(offscreen == null || gs == null)
 			return;
 	
-		offscreen.setColor(Color.black);
-		offscreen.fillRect(0, 0, 800, 800);
+		offscreen.drawImage(background, 0, 0, this);
 		
 		switch(gs)
 		{
@@ -255,7 +256,7 @@ public class Game extends JFrame implements Runnable
 		else
 			offscreen.setColor(Color.black);
 		
-		offscreen.setColor(Color.WHITE);
+		offscreen.setColor(Color.black);
 		offscreen.drawString("Debug:", 10, 80);
 		offscreen.drawString("Player pos: " + Float.toString(player.getPosX()) + "," + Float.toString(player.getPosY()), 10, 100);	
 		offscreen.drawString("Player grav; " + Float.toString(player.getGravity()), 10, 120);

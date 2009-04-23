@@ -7,6 +7,7 @@ public class Red extends Gem
 		super(sprite);
 		this.setPosX(x);
 		this.setPosY(y);
+		
 	}
 	
 	public void applyProperties()

@@ -2,11 +2,11 @@ package spectrum;
 
 public class Green extends Gem 
 {
-	public Green(Sprite sprite, int x, int y) 
+	public Green(Sprite sprite, int x, int y,  boolean collidable) 
 	{
-		super(sprite);
-		this.setPosX(x);
-		this.setPosY(y);
+		super(sprite, x , y, collidable);
+		//this.setPosX(x);
+		//this.setPosY(y);
 	}
 
 	public void applyProperties()
