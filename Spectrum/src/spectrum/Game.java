@@ -198,7 +198,6 @@ public class Game extends JFrame implements Runnable
 		testLevel.clear();
 		testLevel.Load(getClass().getResource("content/level2.layer"));
 		createTestActor();
-		Actor.actors.size();
 	}
 	
 	private void checkWin()
