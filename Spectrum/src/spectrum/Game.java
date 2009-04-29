@@ -93,9 +93,11 @@ public class Game extends JFrame implements Runnable
 		
 		ImageIcon playerImage = new ImageIcon(getClass().getResource("content//player_jostein.png"));
 		ImageIcon playerSmall = new ImageIcon(getClass().getResource("content//player_jostein_small.png"));
+		ImageIcon playerRotate = new ImageIcon(getClass().getResource("content//player_jostein_flipped.png"));
 		Sprite playerSprite = new Sprite(playerImage.getImage(), 1, 1, this.observer);
 		Sprite playerSmallSprite = new Sprite(playerSmall.getImage(), 1, 1, this.observer);
-		player = new Player(playerSprite, playerSmallSprite, 700, 700);
+		Sprite playerRotateSprite = new Sprite(playerRotate.getImage(), 1, 1, this.observer);
+		player = new Player(playerSprite, playerSmallSprite, playerRotateSprite, 700, 700);
 		player.collidable = true;
 	}
 	

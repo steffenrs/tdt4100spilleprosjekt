@@ -19,6 +19,7 @@ public class Player extends Actor
 	
 	private Sprite playerSmall;
 	private boolean isSmall;
+	private Sprite playerRotate;
 	
 	public void setIsSmall(boolean value){
 		this.isSmall = value;
@@ -50,17 +51,23 @@ public class Player extends Actor
 		this.isOnGround = value;
 	}
 	
-	public Player(Sprite sprite, Sprite playerSmall, float x, float y)
+	public Player(Sprite sprite, Sprite playerSmall, Sprite playerRotate, float x, float y)
 	{
 		super(sprite);
 		this.setPosX(x);
 		this.setPosY(y);
 		this.playerSmall = playerSmall;
+		this.playerRotate = playerRotate;
 	}
 	
 	public Sprite getSmall()
 	{
 		return this.playerSmall;
+	}
+	
+	public Sprite getRotate()
+	{
+		return this.playerRotate;
 	}
 	
 	public void doJump()
