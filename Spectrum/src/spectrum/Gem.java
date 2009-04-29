@@ -8,11 +8,17 @@ public class Gem extends Actor
 	private boolean active = false;
 	public static ArrayList<Gem> gems;
 	private final int limit = 2;
+	private long buttonPressed;
 	
 	public Gem(Sprite sprite) 
 	{
 		super(sprite);
 		gems.add(this);
+	}
+	
+	public void setActive(boolean active){
+		this.active = active;
+		
 	}
 
 	public Gem(Sprite sprite, int x, int y, boolean collidable)
@@ -33,10 +39,17 @@ public class Gem extends Actor
 	
 	private void activate()
 	{
-		//Jon: Fiks slik at vi kan deaktivere effekten til Gem'en dersom den er aktiv
-		if(active)
-			return;
+		if (System.currentTimeMillis() - buttonPressed > 2000) {
 		
+		
+		if(active){
+			this.removeProperties();
+			active = false;
+			buttonPressed = System.currentTimeMillis();
+			return;
+		}
+		
+		buttonPressed = System.currentTimeMillis();
 		this.active = true;
 		
 		if(gems.size() > limit)
@@ -48,9 +61,11 @@ public class Gem extends Actor
 		
 		this.applyProperties();
 	}
+}
 	
 	public static void activateGem()
 	{
+		
 		for (Gem gem : gems) 
 		{
 			if(Actor.checkCollision(Game.getPlayer(), gem))

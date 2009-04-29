@@ -18,6 +18,8 @@ public class Game extends JFrame implements Runnable
 	private Graphics graphics;
 	private Image offscreenImage;
 	private Graphics offscreen;
+	Font menuFont = new Font("Arial", Font.PLAIN, 32);
+	Font debugFont = new Font("Arial", Font.PLAIN, 12);
 	
 	private Input input;
 	public static GameState gs;
@@ -87,10 +89,10 @@ public class Game extends JFrame implements Runnable
 	{		
 		this.goal = Goal.getGoal();
 		
-		background = new ImageIcon(getClass().getResource("content//background.png")).getImage();
+		background = new ImageIcon(getClass().getResource("content//background_01.png")).getImage();
 		
 		ImageIcon playerImage = new ImageIcon(getClass().getResource("content//player_jostein.png"));
-		ImageIcon playerSmall = new ImageIcon(getClass().getResource("content//small.png"));
+		ImageIcon playerSmall = new ImageIcon(getClass().getResource("content//player_jostein_small.png"));
 		Sprite playerSprite = new Sprite(playerImage.getImage(), 1, 1, this.observer);
 		Sprite playerSmallSprite = new Sprite(playerSmall.getImage(), 1, 1, this.observer);
 		player = new Player(playerSprite, playerSmallSprite, 700, 700);
@@ -220,12 +222,14 @@ public class Game extends JFrame implements Runnable
 		{
 			case WON:
 				offscreen.setColor(Color.WHITE);
-				offscreen.drawString("NICE", SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2);
+				offscreen.setFont(menuFont);
+				offscreen.drawString("NICE, Level up!", SCREEN_WIDTH / 3, SCREEN_HEIGHT / 2);
 				break;
 			case MENU:
 				menu.drawString(offscreen);
 				break;
 			case PAUSED:
+				
 			case PLAYING:				
 				offscreen.setColor(Color.BLACK);
 				
@@ -243,11 +247,13 @@ public class Game extends JFrame implements Runnable
 	public void drawDebug()
 	{
 		offscreen.setColor(Color.black);
+		offscreen.setFont(debugFont);
 		
 		offscreen.setColor(Color.black);
 		offscreen.drawString("Debug:", 10, 80);
 		offscreen.drawString("Player pos: " + Float.toString(player.getPosX()) + "," + Float.toString(player.getPosY()), 10, 100);	
 		offscreen.drawString("Player grav; " + Float.toString(player.getGravity()), 10, 120);
 		offscreen.drawString("Player rest; " + Float.toString(player.restTime), 10, 140);
+		//offscreen.drawRect((int)(player.getPosX()), (int)(player.getPosY()), player.getSprite().getWidth(), player.getSprite().getHeight());
 	}
 }

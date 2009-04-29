@@ -41,7 +41,7 @@ public class Menu
 	public void takeAction()
 	{
 		if(current == 0)
-			game.gs = GameState.PLAYING;
+			Game.gs = GameState.PLAYING;
 		else if(current == 1)
 		{
 			
@@ -62,7 +62,7 @@ public class Menu
 			else
 				graphics.setColor(Color.white);
 			
-			graphics.drawString(menuItems.get(i).name, 300, space + space * i);
+			graphics.drawString(menuItems.get(i).name, Game.SCREEN_WIDTH / 2 - 15, Game.SCREEN_HEIGHT / 4 + space * i);
 		}
 	}
 	

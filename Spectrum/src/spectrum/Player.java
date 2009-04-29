@@ -20,7 +20,9 @@ public class Player extends Actor
 	private Sprite playerSmall;
 	private boolean isSmall;
 	
-	
+	public void setIsSmall(boolean value){
+		this.isSmall = value;
+	}
 	
 	
 	public void setGravity(float value)
@@ -197,6 +199,6 @@ public class Player extends Actor
 		if(this.isSmall)
 			playerSmall.draw(g, observer, (int)this.getPosX(), (int)this.getPosY());
 		else
-			super.draw(g, observer);
+			this.getSprite().draw(g, observer, (int)this.getPosX(), (int) this.getPosY());
 	}
 }
