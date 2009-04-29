@@ -107,7 +107,8 @@ public class Level
 						
 						else if(ic.getDescription().equals("red"))
 							new Red(sprite, x * 32, y * 32, false);
-						
+						else if(ic.getDescription().equals("blue"))
+							new Blue(sprite, x * 32, y * 32, false);
 						else
 							new Actor(sprite, x * 32, y * 32, false);
 						
