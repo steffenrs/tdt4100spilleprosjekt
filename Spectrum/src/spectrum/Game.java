@@ -140,39 +140,39 @@ public class Game extends JFrame implements Runnable
 		switch(gs)
 		{
 			case PLAYING:
-				if(input.isLeftKeyDown())
+				if(input.getKey("Left").isKeyDown())
 					player.doMove(-1);
-				if(input.isRightKeyDown())
+				if(input.getKey("Right").isKeyDown())
 					player.doMove(1);
 				
-				if(input.isUpKeyDown())
+				if(input.getKey("Up").isKeyDown())
 					player.doJump();
 				
-				if(!input.isPKeyDown() && input.isLastPKeyDown())
+				if(input.getKey("P").isKeyPress())
 					gs = GameState.PAUSED;
 				
-				if(input.isSpaceKeyDown())
+				if(input.getKey("Space").isKeyDown())
 					Gem.activateGem();
 				
-				if(input.isEscKeyDown())
+				if(input.getKey("Escape").isKeyDown())
 					gs = GameState.MENU;
 			break;
 			
 			case PAUSED:
-				if(!input.isPKeyDown() && input.isLastPKeyDown())
+				if(input.getKey("P").isKeyPress())
 					gs = GameState.PLAYING;
 				break;
 			case MENU:
-				if(!input.isDownKeyDown() && input.isLastDownKeyDown())
+				if(input.getKey("Down").isKeyPress())
 					menu.moveDown();
-				if(!input.isUpKeyDown() && input.isLastUpKeyDown())
+				if(input.getKey("Up").isKeyPress())
 					menu.moveUp();
-				if(input.isEnterKeyDown())
+				if(input.getKey("Enter").isKeyDown())
 					menu.takeAction();
 				break;
 				
 			case WON:
-				if(input.isEnterKeyDown())
+				if(input.getKey("Enter").isKeyDown())
 				{
 					changeLevel();
 					gs = GameState.PLAYING;

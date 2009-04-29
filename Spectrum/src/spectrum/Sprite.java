@@ -70,7 +70,9 @@ public class Sprite
 
 		
 		for(int i= 0; i < pixels2.length; i++)
+		{
 			alpha[i] = cm.getAlpha(pixels2[i]);
+		}
 		
 		return alpha;
 	}
