@@ -9,20 +9,12 @@ public class Player extends Actor
 	//Physics
 	private float gravity = 20f;
 	private float jumpPower = -10f;
-	private float minRestTime = 100;
 	private float pJumpPower = 0;
 	private float jumpTime = 0f;
 	public float restTime = 0f;
 	private boolean isOnGround = true;
 	private boolean jump = false;
 	private float moveSpeed = 3f;
-
-	private boolean isSmall;
-	
-	public void setIsSmall(boolean value){
-		this.isSmall = value;
-	}
-	
 	
 	public void setGravity(float value)
 	{
@@ -58,7 +50,7 @@ public class Player extends Actor
 	
 	public void doJump()
 	{
-		if(isOnGround) //&& restTime > minRestTime)
+		if(isOnGround)
 		{
 			this.jump = true;
 			pJumpPower = jumpPower;
