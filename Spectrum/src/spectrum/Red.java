@@ -20,5 +20,6 @@ public class Red extends Gem
 	{
 		//feil
 		Game.getPlayer().setActiveSprite("normal");
+		Game.getPlayer().setPosY((float)(getPosY() - Game.getPlayer().getRectangle().getHeight()));
 	}
 }
