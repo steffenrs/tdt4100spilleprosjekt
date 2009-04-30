@@ -49,11 +49,6 @@ public class Player extends Actor
 		this.setPosY(y);
 	}
 	
-	public Sprite getSmallRotate()
-	{
-		return this.playerSmallRotate;
-	}
-	
 	public void doJump()
 	{
 		if(isOnGround)
@@ -103,8 +98,7 @@ public class Player extends Actor
 			}
 
 			if (actor.getCollidable()) {
-				
-				if(Actor.intersects(this.getRectangle(), actor.getRectangle()) != null)
+				if(Actor.checkCollision(this, actor))
 				{
 					Rectangle r = Actor.intersects(this.getRectangle(), actor.getRectangle());
 					
