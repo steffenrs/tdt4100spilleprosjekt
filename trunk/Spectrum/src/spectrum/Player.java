@@ -15,6 +15,7 @@ public class Player extends Actor
 	private boolean isOnGround = true;
 	private boolean jump = false;
 	private float moveSpeed = 3f;
+	private Sprite playerSmallRotate;
 	
 	public void setGravity(float value)
 	{
@@ -26,7 +27,7 @@ public class Player extends Actor
 		return this.gravity;
 	}
 	
-	private void setIsOnGround(boolean value)
+	public void setIsOnGround(boolean value)
 	{
 		if(this.isOnGround == value)
 			return;
@@ -46,6 +47,11 @@ public class Player extends Actor
 		super(sprite);
 		this.setPosX(x);
 		this.setPosY(y);
+	}
+	
+	public Sprite getSmallRotate()
+	{
+		return this.playerSmallRotate;
 	}
 	
 	public void doJump()
