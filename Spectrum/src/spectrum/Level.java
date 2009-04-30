@@ -94,7 +94,7 @@ public class Level
 					if(current != -1)
 					{
 						ImageIcon ic = textures.get(current);
-						Sprite sprite = new Sprite(ic.getImage(), 1, 1, io);
+						Sprite sprite = new Sprite(ic.getImage(), 1, 1,"normal" ,io);
 
 						if (ic.getDescription().equals("block")) {
 							new Block(sprite, x * 32, y * 32, true);

@@ -78,7 +78,7 @@ public class Game extends JFrame implements Runnable
 		createMenu();
 
 		gs = GameState.PLAYING;
-		input = new Input(player);
+		input = new Input();
 		this.addKeyListener(input);
 		graphics = this.getGraphics();
 		
@@ -94,10 +94,12 @@ public class Game extends JFrame implements Runnable
 		ImageIcon playerImage = new ImageIcon(getClass().getResource("content//player_jostein.png"));
 		ImageIcon playerSmall = new ImageIcon(getClass().getResource("content//player_jostein_small.png"));
 		ImageIcon playerRotate = new ImageIcon(getClass().getResource("content//player_jostein_flipped.png"));
-		Sprite playerSprite = new Sprite(playerImage.getImage(), 1, 1, this.observer);
-		Sprite playerSmallSprite = new Sprite(playerSmall.getImage(), 1, 1, this.observer);
-		Sprite playerRotateSprite = new Sprite(playerRotate.getImage(), 1, 1, this.observer);
-		player = new Player(playerSprite, playerSmallSprite, playerRotateSprite, 700, 700);
+		Sprite playerSprite = new Sprite(playerImage.getImage(), 1, 1, "normal",this.observer);
+		Sprite playerSmallSprite = new Sprite(playerSmall.getImage(), 1, 1, "small", this.observer);
+		Sprite playerRotateSprite = new Sprite(playerRotate.getImage(), 1, 1, "rotate",this.observer);
+		player = new Player(playerSprite, 700, 700);
+		player.addSprite(playerSmallSprite);
+		player.addSprite(playerRotateSprite);
 		player.collidable = true;
 	}
 	

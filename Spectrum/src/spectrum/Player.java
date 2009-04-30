@@ -16,10 +16,8 @@ public class Player extends Actor
 	private boolean isOnGround = true;
 	private boolean jump = false;
 	private float moveSpeed = 3f;
-	
-	private Sprite playerSmall;
+
 	private boolean isSmall;
-	private Sprite playerRotate;
 	
 	public void setIsSmall(boolean value){
 		this.isSmall = value;
@@ -51,23 +49,11 @@ public class Player extends Actor
 		this.isOnGround = value;
 	}
 	
-	public Player(Sprite sprite, Sprite playerSmall, Sprite playerRotate, float x, float y)
+	public Player(Sprite sprite, float x, float y)
 	{
 		super(sprite);
 		this.setPosX(x);
 		this.setPosY(y);
-		this.playerSmall = playerSmall;
-		this.playerRotate = playerRotate;
-	}
-	
-	public Sprite getSmall()
-	{
-		return this.playerSmall;
-	}
-	
-	public Sprite getRotate()
-	{
-		return this.playerRotate;
 	}
 	
 	public void doJump()
@@ -159,9 +145,9 @@ public class Player extends Actor
 			
 		}
 		
-		if(this.getPosY() > 800 - this.getSprite().getHeight())
+		if(this.getPosY() > 800 - this.getActiveSprite().getHeight())
 		{
-			this.setPosY(800 - this.getSprite().getHeight());
+			this.setPosY(800 - this.getActiveSprite().getHeight());
 			
 			setIsOnGround(true);
 		}
@@ -176,16 +162,16 @@ public class Player extends Actor
 	private void checkWallCollision() 
 	{
 		//check bottom
-		if(this.getPosY() > 800 - this.getSprite().getHeight())
+		if(this.getPosY() > 800 - this.getActiveSprite().getHeight())
 		{
-			this.setPosY(800 - this.getSprite().getHeight());
+			this.setPosY(800 - this.getActiveSprite().getHeight());
 			
 				//setIsOnGround(true);
 		}
 
 		//check right wall
-		if (this.getPosX() >= 800 - this.getSprite().getWidth() ) {
-			this.setPosX(800 - this.getSprite().getWidth());	
+		if (this.getPosX() >= 800 - this.getActiveSprite().getWidth() ) {
+			this.setPosX(800 - this.getActiveSprite().getWidth());	
 		}
 		
 		//check left wall
@@ -203,9 +189,6 @@ public class Player extends Actor
 
 	public void draw(Graphics g, ImageObserver observer)
 	{
-		if(this.isSmall)
-			playerSmall.draw(g, observer, (int)this.getPosX(), (int)this.getPosY());
-		else
-			this.getSprite().draw(g, observer, (int)this.getPosX(), (int) this.getPosY());
+		this.getActiveSprite().draw(g, observer, (int)this.getPosX(), (int) this.getPosY());
 	}
 }

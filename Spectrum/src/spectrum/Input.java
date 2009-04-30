@@ -5,9 +5,7 @@ import java.awt.event.KeyEvent;
 
 
 public class Input extends KeyAdapter
-{
-	private Player player;
-	
+{	
 	Key[] keys = new Key[] 
 	{
 		new Key(KeyEvent.VK_LEFT),
@@ -32,11 +30,6 @@ public class Input extends KeyAdapter
 		}
 		
 		return null;
-	}
-	
-	public Input(Player player)
-	{
-		this.player = player;
 	}
 
 	public void keyPressed(KeyEvent ke) 
