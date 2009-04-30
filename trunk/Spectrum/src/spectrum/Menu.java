@@ -1,6 +1,7 @@
 package spectrum;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.image.ImageObserver;
 import java.util.ArrayList;
@@ -11,6 +12,8 @@ public class Menu
 	private int current;
 	private int space = 50;
 	Game game;
+	private Font menuFont = new Font("Arial", Font.PLAIN, 18);
+	private Font menuFont_focused = new Font("Arial", Font.BOLD, 22);
 	
 	public Menu(Game game)
 	{
@@ -57,11 +60,14 @@ public class Menu
 	{
 		for (int i = 0; i < menuItems.size(); i++) 
 		{
-			if(current == i)
+			if(current == i){
+				graphics.setFont(menuFont_focused);
 				graphics.setColor(Color.red);
-			else
+			}
+			else{
+				graphics.setFont(menuFont);
 				graphics.setColor(Color.white);
-			
+			}
 			graphics.drawString(menuItems.get(i).name, Game.SCREEN_WIDTH / 2 - 15, Game.SCREEN_HEIGHT / 4 + space * i);
 		}
 	}

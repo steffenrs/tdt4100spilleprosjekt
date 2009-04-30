@@ -225,7 +225,7 @@ public class Game extends JFrame implements Runnable
 		switch(gs)
 		{
 			case WON:
-				offscreen.setColor(Color.WHITE);
+				offscreen.setColor(Color.black);
 				offscreen.setFont(menuFont);
 				offscreen.drawString("NICE, Level up!", SCREEN_WIDTH / 3, SCREEN_HEIGHT / 2);
 				break;
