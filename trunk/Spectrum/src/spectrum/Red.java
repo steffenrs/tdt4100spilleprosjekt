@@ -13,11 +13,12 @@ public class Red extends Gem
 	
 	public void applyProperties()
 	{
-		Game.getPlayer().setIsSmall(true);
+		Game.getPlayer().setActiveSprite("small");
 	}
 	
 	public void removeProperties()
 	{
-		Game.getPlayer().setIsSmall(false);
+		//feil
+		Game.getPlayer().setActiveSprite("normal");
 	}
 }

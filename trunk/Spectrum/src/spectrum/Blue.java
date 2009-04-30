@@ -13,7 +13,7 @@ public class Blue extends Gem {
 	public void applyProperties()
 	{
 		Game.getPlayer().setGravity(-20f);
-		Game.getPlayer().setSprite(Game.getPlayer().getRotate());
+		Game.getPlayer().setActiveSprite("rotate");
 	}
 	
 	

@@ -23,6 +23,9 @@ public class Sprite
 	private int frameInterval;
 	private int frameTimeRemaining;
 	
+	private boolean active;
+	private String description;
+	
 	private PixelGrabber pg;
 	ColorModel cm;
 	int[] pixels;
@@ -43,6 +46,26 @@ public class Sprite
 	public int getHeight()
 	{
 		return rectangle.height;
+	}
+	
+	public boolean getActive()
+	{
+		return this.active;
+	}
+	
+	public void setActive(boolean value)
+	{
+		this.active = value;
+	}
+	
+	public void setDescription(String value)
+	{
+		this.description = value;
+	}
+	
+	public String getDescription()
+	{
+		return this.description;
 	}
 	
 	public int[] getAlpha(Rectangle rect)
@@ -85,10 +108,10 @@ public class Sprite
 	 * @param frameInterval
 	 * @param imageObserver
 	 */
-	public Sprite(Image image, int tilesX, int frameInterval, ImageObserver imageObserver)
+	public Sprite(Image image, int tilesX, int frameInterval, String description, ImageObserver imageObserver)
 	{
 		this.rectangle = new Rectangle(0, 0, image.getWidth(imageObserver), image.getHeight(imageObserver));
-
+		this.description = description;
 		this.image = image;
 		this.tilesX = tilesX;
 		this.frameInterval = frameInterval;

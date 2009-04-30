@@ -9,6 +9,9 @@ public class Actor
 {
 	public static ArrayList<Actor> actors;
 	private Sprite spriteSheet;
+	
+	private ArrayList<Sprite> sprites;
+	
 	public boolean collidable;
 	public boolean colliding;
 
@@ -19,6 +22,9 @@ public class Actor
 	{
 		actors.add(this);
 		this.spriteSheet = sprite;
+		sprites = new ArrayList<Sprite>();	
+		sprites.add(sprite);
+		sprites.get(0).setActive(true);
 	}
 	
 	public Actor(Sprite sprite, int x, int y, boolean collidable)
@@ -59,19 +65,45 @@ public class Actor
 		return posY;
 	}
 	
-	public Sprite getSprite()
+	public void setActiveSprite(String value)
 	{
-		return this.spriteSheet;
+		for (Sprite sprite : sprites) 
+		{
+			if(sprite.getDescription().equals(value))
+				sprite.setActive(true);
+			else
+				sprite.setActive(false);
+		}
 	}
 	
-	public Sprite setSprite(Sprite sprite)
+	public Sprite getActiveSprite()
 	{
-		return this.spriteSheet = sprite;
+		for (Sprite sprite : sprites) 
+		{
+			if(sprite.getActive())
+				return sprite;
+		}
+		return null;
+	}
+	
+	public void addSprite(Sprite sprite)
+	{
+		sprites.add(sprite);
+	}
+	
+	public Sprite getSprite(String value)
+	{
+		for (Sprite sprite : sprites) 
+		{
+			if(sprite.getDescription().equals(value))
+				return sprite;
+		}
+		return null;
 	}
 	
 	public Rectangle getRectangle()
 	{
-		return new Rectangle((int)this.posX, (int)this.posY, this.spriteSheet.getWidth(), this.spriteSheet.getHeight());
+		return new Rectangle((int)this.posX, (int)this.posY, this.getActiveSprite().getWidth(), this.getActiveSprite().getHeight());
 	}
 	
 	public void update()
@@ -123,8 +155,8 @@ public class Actor
 		Rectangle rA = new Rectangle((int)(collisionRect.x - a.posX), (int)(collisionRect.y - a.posY), collisionRect.width, collisionRect.height);
 		Rectangle rB = new Rectangle((int)(collisionRect.x - b.posX), (int)(collisionRect.y - b.posY), collisionRect.width, collisionRect.height);
 		
-		int[] alphaA = a.getSprite().getAlpha(rA);
-		int[] alphaB = b.getSprite().getAlpha(rB);
+		int[] alphaA = a.getActiveSprite().getAlpha(rA);
+		int[] alphaB = b.getActiveSprite().getAlpha(rB);
 		
 		for (int i = 0; i < alphaB.length; i++) {
 			if(alphaA[i] > ALPHA_THRESHOLD && alphaB[i] > ALPHA_THRESHOLD)

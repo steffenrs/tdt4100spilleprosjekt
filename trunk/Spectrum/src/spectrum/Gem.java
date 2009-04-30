@@ -39,7 +39,7 @@ public class Gem extends Actor
 	
 	private void activate()
 	{
-		if (System.currentTimeMillis() - buttonPressed > 2000) {
+		if (System.currentTimeMillis() - buttonPressed > 1000) {
 		
 		
 		if(active){
