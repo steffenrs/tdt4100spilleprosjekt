@@ -4,10 +4,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
-import java.awt.Rectangle;
 import java.awt.image.ImageObserver;
-import java.net.URL;
-import java.text.AttributedCharacterIterator;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
