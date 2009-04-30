@@ -195,7 +195,6 @@ public class Game extends JFrame implements Runnable
 		{
 			actor.update();
 		}
-		
 		checkWin();
 	}
 	
