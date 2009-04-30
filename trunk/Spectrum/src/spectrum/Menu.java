@@ -12,8 +12,8 @@ public class Menu
 	private int current;
 	private int space = 50;
 	Game game;
-	private Font menuFont = new Font("Arial", Font.PLAIN, 18);
-	private Font menuFont_focused = new Font("Arial", Font.BOLD, 22);
+	private Font menuFont = new Font("Calibri", Font.PLAIN, 18);
+	private Font menuFont_focused = new Font("Calibri", Font.BOLD, 22);
 	
 	public Menu(Game game)
 	{
@@ -62,13 +62,13 @@ public class Menu
 		{
 			if(current == i){
 				graphics.setFont(menuFont_focused);
-				graphics.setColor(Color.red);
+				graphics.setColor(Color.darkGray);
 			}
 			else{
 				graphics.setFont(menuFont);
 				graphics.setColor(Color.white);
 			}
-			graphics.drawString(menuItems.get(i).name, Game.SCREEN_WIDTH / 2 - 15, Game.SCREEN_HEIGHT / 4 + space * i);
+			graphics.drawString(menuItems.get(i).name, Game.SCREEN_WIDTH / 2 - 20, Game.SCREEN_HEIGHT / 4 + space * i);
 		}
 	}
 	
