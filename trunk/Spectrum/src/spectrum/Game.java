@@ -74,7 +74,7 @@ public class Game extends JFrame implements Runnable
 		createTestActor();
 		createMenu();
 
-		gs = GameState.PLAYING;
+		gs = GameState.MENU;
 		input = new Input();
 		this.addKeyListener(input);
 		graphics = this.getGraphics();
@@ -131,6 +131,10 @@ public class Game extends JFrame implements Runnable
 				checkWin();
 				this.paint(graphics);
 				break;
+				
+			case SELECT_LEVEL:
+				this.paint(graphics);
+				break;
 			}
 			
 			try
@@ -146,8 +150,7 @@ public class Game extends JFrame implements Runnable
 	{
 		switch(gs)
 		{
-			case PLAYING:
-				
+			case PLAYING:	
 				player.getActiveSprite().setAnimate(false);
 				if(input.getKey("Left").isKeyDown())
 				{
@@ -193,6 +196,11 @@ public class Game extends JFrame implements Runnable
 					changeLevel();
 					gs = GameState.PLAYING;
 				}
+				break;
+				
+			case SELECT_LEVEL:
+				
+				break;
 			}
 		
 		input.setLastKeys();
@@ -240,6 +248,10 @@ public class Game extends JFrame implements Runnable
 				{
 					actor.draw(offscreen, this);
 				}
+				break;
+				
+			case SELECT_LEVEL:
+				
 				break;
 		}
 		
