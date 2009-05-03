@@ -84,6 +84,7 @@ public class Player extends Actor
 		else
 			this.setPosY(this.getPosY() + gravity * jumpTime);
 
+		setIsOnGround(false);
 		checkActorCollision();
 		checkWallCollision();
 	}
@@ -99,51 +100,49 @@ public class Player extends Actor
 			if (actor.getCollidable()) {
 				if(Actor.checkCollision(this, actor))
 				{
-					Rectangle r = Actor.intersects(this.getRectangle(), actor.getRectangle());
+					Rectangle intersection = Actor.intersects(this.getRectangle(), actor.getRectangle());
 					
-					 if(r.width > r.height)
+					 if(intersection.width > intersection.height)
 					 {
+						 //beneath actor
 						 if(this.getPosY() > actor.getPosY())
 						 {
-							 this.setPosY(this.getPosY() + r.height);
+							 this.setPosY(this.getPosY() + intersection.height);
 							 pJumpPower = 0;
 							 jumpTime = 0;
 						 }
+						 //above actor
 						 else
 						 {
-							 this.setPosY(this.getPosY() - r.height);
+							 this.setPosY(this.getPosY() - intersection.height);
 							 setIsOnGround(true);
 						 }
-						 
 					 }
 					 else
 					 {
+						 //left
 						 if(this.getPosX() < actor.getPosX())
 						 {
-							 this.setPosX(this.getPosX() - r.width);
-
+							 this.setPosX(this.getPosX() - intersection.width);
 						 }
-							 
+						 //right
 						 else
 						 {
-							 this.setPosX(this.getPosX() + r.width);
-
+							 this.setPosX(this.getPosX() + intersection.width);
 						 }
 					 }
-                    return;
 				}
 			}
-			
 		}
 		
-		if(this.getPosY() > 800 - this.getActiveSprite().getHeight())
-		{
-			this.setPosY(800 - this.getActiveSprite().getHeight());
-			
-			setIsOnGround(true);
-		}
-		else
-			setIsOnGround(false);
+//		if(this.getPosY() > 800 - this.getActiveSprite().getHeight())
+//		{
+//			this.setPosY(800 - this.getActiveSprite().getHeight());
+//			
+//			setIsOnGround(true);
+//		}
+//		else
+//			setIsOnGround(false);
 	}
 
 	private void checkWallCollision() 
@@ -152,6 +151,7 @@ public class Player extends Actor
 		if(this.getPosY() > 800 - this.getActiveSprite().getHeight())
 		{
 			this.setPosY(800 - this.getActiveSprite().getHeight());
+			setIsOnGround(true);
 		}
 
 		//check right wall

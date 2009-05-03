@@ -70,7 +70,7 @@ public class Game extends JFrame implements Runnable
 		offscreen = offscreenImage.getGraphics();
 		
 		testLevel = new Level(this.observer);
-		testLevel.Load(getClass().getResource("content/Test.layer"));
+		testLevel.Load(getClass().getResource("content/Test2.layer"));
 		createTestActor();
 		createMenu();
 
