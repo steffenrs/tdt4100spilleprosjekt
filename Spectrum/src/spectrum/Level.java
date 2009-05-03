@@ -71,6 +71,7 @@ public class Level
 				case 1: 
 					if(input.equals(""))
 						continue;
+					
 					textures.add(new ImageIcon(getClass().getResource("content//" + input + ".png")));
 					int t = input.indexOf("_");
 					textures.get(textures.size() - 1).setDescription(input.substring(0, t));
@@ -94,24 +95,36 @@ public class Level
 					if(current != -1)
 					{
 						ImageIcon ic = textures.get(current);
-						Sprite sprite = new Sprite(ic.getImage(), 1, 1,"normal" ,io);
+						Sprite sprite;
 
-						if (ic.getDescription().equals("block")) {
+						if (ic.getDescription().equals("block") || ic.getDescription().equals("platform")) {
+							sprite = new Sprite(ic.getImage(), 1, 1, 1, false, "normal", io);
 							new Block(sprite, x * 32, y * 32, true);
 						}
 						else if(ic.getDescription().equals("goal")){
+							sprite = new Sprite(ic.getImage(), 1, 1, 1, false, "normal", io);
 							new Goal(sprite, x * 32, y * 32, false);
 						}
 						else if(ic.getDescription().equals("green"))
+						{
+							sprite = new Sprite(ic.getImage(), 2, 1, 1, false, "normal", io);
 							new Green(sprite, x * 32, y * 32, false);
-						
+						}
 						else if(ic.getDescription().equals("red"))
+						{
+							sprite = new Sprite(ic.getImage(), 2, 1, 1, false, "normal", io);
 							new Red(sprite, x * 32, y * 32, false);
+						}
 						else if(ic.getDescription().equals("blue"))
+						{
+							sprite = new Sprite(ic.getImage(), 2, 1, 1, false, "normal", io);
 							new Blue(sprite, x * 32, y * 32, false);
+						}
 						else
+						{
+							sprite = new Sprite(ic.getImage(), 1, 1, 1, false, "normal", io);
 							new Actor(sprite, x * 32, y * 32, false);
-						
+						}
 					}
 				}
 			}

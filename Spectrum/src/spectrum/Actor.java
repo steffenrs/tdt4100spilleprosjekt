@@ -111,6 +111,14 @@ public class Actor
 		spriteSheet.update();
 	}
 	
+	public static void updateActors()
+	{
+		for (Actor actor : Actor.actors) 
+		{
+			actor.update();
+		}
+	}
+	
 	public void draw(Graphics g, ImageObserver observer)
 	{
 		spriteSheet.draw(g, observer, (int)posX, (int)posY);
@@ -166,57 +174,4 @@ public class Actor
 		
 		return false;
 	}
-	
-	
-	//ikke i bruk
-	public boolean checkNextTo(int x, int y){
-        
-        
-        Rectangle rA = this.getRectangle();
-        
-        
-        int dx = 0;
-        int dy = 0;
-        int width = 0;
-        int height = 0;
-        
-        if(y == 0){
-            width = 1;
-            height = rA.height;
-            if(x == 1){
-                dx = rA.width + 1;
-                
-            }
-            else
-                dx = -2;
-        }
-        
-        if(x == 0){
-            height = 1;
-            width = rA.width;
-            if(y == 1){
-                dy = rA.height + 1;
-                }
-            else
-                dy = -2;
-        }
-            
-        Rectangle rB = new Rectangle(rA.x + dx, rA.y + dy, width, height);    
-        
-        for (Actor actor : actors) {
-            if(actor instanceof Player)
-                continue;
-        
-           if (actor.getCollidable()) {
-		
-        	   if(intersects(rB, actor.getRectangle()) != null)
-                return true;
-        
-           	   }
-           }
-        
-        return false;    
-    }
-    
-	
 }
