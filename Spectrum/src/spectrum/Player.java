@@ -134,15 +134,6 @@ public class Player extends Actor
 				}
 			}
 		}
-		
-//		if(this.getPosY() > 800 - this.getActiveSprite().getHeight())
-//		{
-//			this.setPosY(800 - this.getActiveSprite().getHeight());
-//			
-//			setIsOnGround(true);
-//		}
-//		else
-//			setIsOnGround(false);
 	}
 
 	private void checkWallCollision() 

@@ -69,7 +69,7 @@ public class Game extends JFrame implements Runnable
 		offscreen = offscreenImage.getGraphics();
 		
 		levelSystem = new LevelSystem(this, new String[]{
-				"Test.layer", "Test.layer", "level3.layer"
+				"Test.layer", "Test.layer"
 		});
 		levelSystem.changeLevel(0);
 		createPlayer();
@@ -85,18 +85,11 @@ public class Game extends JFrame implements Runnable
 	public void createPlayer()
 	{		
 		background = new ImageIcon(getClass().getResource("content//background_01.png")).getImage();
+		
 		player = Player.getPlayer();
-		ImageIcon playerImage = new ImageIcon(getClass().getResource("content//player_animated.png"));
-		ImageIcon playerSmall = new ImageIcon(getClass().getResource("content//player_jostein_small.png"));
-		ImageIcon playerRotate = new ImageIcon(getClass().getResource("content//player_jostein_flipped.png"));
-		ImageIcon playerSmallRotate = new ImageIcon(getClass().getResource("content//player_jostein_small_flipped_right.png"));
-		Sprite playerSprite = new Sprite(playerImage.getImage(), 2, 2, 10, true, "normal",this.observer);
-		Sprite playerSmallSprite = new Sprite(playerSmall.getImage(), 1 , 1, 1, true, "small", this.observer);
-		Sprite playerRotateSprite = new Sprite(playerRotate.getImage(), 1 , 1, 1, true, "rotate",this.observer);
-		Sprite playerSmallRotateSprite = new Sprite(playerSmallRotate.getImage(), 1, 1, 1, true, "smallRotate", this.observer);
+		ImageIcon playerSmall = new ImageIcon(getClass().getResource("content//player_animated_small.png"));
+		Sprite playerSmallSprite = new Sprite(playerSmall.getImage(), 2 , 4, 10, true, "small", this.observer);
 		player.addSprite(playerSmallSprite);
-		player.addSprite(playerRotateSprite);
-		player.addSprite(playerSmallRotateSprite);
 		player.collidable = true;
 	}
 	
