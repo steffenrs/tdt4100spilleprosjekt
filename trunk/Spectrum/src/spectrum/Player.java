@@ -171,6 +171,16 @@ public class Player extends Actor
 			jumpTime = 0;
 		}
 	}
+	
+	public static Player getPlayer()
+	{
+		for (Actor actor : actors) 
+		{
+			if(actor instanceof Player)
+				return (Player)actor;
+		}
+		return null;
+	}
 
 	public void draw(Graphics g, ImageObserver observer)
 	{
