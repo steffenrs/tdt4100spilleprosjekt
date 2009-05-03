@@ -110,7 +110,7 @@ public class Level
 						else if(ic.getDescription().equals("red"))
 						{
 							sprite = new Sprite(ic.getImage(), 2, 1, 1, false, "normal", io);
-							new Red(sprite, x * 32, y * 32, true, false);
+							new Red(sprite, x * 32, y * 32, false, false);
 						}
 						else if(ic.getDescription().equals("blue"))
 						{

@@ -8,7 +8,7 @@ public class Gem extends Actor
 {
 //	Player player;
 	private boolean active = false;
-	public static ArrayList<Gem> gems;
+	public static ArrayList<Gem> gems = new ArrayList<Gem>();
 	private final int limit = 2;
 	private long buttonPressed;
 	private boolean visible;
@@ -16,12 +16,11 @@ public class Gem extends Actor
 	public Gem(Sprite sprite) 
 	{
 		super(sprite);
-		gems.add(this);
 	}
 	
-	public void setActive(boolean active){
-		this.active = active;
-		
+	public void setActive(boolean active)
+	{
+		this.active = active;		
 	}
 
 	public Gem(Sprite sprite, int x, int y, boolean visible, boolean collidable)
@@ -36,9 +35,9 @@ public class Gem extends Actor
 		this.visible = visible;
 	}
 	
-	static
+	public boolean getState()
 	{
-		gems = new ArrayList<Gem>();	
+		return this.visible;
 	}
 	
 	public void update()
@@ -50,15 +49,17 @@ public class Gem extends Actor
 	{
 		if (System.currentTimeMillis() - buttonPressed > 1000) {
 			this.getActiveSprite().changeFrameX();
-			if(active){
+			if(this.active){
 				this.removeProperties();
-				active = false;
+				this.active = false;
 				buttonPressed = System.currentTimeMillis();
 				return;
 			}
-			
+		else
+		{
 			buttonPressed = System.currentTimeMillis();
 			this.active = true;
+			gems.add(this);
 			
 			if(gems.size() > limit)
 			{
@@ -68,17 +69,21 @@ public class Gem extends Actor
 			}
 			
 			this.applyProperties();
+		}
 	}
 }
 	
 	public static void activateGem()
 	{
 		
-		for (Gem gem : gems) 
+		for (Actor gem : Actor.actors) 
 		{
+			if(!(gem instanceof Gem))
+				continue;
+
 			if(Actor.checkCollision(Game.getPlayer(), gem))
 			{
-				gem.activate();
+				((Gem)(gem)).activate();
 				return;
 			}
 		}
