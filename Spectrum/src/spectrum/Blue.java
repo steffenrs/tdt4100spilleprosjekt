@@ -11,20 +11,15 @@ public class Blue extends Gem {
 	public void applyProperties()
 	{
 		Game.getPlayer().setGravity((Game.getPlayer().getGravity()) * -1);
+		Game.getPlayer().setJumpPower((Game.getPlayer().getJumpPower()) * -1);
 		Game.getPlayer().setIsOnGround(false);
-		
-		if(gems.get(0)instanceof Red || gems.get(1) instanceof Red)
-		{
-			Game.getPlayer().getActiveSprite().changeFrameY(2);
-		}
-		else
-		{
-			Game.getPlayer().getActiveSprite().changeFrameY(3);
-		}
+		Player.getPlayer().getActiveSprite().changeFrameY(2);
 	}
 	
 	public void removeProperties()
 	{
+		Game.getPlayer().setGravity((Game.getPlayer().getGravity()) * -1);
+		Game.getPlayer().setJumpPower((Game.getPlayer().getJumpPower()) * -1);
 		Game.getPlayer().getActiveSprite().changeFrameY(0);
 	}
 	

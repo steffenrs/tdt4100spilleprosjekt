@@ -127,7 +127,7 @@ public class Actor
 	public boolean isInside(Actor a)
 	{
 		if(a.getRectangle().x < this.getRectangle().x &&
-		   a.getRectangle().y < this.getRectangle().y + 15 &&
+		   a.getRectangle().y < this.getRectangle().y &&
 		   a.getRectangle().x + a.getRectangle().width > this.getRectangle().x + this.getRectangle().width && 
 		   a.getRectangle().y + a.getRectangle().height > this.getRectangle().y + this.getRectangle().height){
 		   
