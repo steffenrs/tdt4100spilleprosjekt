@@ -147,12 +147,18 @@ public class Game extends JFrame implements Runnable
 				{
 					player.getActiveSprite().setAnimate(true);
 					player.doMove(-1);
-					player.getActiveSprite().changeFrameY(0);
-				}
+					if(player.getGravity() < 0)
+						player.getActiveSprite().changeFrameY(2);
+					else
+						player.getActiveSprite().changeFrameY(0);
+				}	
 				if(input.getKey("Right").isKeyDown())
 				{	player.getActiveSprite().setAnimate(true);
 					player.doMove(1);
-					player.getActiveSprite().changeFrameY(1);
+					if(player.getGravity() < 0)
+						player.getActiveSprite().changeFrameY(3);
+					else
+						player.getActiveSprite().changeFrameY(1);
 				}
 				
 				if(input.getKey("Up").isKeyDown())
@@ -205,7 +211,7 @@ public class Game extends JFrame implements Runnable
 			createPlayer();
 			gs = GameState.WON;
 		}
-	}
+	}	
 	
 	public void paint(Graphics g)
 	{	
@@ -259,6 +265,5 @@ public class Game extends JFrame implements Runnable
 		offscreen.drawString("Debug:", 10, 80);
 		offscreen.drawString("Player pos: " + Float.toString(player.getPosX()) + "," + Float.toString(player.getPosY()), 10, 100);	
 		offscreen.drawString("Player grav; " + Float.toString(player.getGravity()), 10, 120);
-		offscreen.drawString("Player rest; " + Float.toString(player.restTime), 10, 140);
 	}
 }

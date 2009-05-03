@@ -11,10 +11,19 @@ public class Player extends Actor
 	private float jumpPower = -10f;
 	private float pJumpPower = 0;
 	private float jumpTime = 0f;
-	public float restTime = 0f;
 	private boolean isOnGround = true;
 	private boolean jump = false;
 	private float moveSpeed = 3f;
+	
+	public void setJumpPower(float value)
+	{
+		this.jumpPower = value;
+	}
+	
+	public float getJumpPower()
+	{
+		return this.jumpPower;
+	}
 	
 	public void setGravity(float value)
 	{
@@ -35,7 +44,6 @@ public class Player extends Actor
 		{
 			jumpTime = 0f;
 			jump = false;
-			restTime = 0;
 		}
 			
 		this.isOnGround = value;
@@ -74,8 +82,6 @@ public class Player extends Actor
 	{
 		if(!isOnGround)
 			jumpTime += Game.UPDATE_INTERVAL / 1000;
-		else
-			restTime += Game.UPDATE_INTERVAL;
 
 		//Gravity + jumppower
 		if(jump)			
@@ -102,22 +108,45 @@ public class Player extends Actor
 				{
 					Rectangle intersection = Actor.intersects(this.getRectangle(), actor.getRectangle());
 					
+					//Top / bottom
 					 if(intersection.width > intersection.height)
 					 {
-						 //beneath actor
-						 if(this.getPosY() > actor.getPosY())
-						 {
-							 this.setPosY(this.getPosY() + intersection.height);
-							 pJumpPower = 0;
-							 jumpTime = 0;
-						 }
-						 //above actor
-						 else
-						 {
-							 this.setPosY(this.getPosY() - intersection.height);
-							 setIsOnGround(true);
-						 }
+						 if (Game.getPlayer().getGravity() > 0) {
+							//beneath actor
+							 if(this.getPosY() > actor.getPosY())
+							 {
+								 this.setPosY(this.getPosY() + intersection.height);
+								 pJumpPower = 0;
+								 jumpTime = 0;
+							 }
+							 //above actor
+							 else
+							 {
+								 this.setPosY(this.getPosY() - intersection.height);
+								 setIsOnGround(true);
+							 }
+						}
+						else{
+							
+							if(this.getPosY() > actor.getPosY())
+							 {
+								this.setPosY(this.getPosY() + intersection.height );
+								setIsOnGround(true);
+								
+							 }
+							 //above actor
+							 else
+							 {
+								 this.setPosY(this.getPosY() - intersection.height);
+								 
+								 pJumpPower = 0;
+								 jumpTime = 0;
+							 }
+							
+						}
+						 
 					 }
+					 //Sideways
 					 else
 					 {
 						 //left
@@ -158,8 +187,14 @@ public class Player extends Actor
 		// check roof
 		if (this.getPosY() <= 0 + 20) {
 			this.setPosY(0 + 20);
-			jump = false;
-			jumpTime = 0;
+			
+			if(Game.getPlayer().getGravity() < 0)
+				setIsOnGround(true);
+			else
+			{
+				jump = false;
+				jumpTime = 0;
+			}
 		}
 	}
 	

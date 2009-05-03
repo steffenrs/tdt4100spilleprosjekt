@@ -46,7 +46,6 @@ public class Gem extends Actor
 		super.update();
 	}
 	
-	
 	private void activate()
 	{
 		if (System.currentTimeMillis() - buttonPressed > 1000) {
