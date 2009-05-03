@@ -19,6 +19,10 @@ public class LevelSystem {
 		this.levels = levels;
 	}
 	
+	public String[] getLevels()
+	{
+		return levels;
+	}
 	
 	public int getLevelIndex(){
 		return this.levelIndex;
@@ -26,7 +30,7 @@ public class LevelSystem {
 	
 	public void changeLevel(String path)
 	{
-		URL url = getClass().getResource("content//" + path);
+		URL url = getClass().getResource("content/" + path);
 		currentLevel.clear();
 		currentLevel.Load(url);
 		
