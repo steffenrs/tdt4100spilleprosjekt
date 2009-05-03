@@ -124,7 +124,7 @@ public class Level
 						}
 						else if(ic.getDescription().equals("player"))
 						{
-							sprite = new Sprite(ic.getImage(), 2, 2, 10, true, "normal", io);
+							sprite = new Sprite(ic.getImage(), 2, 4, 10, true, "normal", io);
 							new Player(sprite, x*32,y*32);
 						}
 						else
