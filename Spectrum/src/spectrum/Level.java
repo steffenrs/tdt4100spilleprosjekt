@@ -11,7 +11,7 @@ import javax.swing.ImageIcon;
 
 public class Level 
 {
-	public static ArrayList<Level> levels;
+	
 	
 	private ArrayList<ImageIcon> textures;
 	private ArrayList<String[]> level;
@@ -28,10 +28,7 @@ public class Level
 		this.io = io;
 	}
 	
-	static
-	{
-		levels = new ArrayList<Level>();
-	}
+	
 	
 	public void clear()
 	{
@@ -129,7 +126,7 @@ public class Level
 				}
 			}
 			reader.close();
-			levels.add(this);
+			
 		}
 		
 		catch(IOException exc)
