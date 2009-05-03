@@ -22,7 +22,7 @@ public class Game extends JFrame implements Runnable
 	public static GameState gs;
 	
 	//Temp code
-	private Level testLevel;
+	private LevelSystem levelSystem;
 	Gem gem;
 	
 	Image background;
@@ -69,8 +69,10 @@ public class Game extends JFrame implements Runnable
 		offscreenImage = createImage(800, 800);
 		offscreen = offscreenImage.getGraphics();
 		
-		testLevel = new Level(this.observer);
-		testLevel.Load(getClass().getResource("content/Test2.layer"));
+		levelSystem = new LevelSystem(this, new String[]{
+				"Test.layer", "level2.layer", "level3.layer"
+		});
+		levelSystem.changeLevel(0);
 		createTestActor();
 		createMenu();
 
@@ -194,7 +196,7 @@ public class Game extends JFrame implements Runnable
 			case WON:
 				if(input.getKey("Enter").isKeyDown())
 				{
-					changeLevel();
+					levelSystem.changeLevel(levelSystem.getLevelIndex() + 1);
 					gs = GameState.PLAYING;
 				}
 				break;
