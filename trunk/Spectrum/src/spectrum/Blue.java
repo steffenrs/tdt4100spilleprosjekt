@@ -15,17 +15,17 @@ public class Blue extends Gem {
 		
 		if(gems.get(0)instanceof Red || gems.get(1) instanceof Red)
 		{
-			Game.getPlayer().setActiveSprite("smallRotate");
+			Game.getPlayer().getActiveSprite().changeFrameY(2);
 		}
 		else
 		{
-			Game.getPlayer().setActiveSprite("rotate");
+			Game.getPlayer().getActiveSprite().changeFrameY(3);
 		}
 	}
 	
 	public void removeProperties()
 	{
-		Game.getPlayer().setActiveSprite("normal");
+		Game.getPlayer().getActiveSprite().changeFrameY(0);
 	}
 	
 }
