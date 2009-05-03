@@ -107,6 +107,7 @@ public class Game extends JFrame implements Runnable
 	{
 		menu = new Menu(this);
 		menu.add(new MenuItem("Start"));
+		menu.add(new MenuItem("Choose Level"));
 		menu.add(new MenuItem("Help"));
 		menu.add(new MenuItem("Exit"));
 	}
@@ -206,12 +207,6 @@ public class Game extends JFrame implements Runnable
 		input.setLastKeys();
 	}
 	
-	private void changeLevel()
-	{
-		testLevel.clear();
-		testLevel.Load(getClass().getResource("content/level2.layer"));
-		createTestActor();
-	}
 	
 	private void checkWin()
 	{
