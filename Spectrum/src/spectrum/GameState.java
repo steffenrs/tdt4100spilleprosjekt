@@ -5,5 +5,6 @@ public enum GameState
 	PAUSED,
 	PLAYING,
 	WON,
-	MENU;
+	MENU,
+	SELECT_LEVEL;
 }
