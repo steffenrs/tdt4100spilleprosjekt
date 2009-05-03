@@ -6,5 +6,6 @@ public enum GameState
 	PLAYING,
 	WON,
 	MENU,
-	SELECT_LEVEL;
+	SELECT_LEVEL,
+	HELP;
 }
