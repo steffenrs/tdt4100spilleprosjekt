@@ -23,7 +23,6 @@ public class Game extends JFrame implements Runnable
 	
 	//Temp code
 	private LevelSystem levelSystem;
-	Gem gem;
 	
 	Image background;
 	private static Player player;
@@ -70,10 +69,10 @@ public class Game extends JFrame implements Runnable
 		offscreen = offscreenImage.getGraphics();
 		
 		levelSystem = new LevelSystem(this, new String[]{
-				"Test.layer", "level2.layer", "level3.layer"
+				"Test.layer", "Test.layer", "level3.layer"
 		});
 		levelSystem.changeLevel(0);
-		createTestActor();
+		createPlayer();
 		createMenu();
 
 		gs = GameState.MENU;
@@ -83,13 +82,10 @@ public class Game extends JFrame implements Runnable
 		this.update();
 	}
 	
-	public void createTestActor()
+	public void createPlayer()
 	{		
-		this.goal = Goal.getGoal();
-		player = Player.getPlayer();
-		
 		background = new ImageIcon(getClass().getResource("content//background_01.png")).getImage();
-		
+		player = Player.getPlayer();
 		ImageIcon playerImage = new ImageIcon(getClass().getResource("content//player_animated.png"));
 		ImageIcon playerSmall = new ImageIcon(getClass().getResource("content//player_jostein_small.png"));
 		ImageIcon playerRotate = new ImageIcon(getClass().getResource("content//player_jostein_flipped.png"));
@@ -134,9 +130,9 @@ public class Game extends JFrame implements Runnable
 				this.paint(graphics);
 				break;
 				
-//			case SELECT_LEVEL:
-//				this.paint(graphics);
-//				break;
+			case SELECT_LEVEL:
+				this.paint(graphics);
+				break;
 			}
 			
 			try
@@ -201,21 +197,19 @@ public class Game extends JFrame implements Runnable
 				break;
 				
 			}
-		
 		input.setLastKeys();
 	}
 	
 	
 	private void checkWin()
 	{
-		if(goal == null)
+		if(Goal.getGoal() == null)
 			return;
 		
-		if(player.isInside(goal))
+		if(player.isInside(Goal.getGoal()))
 		{	
 			levelSystem.changeLevel(levelSystem.getLevelIndex() + 1);
-			player = Player.getPlayer();
-			goal = Goal.getGoal();
+			createPlayer();
 			gs = GameState.WON;
 		}
 	}
