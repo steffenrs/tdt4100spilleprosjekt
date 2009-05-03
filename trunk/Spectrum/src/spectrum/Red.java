@@ -2,9 +2,9 @@ package spectrum;
 
 public class Red extends Gem 
 {
-	public Red(Sprite sprite, int x, int y, boolean active) 
+	public Red(Sprite sprite, int x, int y, boolean visible, boolean active) 
 	{
-		super(sprite, x, y, active);
+		super(sprite, x, y, visible, active);
 	}
 	
 	public void applyProperties()

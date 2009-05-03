@@ -32,7 +32,6 @@ public class Level
 	
 	public void clear()
 	{
-		Gem.gems.clear();
 		textures.clear();
 		level.clear();
 		Actor.actors.clear();
@@ -106,24 +105,28 @@ public class Level
 						else if(ic.getDescription().equals("green"))
 						{
 							sprite = new Sprite(ic.getImage(), 2, 1, 1, false, "normal", io);
-							new Green(sprite, x * 32, y * 32, false);
+							new Green(sprite, x * 32, y * 32, true, false);
 						}
 						else if(ic.getDescription().equals("red"))
 						{
 							sprite = new Sprite(ic.getImage(), 2, 1, 1, false, "normal", io);
-							new Red(sprite, x * 32, y * 32, false);
+							new Red(sprite, x * 32, y * 32, false, false);
 						}
 						else if(ic.getDescription().equals("blue"))
 						{
 							sprite = new Sprite(ic.getImage(), 2, 1, 1, false, "normal", io);
-							new Blue(sprite, x * 32, y * 32, false);
+							new Blue(sprite, x * 32, y * 32, true, false);
+						}
+						else if(ic.getDescription().equals("purple"))
+						{
+							sprite = new Sprite(ic.getImage(), 2, 1, 1, false, "normal", io);
+							new Purple(sprite, x * 32, y * 32, true, false);
 						}
 						else if(ic.getDescription().equals("player"))
 						{
 							sprite = new Sprite(ic.getImage(), 2, 2, 10, true, "normal", io);
 							new Player(sprite, x*32,y*32);
 						}
-						
 						else
 						{
 							sprite = new Sprite(ic.getImage(), 1, 1, 1, false, "normal", io);
