@@ -12,8 +12,8 @@ public class Menu
 	private int current;
 	private int space = 50;
 	Game game;
-	private Font menuFont = new Font("Calibri", Font.PLAIN, 18);
-	private Font menuFont_focused = new Font("Calibri", Font.BOLD, 22);
+	private Font menuFont = new Font("Calibri", Font.PLAIN, 20);
+	private Font menuFont_focused = new Font("Calibri", Font.BOLD, 26);
 	
 	public Menu(Game game)
 	{
@@ -47,9 +47,13 @@ public class Menu
 			Game.gs = GameState.PLAYING;
 		else if(current == 1)
 		{
-			
+			Game.gs = GameState.SELECT_LEVEL;
 		}
-		else if(current == 2)
+		else if (current == 2) 
+		{
+			Game.gs = GameState.HELP;
+		}
+		else if(current == 3)
 		{
 			System.exit(0);
 		}
