@@ -88,13 +88,13 @@ public class Game extends JFrame implements Runnable
 		
 		background = new ImageIcon(getClass().getResource("content//background_01.png")).getImage();
 		
-		ImageIcon playerImage = new ImageIcon(getClass().getResource("content//player_jostein.png"));
+		ImageIcon playerImage = new ImageIcon(getClass().getResource("content//player_animated.png"));
 		ImageIcon playerSmall = new ImageIcon(getClass().getResource("content//player_jostein_small.png"));
 		ImageIcon playerRotate = new ImageIcon(getClass().getResource("content//player_jostein_flipped.png"));
 		//ImageIcon playerSmallRotate = new ImageIcon(getClass().getResource("content//player_jostein_small_flipped_left.png"));
-		Sprite playerSprite = new Sprite(playerImage.getImage(), 1, 1, "normal",this.observer);
-		Sprite playerSmallSprite = new Sprite(playerSmall.getImage(), 1, 1, "small", this.observer);
-		Sprite playerRotateSprite = new Sprite(playerRotate.getImage(), 1, 1, "rotate",this.observer);
+		Sprite playerSprite = new Sprite(playerImage.getImage(), 2, 2, 10, true, "normal",this.observer);
+		Sprite playerSmallSprite = new Sprite(playerSmall.getImage(), 1 , 1, 1, true, "small", this.observer);
+		Sprite playerRotateSprite = new Sprite(playerRotate.getImage(), 1 , 1, 1, true, "rotate",this.observer);
 		//Sprite playerSmallRotateSprite = new Sprite(playerSmallRotate.getImage(), 1, 1, "smallRotate", this.observer);
 		player = new Player(playerSprite, 700, 700);
 		player.addSprite(playerSmallSprite);
@@ -127,7 +127,8 @@ public class Game extends JFrame implements Runnable
 			case PAUSED:
 				break;
 			case PLAYING:
-				this.updateActors();
+				Actor.updateActors();
+				checkWin();
 				this.paint(graphics);
 				break;
 			}
@@ -146,10 +147,19 @@ public class Game extends JFrame implements Runnable
 		switch(gs)
 		{
 			case PLAYING:
+				
+				player.getActiveSprite().setAnimate(false);
 				if(input.getKey("Left").isKeyDown())
+				{
+					player.getActiveSprite().setAnimate(true);
 					player.doMove(-1);
+					player.getActiveSprite().changeFrameY(0);
+				}
 				if(input.getKey("Right").isKeyDown())
+				{	player.getActiveSprite().setAnimate(true);
 					player.doMove(1);
+					player.getActiveSprite().changeFrameY(1);
+				}
 				
 				if(input.getKey("Up").isKeyDown())
 					player.doJump();
@@ -186,16 +196,6 @@ public class Game extends JFrame implements Runnable
 			}
 		
 		input.setLastKeys();
-		}
-
-
-	private void updateActors()
-	{
-		for (Actor actor : Actor.actors) 
-		{
-			actor.update();
-		}
-		checkWin();
 	}
 	
 	private void changeLevel()

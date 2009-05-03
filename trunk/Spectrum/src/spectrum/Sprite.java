@@ -12,8 +12,11 @@ public class Sprite
 	private Image image;
 	private Rectangle rectangle;
 	
-	private int frame = 0;
+	private boolean animate;
+	private int frameX = 0;
+	private int frameY = 0;
 	private int tilesX;
+	private int tilesY;
 	private int frameInterval;
 	private int frameTimeRemaining;
 	
@@ -26,7 +29,7 @@ public class Sprite
 	
 	/**
 	 * @author Steffen R. Stenersen
-	 * @return the width of each sprite
+	 * @return the width of each sprite in the spriteSheet
 	 */
 	public int getWidth() 
 	{
@@ -35,11 +38,11 @@ public class Sprite
 
 	/**
 	 * @author Steffen R. Stenersen
-	 * @return the height of each sprite
+	 * @return the height of each sprite in the spriteSheet
 	 */
 	public int getHeight()
 	{
-		return rectangle.height;
+		return (int)(rectangle.height / tilesY);
 	}
 	
 	public boolean getActive()
@@ -62,6 +65,50 @@ public class Sprite
 		return this.description;
 	}
 	
+	public void setAnimate(boolean value)
+	{
+		this.animate = value;
+	}
+	
+	/**
+	 * @author Steffen R. Stenersen
+	 * Constructor
+	 * @param image SpriteSheet
+	 * @param tilesX the number of frames in the sheet
+	 * @param frameInterval
+	 * @param imageObserver
+	 */
+	public Sprite(Image image, int tilesX, int tilesY , int frameInterval, boolean animate, String description, ImageObserver imageObserver)
+	{
+		this.rectangle = new Rectangle(0, 0, image.getWidth(imageObserver), image.getHeight(imageObserver));
+		this.description = description;
+		this.image = image;
+		this.tilesX = tilesX;
+		this.tilesY = tilesY;
+		this.frameInterval = frameInterval;
+		this.frameTimeRemaining = frameInterval;
+		this.animate = animate;
+	}
+	
+	public void changeFrameX()
+	{
+		this.frameX++;
+		this.frameX %= this.tilesX;
+	}
+	
+	public void changeFrameY(int value)
+	{
+		if(value > this.tilesY)
+			return;
+		
+		this.frameY = value;
+	}
+	
+	/**
+	 * @author Steffen R. Stenersen
+	 * @param rect is the rectangle defining the area you want to get the alpha values from
+	 * @return
+	 */
 	public int[] getAlpha(Rectangle rect)
 	{
 		pg = new PixelGrabber(image, rect.x, rect.y, rect.width, rect.height, false);
@@ -73,43 +120,18 @@ public class Sprite
 		catch(Exception e) { ; };
 		
 		ColorModel cm = pg.getColorModel();
-		boolean isByte;
-		isByte = pg.getPixels() instanceof byte[] ? true : false;
-		
 		pixels = (int[])pg.getPixels();
-		
 		int[] pixels2;
 		int[] alpha;
 		
 		pixels2 = (int[])pixels;
-			
 		alpha = new int[pixels2.length];
 
-		
 		for(int i= 0; i < pixels2.length; i++)
 		{
 			alpha[i] = cm.getAlpha(pixels2[i]);
-		}
-		
+		}		
 		return alpha;
-	}
-	
-	/**
-	 * @author Steffen R. Stenersen
-	 * Constructor
-	 * @param image SpriteSheet
-	 * @param tilesX the number of frames in the sheet
-	 * @param frameInterval
-	 * @param imageObserver
-	 */
-	public Sprite(Image image, int tilesX, int frameInterval, String description, ImageObserver imageObserver)
-	{
-		this.rectangle = new Rectangle(0, 0, image.getWidth(imageObserver), image.getHeight(imageObserver));
-		this.description = description;
-		this.image = image;
-		this.tilesX = tilesX;
-		this.frameInterval = frameInterval;
-		this.frameTimeRemaining = frameInterval;
 	}
 
 	/**
@@ -117,12 +139,13 @@ public class Sprite
 	 */
 	public void update()
 	{
+		if(!animate)
+			return;
+		
 		this.frameTimeRemaining--;
 		if(this.frameTimeRemaining <= 0)
 		{
-			this.frame++;
-			if(this.frame >= this.tilesX)
-				this.frame = 0;
+			changeFrameX();
 			
 			this.frameTimeRemaining = this.frameInterval;
 		}
@@ -142,10 +165,10 @@ public class Sprite
 					y,
 					x + getWidth(),
 					y + getHeight(),
-					frame * getWidth(),
-					0,
-					(frame + 1) * getWidth(),
-					getHeight(),
+					frameX * getWidth(),
+					frameY * getHeight(),
+					(frameX + 1) * getWidth(),
+					(frameY + 1) * getHeight(),
 					observer);
 	}
 }

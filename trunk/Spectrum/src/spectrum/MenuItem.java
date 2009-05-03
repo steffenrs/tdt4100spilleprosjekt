@@ -11,8 +11,6 @@ public class MenuItem
 		
 	}
 	
-	
-	
 	public void takeAction(Game game)
 	{
 	}

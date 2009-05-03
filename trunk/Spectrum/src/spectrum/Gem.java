@@ -40,26 +40,25 @@ public class Gem extends Actor
 	private void activate()
 	{
 		if (System.currentTimeMillis() - buttonPressed > 1000) {
-		
-		
-		if(active){
-			this.removeProperties();
-			active = false;
+			this.getActiveSprite().changeFrameX();
+			if(active){
+				this.removeProperties();
+				active = false;
+				buttonPressed = System.currentTimeMillis();
+				return;
+			}
+			
 			buttonPressed = System.currentTimeMillis();
-			return;
-		}
-		
-		buttonPressed = System.currentTimeMillis();
-		this.active = true;
-		
-		if(gems.size() > limit)
-		{
-			gems.get(0).removeProperties();
-			gems.get(0).active = false;
-			gems.remove(0);
-		}
-		
-		this.applyProperties();
+			this.active = true;
+			
+			if(gems.size() > limit)
+			{
+				gems.get(0).removeProperties();
+				gems.get(0).active = false;
+				gems.remove(0);
+			}
+			
+			this.applyProperties();
 	}
 }
 	

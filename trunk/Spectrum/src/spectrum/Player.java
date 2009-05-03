@@ -15,7 +15,6 @@ public class Player extends Actor
 	private boolean isOnGround = true;
 	private boolean jump = false;
 	private float moveSpeed = 3f;
-	private Sprite playerSmallRotate;
 	
 	public void setGravity(float value)
 	{
@@ -145,10 +144,6 @@ public class Player extends Actor
 		}
 		else
 			setIsOnGround(false);
-		
-		
-		
-		
 	}
 
 	private void checkWallCollision() 
@@ -157,8 +152,6 @@ public class Player extends Actor
 		if(this.getPosY() > 800 - this.getActiveSprite().getHeight())
 		{
 			this.setPosY(800 - this.getActiveSprite().getHeight());
-			
-				//setIsOnGround(true);
 		}
 
 		//check right wall
