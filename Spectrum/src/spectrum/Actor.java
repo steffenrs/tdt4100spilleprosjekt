@@ -129,7 +129,7 @@ public class Actor
 		if(a.getRectangle().x < this.getRectangle().x &&
 		   a.getRectangle().y < this.getRectangle().y &&
 		   a.getRectangle().x + a.getRectangle().width > this.getRectangle().x + this.getRectangle().width && 
-		   a.getRectangle().y + a.getRectangle().height > this.getRectangle().y + this.getRectangle().height){
+		   a.getRectangle().y + a.getRectangle().height + 2 > this.getRectangle().y + this.getRectangle().height){
 		   
 			return true;
 		}

@@ -61,7 +61,7 @@ public class Game extends JFrame implements Runnable
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
 		this.setResizable(false);
-	
+		this.setLocationRelativeTo(null);
 		this.setVisible(true);
 		
 		//Double Buffering
@@ -69,7 +69,7 @@ public class Game extends JFrame implements Runnable
 		offscreen = offscreenImage.getGraphics();
 		
 		levelSystem = new LevelSystem(this, new String[]{
-				"Test.layer", "Test.layer"
+				"level5.layer", "level3.layer", "level1.layer", "level2.layer",  "level4.layer"
 		});
 		levelSystem.changeLevel(0);
 		createPlayer();
@@ -130,7 +130,7 @@ public class Game extends JFrame implements Runnable
 			
 			try
 			{
-				Thread.sleep(1000 / 60);
+				Thread.sleep(1000 / 65);
 			}
 			catch(InterruptedException e) {; }
 				
@@ -168,7 +168,10 @@ public class Game extends JFrame implements Runnable
 					gs = GameState.PAUSED;
 				
 				if(input.getKey("Space").isKeyDown())
-					Gem.activateGem();
+						Gem.activateGem();
+					
+				
+					
 				
 				if(input.getKey("Escape").isKeyDown())
 					gs = GameState.MENU;
@@ -225,7 +228,7 @@ public class Game extends JFrame implements Runnable
 			case WON:
 				offscreen.setColor(Color.black);
 				offscreen.setFont(menuFont);
-				offscreen.drawString("NICE, Level up!", SCREEN_WIDTH / 3, SCREEN_HEIGHT / 2);
+				offscreen.drawString("Well Done, Level up!", SCREEN_WIDTH / 3, SCREEN_HEIGHT / 2);
 				break;
 			case MENU:
 				menu.drawString(offscreen);
@@ -265,6 +268,12 @@ public class Game extends JFrame implements Runnable
 		offscreen.drawString("Debug:", 10, 80);
 		offscreen.drawString("Player pos: " + Float.toString(player.getPosX()) + "," + Float.toString(player.getPosY()), 10, 100);	
 		offscreen.drawString("Player grav; " + Float.toString(player.getGravity()), 10, 120);
-		offscreen.drawString("Gems; " + Gem.gems.size(), 10, 140);
+		if (Gem.gems.size() > 0) {
+			offscreen.drawString("Gems: " + Gem.gems.size() +":" + Gem.gems.get(0), 10, 140);
+		}
+		if (Gem.gems.size() > 1) {
+			offscreen.drawString("Gems: " + Gem.gems.size() +":" + Gem.gems.get(1), 10, 160);
+		}
+		
 	}
 }
