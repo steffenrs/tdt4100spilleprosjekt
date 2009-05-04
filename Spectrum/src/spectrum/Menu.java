@@ -44,20 +44,30 @@ public class Menu
 	public void takeAction()
 	{
 		if(current == 0)
-			Game.gs = GameState.PLAYING;
-		else if(current == 1)
 		{
-			game.resetLevel();
+			if(!game.getStarted())
+			{
+				game.getLevelSystem().changeLevel(0);
+				game.setStarted(true);
+				menuItems.get(0).name = "Restart Level";
+				Game.gs = GameState.PLAYING;	
+			}
+			else
+			{
+				game.resetLevel();
+			}
+			
+
 		}
-		else if(current == 2)
+		else if(current == 1)
 		{
 			Game.gs = GameState.SELECT_LEVEL;
 		}
-		else if (current == 3) 
+		else if (current == 2) 
 		{
 			Game.gs = GameState.HELP;
 		}
-		else if(current == 4)
+		else if(current == 3)
 		{
 			System.exit(0);
 		}
