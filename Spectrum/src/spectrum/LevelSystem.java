@@ -10,13 +10,17 @@ public class LevelSystem {
 	private Level currentLevel;
 	private String[] levels;
 	private int levelIndex = 0;
+	private Game game;
 	
 	
+	
+
 	
 	public LevelSystem(ImageObserver io, String[] levels, Game game){
 		this.io = io;
 		this.currentLevel = new Level(io, game);
 		this.levels = levels;
+		this.game = game;
 	}
 	
 	public String[] getLevels()
@@ -33,9 +37,10 @@ public class LevelSystem {
 		URL url = getClass().getResource("content/" + path);
 		currentLevel.clear();
 		currentLevel.Load(url);
-		
-		
+		game.createPlayer();
+		Game.gs = GameState.PLAYING;
 	}
+
 	
 	public void changeLevel(int index){
 		
