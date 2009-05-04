@@ -86,10 +86,17 @@ public class Level
 			}
 		
 			int current = 0;
+			boolean visible = false;
 			for (int x = 0; x < level.get(0).length; x++) 
 			{
 				for (int y = 0; y < level.size(); y++) 
 				{
+					
+					if(level.get(y)[x].charAt(0) == '0')
+						visible = false;
+					else
+						visible = true;
+					
 					current = Integer.parseInt(level.get(y)[x]);
 					if(current != -1)
 					{
@@ -107,22 +114,22 @@ public class Level
 						else if(ic.getDescription().equals("green"))
 						{
 							sprite = new Sprite(ic.getImage(), 2, 1, 1, false, "normal", io);
-							new Green(sprite, x * 32, y * 32, true, false);
+							new Green(sprite, x * 32, y * 32, visible, false);
 						}
 						else if(ic.getDescription().equals("red"))
 						{
 							sprite = new Sprite(ic.getImage(), 2, 1, 1, false, "normal", io);
-							new Red(sprite, x * 32, y * 32, false, false);
+							new Red(sprite, x * 32, y * 32, visible, false);
 						}
 						else if(ic.getDescription().equals("blue"))
 						{
 							sprite = new Sprite(ic.getImage(), 2, 1, 1, false, "normal", io);
-							new Blue(sprite, x * 32, y * 32, true, false);
+							new Blue(sprite, x * 32, y * 32, visible, false);
 						}
 						else if(ic.getDescription().equals("purple"))
 						{
 							sprite = new Sprite(ic.getImage(), 2, 1, 1, false, "normal", io);
-							new Purple(sprite, x * 32, y * 32, true, false);
+							new Purple(sprite, x * 32, y * 32, visible, false);
 						}
 						else if(ic.getDescription().equals("player"))
 						{
