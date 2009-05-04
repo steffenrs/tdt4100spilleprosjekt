@@ -47,13 +47,17 @@ public class Menu
 			Game.gs = GameState.PLAYING;
 		else if(current == 1)
 		{
+			game.resetLevel();
+		}
+		else if(current == 2)
+		{
 			Game.gs = GameState.SELECT_LEVEL;
 		}
-		else if (current == 2) 
+		else if (current == 3) 
 		{
 			Game.gs = GameState.HELP;
 		}
-		else if(current == 3)
+		else if(current == 4)
 		{
 			System.exit(0);
 		}
@@ -71,7 +75,7 @@ public class Menu
 				graphics.setFont(menuFont);
 				graphics.setColor(Color.white);
 			}
-			graphics.drawString(menuItems.get(i).name, Game.SCREEN_WIDTH / 2 - 20, Game.SCREEN_HEIGHT / 4 + space * i);
+			graphics.drawString(menuItems.get(i).name, 200, Game.SCREEN_HEIGHT / 4 + space * i);
 		}
 	}
 	

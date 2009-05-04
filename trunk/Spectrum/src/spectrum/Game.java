@@ -28,6 +28,7 @@ public class Game extends JFrame implements Runnable
 	private static Player player;
 	private Goal goal;
 	private Menu menu;
+	private ChooseLevel chooseLevel;
 	
 	//Game Loop
 	Thread thread;
@@ -66,6 +67,7 @@ public class Game extends JFrame implements Runnable
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
 		this.setResizable(false);
+		this.setLocationRelativeTo(null);
 	
 		this.setVisible(true);
 		
@@ -74,9 +76,11 @@ public class Game extends JFrame implements Runnable
 		offscreen = offscreenImage.getGraphics();
 		
 		levelSystem = new LevelSystem(this, new String[]{
-				"level1.layer", "level2.layer", "level3.layer", "level4.layer"
-		},this);
+				"level6.layer", "level2.layer", "level3.layer", "level4.layer",  "level5.layer"
+		}, this);
 		levelSystem.changeLevel(0);
+		String[] levels = levelSystem.getLevels();
+		chooseLevel = new ChooseLevel(levels, levelSystem);
 		createPlayer();
 		createMenu();
 
@@ -89,7 +93,6 @@ public class Game extends JFrame implements Runnable
 	
 	public void createPlayer()
 	{		
-		//background = new ImageIcon(getClass().getResource("content//background_04.png")).getImage();
 		
 		player = Player.getPlayer();
 		ImageIcon playerSmall = new ImageIcon(getClass().getResource("content//player_animated_small.png"));
@@ -102,6 +105,7 @@ public class Game extends JFrame implements Runnable
 	{
 		menu = new Menu(this);
 		menu.add(new MenuItem("Start"));
+		menu.add(new MenuItem("Restart Level"));
 		menu.add(new MenuItem("Choose Level"));
 		menu.add(new MenuItem("Help"));
 		menu.add(new MenuItem("Exit"));
@@ -121,6 +125,7 @@ public class Game extends JFrame implements Runnable
 				this.paint(graphics);
 				break;
 			case PAUSED:
+				this.paint(graphics);
 				break;
 			case PLAYING:
 				Actor.updateActors();
@@ -188,9 +193,18 @@ public class Game extends JFrame implements Runnable
 					menu.moveDown();
 				if(input.getKey("Up").isKeyPress())
 					menu.moveUp();
-				if(input.getKey("Enter").isKeyDown())
+				if(input.getKey("Enter").isKeyPress())
 					menu.takeAction();
 				break;
+			
+			case SELECT_LEVEL:
+				if(input.getKey("Down").isKeyPress())
+					chooseLevel.moveDown();
+				if(input.getKey("Up").isKeyPress())
+					chooseLevel.moveUp();
+				if(input.getKey("Enter").isKeyDown())
+					
+					chooseLevel.takeAction();
 				
 			case WON:
 				if(input.getKey("Enter").isKeyDown())
@@ -218,6 +232,11 @@ public class Game extends JFrame implements Runnable
 		}
 	}	
 	
+	public void resetLevel()
+	{
+		levelSystem.changeLevel(levelSystem.getLevelIndex());
+	}
+		
 	public void paint(Graphics g)
 	{	
 		if(offscreen == null || gs == null)
@@ -236,6 +255,8 @@ public class Game extends JFrame implements Runnable
 				menu.drawString(offscreen);
 				break;
 			case PAUSED:
+				offscreen.setFont(menuFont);
+				offscreen.drawString("PAUSED!", SCREEN_WIDTH / 3, SCREEN_HEIGHT / 2);
 				break;
 			case PLAYING:				
 				offscreen.setColor(Color.BLACK);
@@ -249,15 +270,16 @@ public class Game extends JFrame implements Runnable
 				
 			case SELECT_LEVEL:
 				offscreen.setFont(menuFont);
-				String[] levels = levelSystem.getLevels();
+				chooseLevel.drawString(offscreen);
 				
-				for (int i = 0; i < levels.length; i++) {
-					offscreen.drawString(levels[i].toString(), 100, 100 + i * 50);
-				}
+				
+				
+				
+				
 				break;
 		}
 		
-		drawDebug();
+		//drawDebug();
 		g.drawImage(offscreenImage, 0, 0, this);
 	}
 	
