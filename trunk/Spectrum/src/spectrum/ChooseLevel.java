@@ -59,7 +59,7 @@ public class ChooseLevel {
 				graphics.setFont(menuFont);
 				graphics.setColor(Color.white);
 			}
-			graphics.drawString(levels[i], Game.SCREEN_WIDTH / 2 - 20, Game.SCREEN_HEIGHT / 4 + space * i);
+			graphics.drawString(levels[i].substring(0, levels[i].indexOf('.')), 200, Game.SCREEN_HEIGHT / 4 + space * i);
 		}
 	}
 }

@@ -20,15 +20,14 @@ public class Game extends JFrame implements Runnable
 	
 	private Input input;
 	public static GameState gs;
-	
-	//Temp code
 	private LevelSystem levelSystem;
-	
-	Image background;
+	private Image background;
 	private static Player player;
 	private Goal goal;
 	private Menu menu;
 	private ChooseLevel chooseLevel;
+	
+	boolean started = false;
 	
 	//Game Loop
 	Thread thread;
@@ -53,6 +52,21 @@ public class Game extends JFrame implements Runnable
 		this.background = background;
 	}
 	
+	public void setStarted(boolean value)
+	{
+		this.started = value;
+	}
+	
+	public boolean getStarted()
+	{
+		return this.started;
+	}
+	
+	public LevelSystem getLevelSystem()
+	{
+		return this.levelSystem;
+	}
+	
 	public Game()
 	{		
 		//Thread
@@ -68,32 +82,32 @@ public class Game extends JFrame implements Runnable
 		this.setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
 		this.setResizable(false);
 		this.setLocationRelativeTo(null);
-	
+		input = new Input();
+		this.addKeyListener(input);
+		
 		this.setVisible(true);
 		
 		//Double Buffering
 		offscreenImage = createImage(800, 800);
 		offscreen = offscreenImage.getGraphics();
+		graphics = this.getGraphics();
 		
+		background = new ImageIcon(getClass().getResource("content//background_00.png")).getImage();
+		
+		//game setting
 		levelSystem = new LevelSystem(this, new String[]{
 				"level6.layer", "level2.layer", "level3.layer", "level4.layer",  "level5.layer"
 		}, this);
-		levelSystem.changeLevel(0);
+		
 		String[] levels = levelSystem.getLevels();
 		chooseLevel = new ChooseLevel(levels, levelSystem);
-		createPlayer();
 		createMenu();
-
 		gs = GameState.MENU;
-		input = new Input();
-		this.addKeyListener(input);
-		graphics = this.getGraphics();
 		this.update();
 	}
 	
 	public void createPlayer()
 	{		
-		
 		player = Player.getPlayer();
 		ImageIcon playerSmall = new ImageIcon(getClass().getResource("content//player_animated_small.png"));
 		Sprite playerSmallSprite = new Sprite(playerSmall.getImage(), 2 , 4, 10, true, "small", this.observer);
@@ -105,7 +119,6 @@ public class Game extends JFrame implements Runnable
 	{
 		menu = new Menu(this);
 		menu.add(new MenuItem("Start"));
-		menu.add(new MenuItem("Restart Level"));
 		menu.add(new MenuItem("Choose Level"));
 		menu.add(new MenuItem("Help"));
 		menu.add(new MenuItem("Exit"));
@@ -227,7 +240,6 @@ public class Game extends JFrame implements Runnable
 		if(player.isInside(Goal.getGoal()))
 		{	
 			levelSystem.changeLevel(levelSystem.getLevelIndex() + 1);
-			createPlayer();
 			gs = GameState.WON;
 		}
 	}	
@@ -267,15 +279,9 @@ public class Game extends JFrame implements Runnable
 				}
 				break;
 				
-				
 			case SELECT_LEVEL:
 				offscreen.setFont(menuFont);
-				chooseLevel.drawString(offscreen);
-				
-				
-				
-				
-				
+				chooseLevel.drawString(offscreen);	
 				break;
 		}
 		
