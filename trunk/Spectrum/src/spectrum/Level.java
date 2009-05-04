@@ -32,6 +32,7 @@ public class Level
 	
 	public void clear()
 	{
+		Gem.gems.clear();
 		textures.clear();
 		level.clear();
 		Actor.actors.clear();
@@ -110,7 +111,7 @@ public class Level
 						else if(ic.getDescription().equals("red"))
 						{
 							sprite = new Sprite(ic.getImage(), 2, 1, 1, false, "normal", io);
-							new Red(sprite, x * 32, y * 32, false, false);
+							new Red(sprite, x * 32, y * 32, true, false);
 						}
 						else if(ic.getDescription().equals("blue"))
 						{
