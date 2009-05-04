@@ -49,6 +49,10 @@ public class Player extends Actor
 		this.isOnGround = value;
 	}
 	
+	public boolean getIsOnGround(){
+		return isOnGround;
+	}
+	
 	public Player(Sprite sprite, float x, float y)
 	{
 		super(sprite);

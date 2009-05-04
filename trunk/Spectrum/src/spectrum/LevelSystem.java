@@ -34,6 +34,7 @@ public class LevelSystem {
 		currentLevel.clear();
 		currentLevel.Load(url);
 		
+		
 	}
 	
 	public void changeLevel(int index){
@@ -42,6 +43,7 @@ public class LevelSystem {
 			
 		}
 		else{
+			levelIndex = index;
 			changeLevel(levels[index]);
 		}
 	}
