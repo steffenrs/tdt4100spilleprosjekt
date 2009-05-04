@@ -26,7 +26,6 @@ public class Gem extends Actor
 	public Gem(Sprite sprite, int x, int y, boolean visible, boolean collidable)
 	{
 		super(sprite, x, y, collidable);
-		gems.add(this);
 		this.visible = visible;
 	}
 	
@@ -47,7 +46,7 @@ public class Gem extends Actor
 	
 	private void activate()
 	{
-		if (System.currentTimeMillis() - buttonPressed > 1000) {
+		if ((System.currentTimeMillis() - buttonPressed) > 1000) {
 			this.getActiveSprite().changeFrameX();
 			if(this.active){
 				this.removeProperties();
@@ -58,17 +57,18 @@ public class Gem extends Actor
 		else
 		{
 			buttonPressed = System.currentTimeMillis();
-			this.active = true;
-			gems.add(this);
 			
-			if(gems.size() > limit)
+			if(gems.size() > 1)
 			{
 				gems.get(0).removeProperties();
 				gems.get(0).active = false;
+				gems.get(0).getActiveSprite().changeFrameX();
 				gems.remove(0);
 			}
-			
+			gems.add(this);
+			this.active = true;
 			this.applyProperties();
+				
 		}
 	}
 }
