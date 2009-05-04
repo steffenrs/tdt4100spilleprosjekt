@@ -12,7 +12,7 @@ import javax.swing.ImageIcon;
 public class Level 
 {
 	
-	
+	Game game;
 	private ArrayList<ImageIcon> textures;
 	private ArrayList<String[]> level;
 	ImageObserver io;
@@ -21,11 +21,12 @@ public class Level
 	 * @author Steffen R. Stenersen
 	 * @param io
 	 */
-	public Level(ImageObserver io)
+	public Level(ImageObserver io, Game game)
 	{
 		textures = new ArrayList<ImageIcon>();
 		level = new ArrayList<String[]>();
 		this.io = io;
+		this.game = game;
 	}
 	
 	
@@ -111,7 +112,7 @@ public class Level
 						else if(ic.getDescription().equals("red"))
 						{
 							sprite = new Sprite(ic.getImage(), 2, 1, 1, false, "normal", io);
-							new Red(sprite, x * 32, y * 32, true, false);
+							new Red(sprite, x * 32, y * 32, false, false);
 						}
 						else if(ic.getDescription().equals("blue"))
 						{
@@ -136,6 +137,7 @@ public class Level
 					}
 				}
 			}
+			game.setBackground(textures.get(0).getImage());
 			reader.close();
 			
 		}
