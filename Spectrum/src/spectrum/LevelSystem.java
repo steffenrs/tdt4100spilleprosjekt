@@ -13,9 +13,9 @@ public class LevelSystem {
 	
 	
 	
-	public LevelSystem(ImageObserver io, String[] levels){
+	public LevelSystem(ImageObserver io, String[] levels, Game game){
 		this.io = io;
-		this.currentLevel = new Level(io);
+		this.currentLevel = new Level(io, game);
 		this.levels = levels;
 	}
 	
