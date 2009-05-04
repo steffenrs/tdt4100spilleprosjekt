@@ -69,7 +69,7 @@ public class Game extends JFrame implements Runnable
 		offscreen = offscreenImage.getGraphics();
 		
 		levelSystem = new LevelSystem(this, new String[]{
-				"level5.layer", "level3.layer", "level1.layer", "level2.layer",  "level4.layer"
+				"level3.layer", "level2.layer", "level3.layer", "level4.layer",  "level5.layer"
 		});
 		levelSystem.changeLevel(0);
 		createPlayer();
@@ -188,6 +188,9 @@ public class Game extends JFrame implements Runnable
 					menu.moveUp();
 				if(input.getKey("Enter").isKeyDown())
 					menu.takeAction();
+//				if (input.getKey("Escape").isKeyDown()) {
+//					Game.gs = GameState.PLAYING;
+//				}
 				break;
 				
 			case WON:
