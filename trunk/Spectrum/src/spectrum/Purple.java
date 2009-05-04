@@ -11,7 +11,7 @@ public class Purple extends Gem
 
 	public Purple(Sprite sprite, int x, int y, boolean visible,  boolean collidable) 
 	{
-		super(sprite, x , y, visible, collidable);	
+		super(sprite, x , y, visible, collidable, "purple");	
 	}
 	
 	public void applyProperties()

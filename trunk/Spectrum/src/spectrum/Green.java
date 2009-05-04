@@ -4,7 +4,7 @@ public class Green extends Gem
 {
 	public Green(Sprite sprite, int x, int y, boolean visible,  boolean collidable) 
 	{
-		super(sprite, x , y, visible, collidable);
+		super(sprite, x , y, visible, collidable, "green");
 		
 	}
 

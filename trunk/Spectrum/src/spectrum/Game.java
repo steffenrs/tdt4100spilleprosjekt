@@ -74,7 +74,7 @@ public class Game extends JFrame implements Runnable
 		offscreen = offscreenImage.getGraphics();
 		
 		levelSystem = new LevelSystem(this, new String[]{
-				"Test.layer", "level4.layer"
+				"level1.layer", "level2.layer", "level3.layer", "level4.layer"
 		},this);
 		levelSystem.changeLevel(0);
 		createPlayer();
