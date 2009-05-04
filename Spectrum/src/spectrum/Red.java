@@ -4,7 +4,7 @@ public class Red extends Gem
 {
 	public Red(Sprite sprite, int x, int y, boolean visible, boolean active) 
 	{
-		super(sprite, x, y, visible, active);
+		super(sprite, x, y, visible, active, "red");
 	}
 	
 	public void applyProperties()

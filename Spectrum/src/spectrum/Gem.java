@@ -12,6 +12,7 @@ public class Gem extends Actor
 	private final int limit = 2;
 	private long buttonPressed;
 	private boolean visible;
+	private String color;
 	
 	public Gem(Sprite sprite) 
 	{
@@ -23,10 +24,11 @@ public class Gem extends Actor
 		this.active = active;		
 	}
 
-	public Gem(Sprite sprite, int x, int y, boolean visible, boolean collidable)
+	public Gem(Sprite sprite, int x, int y, boolean visible, boolean collidable, String color)
 	{
 		super(sprite, x, y, collidable);
 		this.visible = visible;
+		this.color = color;
 	}
 	
 	public void setState(boolean visible)
@@ -52,6 +54,24 @@ public class Gem extends Actor
 				this.removeProperties();
 				this.active = false;
 				buttonPressed = System.currentTimeMillis();
+				
+				
+				for (Gem gem : getGems(this.color)) 
+				{
+					if(gem == this)
+						continue;
+					
+					gem.active = false;
+					gem.getActiveSprite().changeFrameX();
+				}
+				
+				for (Gem gem : gems) {
+					if(this.color == gem.color)
+					{
+						gems.remove(gem);
+						break;
+					}
+				}
 				return;
 			}
 		else
@@ -62,11 +82,31 @@ public class Gem extends Actor
 			{
 				gems.get(0).removeProperties();
 				gems.get(0).active = false;
+				
+				for (Gem gem : getGems(gems.get(0).color)) 
+				{
+					if(gem == gems.get(0))
+						continue;
+					
+					gem.active = false;
+					gem.getActiveSprite().changeFrameX();
+				}
+				
 				gems.get(0).getActiveSprite().changeFrameX();
 				gems.remove(0);
 			}
 			gems.add(this);
 			this.active = true;
+			
+			for (Gem gem : getGems(this.color)) 
+			{
+				if(gem == this)
+					continue;
+				
+				gem.active = true;
+				gem.getActiveSprite().changeFrameX();
+			}
+			
 			this.applyProperties();
 				
 		}
@@ -105,5 +145,21 @@ public class Gem extends Actor
 	public void removeProperties()
 	{
 		
+	}
+	
+	public static ArrayList<Gem> getGems(String color)
+	{
+		ArrayList<Gem> gems = new ArrayList<Gem>();
+		
+		for (Actor actor : Actor.actors) {
+			if(actor instanceof Gem)
+			{
+				Gem g = ((Gem)(actor));
+				if(g.color.equals(color))
+					gems.add(g);
+			}
+		}
+		
+		return gems;
 	}
 }
