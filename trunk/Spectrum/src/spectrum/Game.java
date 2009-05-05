@@ -254,7 +254,7 @@ public class Game extends JFrame implements Runnable
 					levelSystem.changeLevel(levelSystem.getLevelIndex() + 1);
 					this.repaint();
 					
-					gs = GameState.PLAYING;
+					
 				}
 				break;
 				
