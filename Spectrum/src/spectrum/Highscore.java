@@ -18,7 +18,7 @@ public class Highscore {
 	
 	public static void addPenalty()
 	{
-		if(highscore > 0)
+		if(highscore > 5000)
 		highscore -= 5000;
 	}
 	
