@@ -17,19 +17,18 @@ public class Red extends Gem
 		else{
 			Game.getPlayer().setActiveSprite("small");
 		}
-		
 	}
 	
-	public void removeProperties()
+	public void removeProperties(Gem gem)
 	{	
 		Game.getPlayer().setActiveSprite("normal");
-		if( Game.getPlayer().getGravity() > 0)
+		if( Game.getPlayer().getGravity() > 0 && !(gem instanceof Blue))
 		{
-		Game.getPlayer().setPosY((float)(getPosY() - Game.getPlayer().getRectangle().getHeight()));
+			Game.getPlayer().setPosY((float)(getPosY() - Game.getPlayer().getRectangle().getHeight()));
 		}
-		else
+		else if(Game.getPlayer().getGravity() > 0 && (gem instanceof Blue))
 		{
-			//Game.getPlayer().setPosY((float)(getPosY() - Game.getPlayer().getRectangle().getHeight()));
+			
 		}
 	}
 }

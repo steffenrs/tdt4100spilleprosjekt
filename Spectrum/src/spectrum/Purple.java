@@ -29,7 +29,7 @@ public class Purple extends Gem
 		}
 	}
 	
-	public void removeProperties()
+	public void removeProperties(Gem gem)
 	{
 		for(int i = 0; i < invisible.size(); i++)
 		{

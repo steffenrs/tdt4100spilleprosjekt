@@ -130,7 +130,8 @@ public class Player extends Actor
 								 setIsOnGround(true);
 							 }
 						}
-						else{
+						else
+						{
 							
 							if(this.getPosY() > actor.getPosY())
 							 {
@@ -146,9 +147,7 @@ public class Player extends Actor
 								 pJumpPower = 0;
 								 jumpTime = 0;
 							 }
-							
 						}
-						 
 					 }
 					 //Sideways
 					 else

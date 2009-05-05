@@ -19,7 +19,7 @@ public class Green extends Gem
 		
 	}
 
-	public void removeProperties()
+	public void removeProperties(Gem gem)
 	{
 		if (Game.getPlayer().getGravity() < 0) {
 			Game.getPlayer().setGravity(-20f);
