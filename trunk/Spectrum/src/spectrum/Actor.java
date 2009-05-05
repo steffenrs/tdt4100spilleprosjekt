@@ -126,10 +126,10 @@ public class Actor
 	
 	public boolean isInside(Actor a)
 	{
-		if(a.getRectangle().x < this.getRectangle().x &&
-		   a.getRectangle().y < this.getRectangle().y &&
-		   a.getRectangle().x + a.getRectangle().width > this.getRectangle().x + this.getRectangle().width && 
-		   a.getRectangle().y + a.getRectangle().height + 2 > this.getRectangle().y + this.getRectangle().height){
+		if(a.getRectangle().x - 5  < this.getRectangle().x &&
+		   a.getRectangle().y -5  < this.getRectangle().y &&
+		   a.getRectangle().x + 5 + a.getRectangle().width > this.getRectangle().x + this.getRectangle().width && 
+		   a.getRectangle().y + a.getRectangle().height + 5 > this.getRectangle().y + this.getRectangle().height){
 		   
 			return true;
 		}
@@ -173,5 +173,23 @@ public class Actor
 		}
 		
 		return false;
+
+	}
+	
+	public static void arrangeActorList(){
+		Player tempPlayer;
+		
+		Actor actor;
+		
+		for (int i = Actor.actors.size() - 1; i <= 0; i++) 
+		{
+			actor = Actor.actors.get(i);
+			if (actor instanceof Player) 
+			{
+				tempPlayer = (Player)actor;
+				Actor.actors.remove(actor);
+				Actor.actors.add(tempPlayer);
+			}
+		}
 	}
 }

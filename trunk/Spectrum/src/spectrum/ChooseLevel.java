@@ -25,7 +25,7 @@ public class ChooseLevel {
 	{
 		current--;
 		if(current < 0)
-			return;
+			current = levels.length -1;
 			
 	}
 	
