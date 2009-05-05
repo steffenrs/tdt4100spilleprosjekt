@@ -40,6 +40,16 @@ public class Highscore {
 		return totalScore;
 	}
 	
+	public static void resetScore()
+	{
+		highscore = 100000;
+		totalScore = 0;
+	}
+	
+	public static void resetHighscore()
+	{
+		highscore = 100000;
+	}
 	
 //	public void saveHighscore(){
 //		if (condition) {
