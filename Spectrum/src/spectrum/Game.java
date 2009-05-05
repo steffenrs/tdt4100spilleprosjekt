@@ -17,6 +17,7 @@ public class Game extends JFrame implements Runnable
 	private Graphics offscreen;
 	Font menuFont = new Font("Calibri", Font.PLAIN, 32);
 	Font debugFont = new Font("Arial", Font.PLAIN, 12);
+	Font scoreFont = new Font("Times New Roman", Font.BOLD, 18);
 	
 	private Input input;
 	public static GameState gs;
@@ -98,7 +99,7 @@ public class Game extends JFrame implements Runnable
 		
 		//game setting
 		levelSystem = new LevelSystem(this, new String[]{
-				"level1.layer", "level2.layer", "level4.layer", "level5.layer",  "level5.layer"
+				"level1.layer", "level4.layer", "level4.layer", "level5.layer",  "level5.layer"
 				, "level2.layer", "level3.layer", "level4.layer"
 		}, this);
 		
@@ -203,10 +204,10 @@ public class Game extends JFrame implements Runnable
 					gs = GameState.PAUSED;
 				
 				if(input.getKey("Space").isKeyDown())
-					if(player.getIsOnGround())
+					
 					if(player.getIsOnGround())
 					Gem.activateGem();
-						Gem.activateGem();
+						
 				
 				if(input.getKey("Escape").isKeyDown())
 					gs = GameState.MENU;
@@ -262,7 +263,7 @@ public class Game extends JFrame implements Runnable
 		if(player.isInside(Goal.getGoal()))
 		{	
 			
-			
+			Highscore.updateTotalScore();
 			gs = GameState.WON;
 		}
 	}	
@@ -299,7 +300,7 @@ public class Game extends JFrame implements Runnable
 				for (Actor actor : Actor.actors) 
 				{
 					actor.draw(offscreen, this);
-					drawHighscore();
+					drawScore();
 				}
 				break;
 				
@@ -319,8 +320,10 @@ public class Game extends JFrame implements Runnable
 		g.drawImage(offscreenImage, 0, 0, this);
 	}
 	
-	public void drawHighscore()
+	public void drawScore()
 	{
+		offscreen.setFont(scoreFont);
+		offscreen.drawString("Total score: " + (int)(Highscore.getTotalscore()), 10, 60);
 		offscreen.drawString("Your score: " + (int)(Highscore.getHighscore()), 10, 80);
 	}
 	
