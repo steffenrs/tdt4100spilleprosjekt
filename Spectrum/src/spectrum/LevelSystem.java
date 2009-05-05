@@ -28,18 +28,15 @@ public class LevelSystem {
 		return this.levelIndex;
 	}
 	
-	
 	public void changeLevel(String path)
 	{
 		URL url = getClass().getResource("content/" + path);
 		currentLevel.clear();
 		currentLevel.Load(url);
 		game.createPlayer();
-		Actor.arrangeActorList();
 		Game.gs = GameState.PLAYING;
 	}
 	
-
 	public void changeLevel(int index){
 		
 		if (index > levels.length - 1){

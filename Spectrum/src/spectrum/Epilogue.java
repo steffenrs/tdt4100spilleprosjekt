@@ -36,9 +36,7 @@ public class Epilogue {
 	public int getY(){
 		return y;
 	}
-	
-	
-	
+		
 	//Draws the credits to screen
 	public void drawEpilogue(Graphics g){
 		

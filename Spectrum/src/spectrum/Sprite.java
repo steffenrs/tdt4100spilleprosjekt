@@ -50,6 +50,9 @@ public class Sprite
 		return this.active;
 	}
 	
+	/**
+	 * @param value
+	 */
 	public void setActive(boolean value)
 	{
 		this.active = value;

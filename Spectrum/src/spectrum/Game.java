@@ -23,6 +23,7 @@ public class Game extends JFrame implements Runnable
 	public static GameState gs;
 	private LevelSystem levelSystem;
 	private Image background;
+	private Image menuBackground;
 	private static Player player;
 	private Goal goal;
 	private Menu menu;
@@ -96,7 +97,7 @@ public class Game extends JFrame implements Runnable
 		offscreen = offscreenImage.getGraphics();
 		graphics = this.getGraphics();
 		
-		background = new ImageIcon(getClass().getResource("content//background_00.png")).getImage();
+		menuBackground = new ImageIcon(getClass().getResource("content//background_00.png")).getImage();
 		
 		//game setting
 		levelSystem = new LevelSystem(this, new String[]{
@@ -301,13 +302,15 @@ public class Game extends JFrame implements Runnable
 				offscreen.drawString("NICE, Level up!", SCREEN_WIDTH / 3, SCREEN_HEIGHT / 2);
 				break;
 			case MENU:
+				offscreen.drawImage(menuBackground, 0, 0, this);
 				menu.drawString(offscreen);
 				break;
 			case PAUSED:
 				offscreen.setFont(menuFont);
 				offscreen.drawString("PAUSED!", SCREEN_WIDTH / 3, SCREEN_HEIGHT / 2);
 				break;
-			case PLAYING:				
+			case PLAYING:
+		
 				offscreen.setColor(Color.BLACK);
 				
 				for (Actor actor : Actor.actors) 
@@ -318,20 +321,21 @@ public class Game extends JFrame implements Runnable
 				break;
 				
 			case SELECT_LEVEL:
+				offscreen.drawImage(menuBackground, 0, 0, this);
 				offscreen.setFont(menuFont);
 				chooseLevel.drawString(offscreen);	
 				break;
 				
 			case COMPLETE:
+				offscreen.drawImage(menuBackground, 0, 0, this);
 				epilogue.drawEpilogue(offscreen);
 				epilogue.setY(epilogue.getY() + 2);
 				break;
 				
 			case HELP:
+				offscreen.drawImage(menuBackground, 0, 0, this);
 				help.drawHelp(offscreen);
 				break;
-				
-				
 		}
 		
 		
@@ -344,28 +348,4 @@ public class Game extends JFrame implements Runnable
 		offscreen.drawString("Total score: " + (int)(Highscore.getTotalscore()), 10, 60);
 		offscreen.drawString("Your score: " + (int)(Highscore.getHighscore()), 10, 80);
 	}
-	
-	public void drawDebug()
-	{
-		offscreen.setColor(Color.black);
-		offscreen.setFont(debugFont);
-		
-		offscreen.setColor(Color.black);
-		offscreen.drawString("Debug:", 10, 80);
-		offscreen.drawString("Player pos: " + Float.toString(player.getPosX()) + "," + Float.toString(player.getPosY()), 10, 100);	
-		offscreen.drawString("Player grav; " + Float.toString(player.getGravity()), 10, 120);
-		offscreen.drawString("Gems; " + Gem.gems.size(), 10, 140);
-		if (Gem.gems.size() > 0) {
-			offscreen.drawString("Gems: " + Gem.gems.size() +":" + Gem.gems.get(0), 10, 140);
-		}
-		if (Gem.gems.size() > 1) {
-			offscreen.drawString("Gems: " + Gem.gems.size() +":" + Gem.gems.get(1), 10, 160);
-		}
-		offscreen.drawString("HIGHSCORE: " + (int)(Highscore.getHighscore()), 10, 180);
-	}
-	
-//	public void drawMydebug(){
-//		offscreen.setColor(Color.black);
-//		offscreen.drawString("Y: " + epilogue.getY(), 10, 100);
-//	}
 }

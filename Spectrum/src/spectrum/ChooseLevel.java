@@ -18,7 +18,6 @@ public class ChooseLevel {
 		this.levels = levels;
 		this.current = 0;
 		this.levelSystem = levelsystem;
-		
 	}
 	
 	//Moves marker up an down in the menulist

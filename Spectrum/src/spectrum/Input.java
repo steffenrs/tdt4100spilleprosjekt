@@ -3,7 +3,6 @@ package spectrum;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
-
 public class Input extends KeyAdapter
 {	
 	Key[] keys = new Key[] 
