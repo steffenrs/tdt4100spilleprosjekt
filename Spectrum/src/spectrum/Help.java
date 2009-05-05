@@ -10,13 +10,18 @@ import java.awt.Graphics;
 
 public class Help {
 	
-	private String header;
+	
 	private Font headerFont;
-	private String [] gems;
-	private int stringLength;
 	private FontMetrics fm;
 	private Font helpFont;
+	private Font subHeader;
+	private int stringLength;
 	private Sprite [] sprites;
+	private String [] keys;
+	private String [] gems;
+	private String header;
+	private String subHeader1;
+	private String subHeader2;
 	
 
 	
@@ -32,8 +37,16 @@ public class Help {
 				"  With Spectravision you can see gems that are normally invisible to you",		
 		};
 		
+		keys = new String[] {"- Left/Right = Move",
+							"- Up = Jump",
+							"- Space = Activate Gems"
+		};
+		
 		helpFont = new Font("Calibri", Font.PLAIN, 15);	
 		headerFont = new Font("Calibri", Font.BOLD, 32);
+		subHeader = new Font("Calibri", Font.BOLD, 22);
+		subHeader1 = "Keys";
+		subHeader2 = "Gems";
 		
 	}
 	
@@ -49,6 +62,10 @@ public class Help {
 		fm = g.getFontMetrics(headerFont);
 		stringLength = fm.stringWidth(header);
 		g.drawString(header, Game.SCREEN_WIDTH / 2 - stringLength / 2, 50);
+		
+		fm = g.getFontMetrics(subHeader);
+		stringLength = fm.stringWidth(subHeader1);
+		g.drawString(subHeader1, Game.SCREEN_WIDTH / 2 - stringLength / 2 , 150);
 		
 		
 		//Draws gemdescriptions

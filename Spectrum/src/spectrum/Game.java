@@ -28,6 +28,7 @@ public class Game extends JFrame implements Runnable
 	private Menu menu;
 	private ChooseLevel chooseLevel;
 	private Epilogue epilogue;
+	private Help help;
 	
 	
 	boolean started = false;
@@ -106,6 +107,7 @@ public class Game extends JFrame implements Runnable
 		String[] levels = levelSystem.getLevels();
 		chooseLevel = new ChooseLevel(levels, levelSystem);
 		epilogue = new Epilogue();
+		help = new Help();
 		createMenu();
 		gs = GameState.MENU;
 		this.update();
@@ -158,6 +160,9 @@ public class Game extends JFrame implements Runnable
 				break;
 				
 			case COMPLETE:
+				this.paint(graphics);
+				break;
+			case HELP:
 				this.paint(graphics);
 				break;
 			}
@@ -238,6 +243,9 @@ public class Game extends JFrame implements Runnable
 				break;
 				
 			case HELP:
+				if(input.getKey("Escape").isKeyPress()){
+					Game.gs = GameState.MENU;	
+				}
 				break;
 				
 			case WON:
@@ -313,6 +321,11 @@ public class Game extends JFrame implements Runnable
 				epilogue.drawEpilogue(offscreen);
 				epilogue.setY(epilogue.getY() + 2);
 				break;
+				
+			case HELP:
+				help.drawHelp(offscreen);
+				break;
+				
 				
 		}
 		
