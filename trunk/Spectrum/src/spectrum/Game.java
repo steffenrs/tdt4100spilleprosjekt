@@ -99,8 +99,8 @@ public class Game extends JFrame implements Runnable
 		
 		//game setting
 		levelSystem = new LevelSystem(this, new String[]{
-				"level1.layer", "level4.layer", "level4.layer", "level5.layer",  "level5.layer"
-				, "level2.layer", "level3.layer", "level4.layer"
+				"level1.layer", "level2.layer", "level3.layer", "level4.layer",  "level5.layer"
+				, "level6.layer", "level7.layer", "level8.layer", "level9.layer", "level10.layer"
 		}, this);
 		
 		String[] levels = levelSystem.getLevels();
