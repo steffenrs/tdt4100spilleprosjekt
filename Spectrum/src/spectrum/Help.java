@@ -14,6 +14,7 @@ public class Help {
 	private Font headerFont;
 	private FontMetrics fm;
 	private Font helpFont;
+	private Font helpFont2;
 	private Font subHeader;
 	private int stringLength;
 	private String [] keys;
@@ -24,6 +25,8 @@ public class Help {
 	private String [] gemNumber;
 	
 
+	
+	
 	
 	public Help(){
 		
@@ -48,6 +51,7 @@ public class Help {
 				"  When you activate the 3rd gem, the 1st gem you activated will become inactive"};
 		
 		helpFont = new Font("Calibri", Font.PLAIN, 17);	
+		helpFont2 = new Font("Calibri", Font.BOLD, 17);	
 		headerFont = new Font("Calibri", Font.BOLD, 32);
 		subHeader = new Font("Calibri", Font.BOLD, 24);
 		subHeader1 = "Keys";
@@ -55,7 +59,7 @@ public class Help {
 		
 	}
 	
-	
+	//Tegner all teksten i help-seksjonen
 	public void drawHelp(Graphics g){
 		g.setColor(Color.BLACK);
 		
@@ -88,6 +92,8 @@ public class Help {
 		g.drawString(gems[3], 200, 570);
 		g.drawString(gems[4], 200, 620);
 		g.drawString(gems[5], 200, 640);
+		
+		g.setFont(helpFont2);
 		
 		for (int i = 0; i < gemNumber.length; i++) {
 			g.drawString(gemNumber[i], 200, 700 + i * 20);
