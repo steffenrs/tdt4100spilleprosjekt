@@ -30,6 +30,7 @@ public class LevelSystem {
 	
 	public void changeLevel(String path)
 	{
+		
 		URL url = getClass().getResource("content/" + path);
 		currentLevel.clear();
 		currentLevel.Load(url);

@@ -101,7 +101,7 @@ public class Game extends JFrame implements Runnable
 		
 		//game setting
 		levelSystem = new LevelSystem(this, new String[]{
-				"level1.layer", "level2.layer", "level3.layer", "level4.layer",  "level5.layer"
+				"level9.layer", "level2.layer", "level3.layer", "level4.layer",  "level5.layer"
 				, "level6.layer", "level7.layer", "level8.layer", "level9.layer", "level10.layer"
 		}, this);
 		
@@ -239,9 +239,13 @@ public class Game extends JFrame implements Runnable
 				if(input.getKey("Up").isKeyPress())
 					chooseLevel.moveUp();
 				if(input.getKey("Enter").isKeyDown())	
+				{
+					Highscore.resetScore();
 					chooseLevel.takeAction();
+				}
 				if (input.getKey("Escape").isKeyDown()) 
 					Game.gs = GameState.MENU;
+				
 				break;
 				
 			case HELP:
@@ -254,9 +258,7 @@ public class Game extends JFrame implements Runnable
 				if(input.getKey("Enter").isKeyDown())
 				{
 					levelSystem.changeLevel(levelSystem.getLevelIndex() + 1);
-					this.repaint();
-					
-					
+					this.repaint();		
 				}
 				break;
 			case COMPLETE:
@@ -284,6 +286,7 @@ public class Game extends JFrame implements Runnable
 	
 	public void resetLevel()
 	{
+		Highscore.resetHighscore();
 		levelSystem.changeLevel(levelSystem.getLevelIndex());
 	}
 		
