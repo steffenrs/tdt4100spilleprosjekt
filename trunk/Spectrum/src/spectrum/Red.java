@@ -15,6 +15,13 @@ public class Red extends Gem
 	public void removeProperties()
 	{	
 		Game.getPlayer().setActiveSprite("normal");
+		if( Game.getPlayer().getGravity() > 0)
+		{
 		Game.getPlayer().setPosY((float)(getPosY() - Game.getPlayer().getRectangle().getHeight()));
+		}
+		else
+		{
+			//Game.getPlayer().setPosY((float)(getPosY() - Game.getPlayer().getRectangle().getHeight()));
+		}
 	}
 }

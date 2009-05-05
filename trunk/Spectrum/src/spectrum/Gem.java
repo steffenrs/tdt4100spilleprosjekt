@@ -9,7 +9,7 @@ public class Gem extends Actor
 //	Player player;
 	private boolean active = false;
 	public static ArrayList<Gem> gems = new ArrayList<Gem>();
-	private final int limit = 2;
+	private final int limit = 1;
 	private long buttonPressed;
 	private boolean visible;
 	private String color;
@@ -49,6 +49,7 @@ public class Gem extends Actor
 	private void activate()
 	{
 		if ((System.currentTimeMillis() - buttonPressed) > 1000) {
+			Highscore.addPenalty();
 			this.getActiveSprite().changeFrameX();
 			if(this.active){
 				this.removeProperties();
@@ -78,7 +79,7 @@ public class Gem extends Actor
 		{
 			buttonPressed = System.currentTimeMillis();
 			
-			if(gems.size() > 1)
+			if(gems.size() > limit)
 			{
 				gems.get(0).removeProperties();
 				gems.get(0).active = false;
@@ -123,6 +124,7 @@ public class Gem extends Actor
 
 			if(Actor.checkCollision(Game.getPlayer(), gem))
 			{
+				
 				((Gem)(gem)).activate();
 				return;
 			}
