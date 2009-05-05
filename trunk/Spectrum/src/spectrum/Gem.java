@@ -59,7 +59,7 @@ public class Gem extends Actor
 			
 			//if gem is active, deactivate it
 			if(this.active){
-				this.removeProperties(this);
+				this.removeProperties();
 				this.active = false;
 				buttonPressed = System.currentTimeMillis();
 				
@@ -91,7 +91,7 @@ public class Gem extends Actor
 				//if the number of active gems is bigger than allowed, remove the first active gem
 				if(gems.size() > limit)
 				{				
-					gems.get(0).removeProperties(this);
+					gems.get(0).removeProperties();
 					gems.get(0).active = false;
 					
 					for (Gem gem : getGems(gems.get(0).color)) 
@@ -161,7 +161,7 @@ public class Gem extends Actor
 		
 	}
 	
-	public void removeProperties(Gem gem)
+	public void removeProperties()
 	{
 		
 	}
