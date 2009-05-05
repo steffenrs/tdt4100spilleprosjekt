@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class Menu 
 {
-	private  ArrayList<MenuItem> menuItems;
+	public static  ArrayList<MenuItem> menuItems;
 	private int current;
 	private int space = 50;
 	Game game;

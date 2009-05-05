@@ -47,8 +47,9 @@ public class LevelSystem {
 			return;
 		}
 		else{
-		levelIndex = index;
-		changeLevel(levels[index]);
+			levelIndex = index;
+			changeLevel(levels[index]);
+			Menu.menuItems.get(0).name = "Restart Level";
 			levelIndex = index;
 		}
 	}

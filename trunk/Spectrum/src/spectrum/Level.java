@@ -107,6 +107,10 @@ public class Level
 							sprite = new Sprite(ic.getImage(), 1, 1, 1, false, "normal", io);
 							new Block(sprite, x * 32, y * 32, true);
 						}
+						else if(ic.getDescription().equals("door")){
+							sprite = new Sprite(ic.getImage(), 1, 1, 1, false, "normal", io);
+							new Block(sprite, x*32, y*32, false);
+						}
 						else if(ic.getDescription().equals("goal")){
 							sprite = new Sprite(ic.getImage(), 1, 1, 1, false, "normal", io);
 							new Goal(sprite, x * 32, y * 32, false);
