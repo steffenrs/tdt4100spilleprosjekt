@@ -1,16 +1,10 @@
 package spectrum;
 
-import java.awt.Color;
 import java.awt.Font;
 import java.awt.FontMetrics;
 import java.awt.Graphics;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.Timer;
 
-import javax.swing.JFrame;
-
-import com.sun.corba.se.impl.orbutil.graph.Graph;
 
 public class Epilogue {
 	
@@ -65,11 +59,11 @@ public class Epilogue {
 			stringLength = fm2.stringWidth(theEnd);
 			
 			g.setFont(endFont);
-			if (y > 1200) {
+			if (y > 1100) {
 			g.drawString(theEnd, Game.SCREEN_WIDTH / 2 - stringLength / 2, Game.SCREEN_HEIGHT / 2 );
 			}
 			
-			if (y > 2000) {
+			if (y > 1900) {
 				Game.gs = GameState.MENU;
 			}
 			

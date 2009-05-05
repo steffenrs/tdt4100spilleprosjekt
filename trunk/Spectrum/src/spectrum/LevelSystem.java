@@ -2,11 +2,11 @@ package spectrum;
 
 import java.awt.image.ImageObserver;
 import java.net.URL;
-import java.util.ArrayList;
+
 
 public class LevelSystem {
 	
-	private ImageObserver io;
+	ImageObserver io;
 	private Level currentLevel;
 	private String[] levels;
 	private int levelIndex = 0;

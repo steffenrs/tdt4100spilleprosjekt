@@ -51,10 +51,12 @@ public class Menu
 				game.setStarted(true);
 				menuItems.get(0).name = "Restart Level";
 				Game.gs = GameState.PLAYING;	
+				
 			}
 			else
 			{
 				game.resetLevel();
+				
 			}
 			
 
@@ -71,6 +73,7 @@ public class Menu
 		{
 			System.exit(0);
 		}
+		current = 0;
 	}
 	
 	public void drawString(Graphics graphics)
