@@ -15,7 +15,7 @@ public class Game extends JFrame implements Runnable
 	private Graphics graphics;
 	private Image offscreenImage;
 	private Graphics offscreen;
-	Font menuFont = new Font("Arial", Font.PLAIN, 32);
+	Font menuFont = new Font("Calibri", Font.PLAIN, 32);
 	Font debugFont = new Font("Arial", Font.PLAIN, 12);
 	
 	private Input input;
@@ -26,6 +26,7 @@ public class Game extends JFrame implements Runnable
 	private Goal goal;
 	private Menu menu;
 	private ChooseLevel chooseLevel;
+	private Epilogue epilogue;
 	
 	boolean started = false;
 	
@@ -97,10 +98,12 @@ public class Game extends JFrame implements Runnable
 		//game setting
 		levelSystem = new LevelSystem(this, new String[]{
 				"level1.layer", "level2.layer", "level4.layer", "level5.layer",  "level5.layer"
+				"level1.layer", "level2.layer", "level3.layer", "level4.layer"
 		}, this);
 		
 		String[] levels = levelSystem.getLevels();
 		chooseLevel = new ChooseLevel(levels, levelSystem);
+		epilogue = new Epilogue();
 		createMenu();
 		gs = GameState.MENU;
 		this.update();
@@ -111,6 +114,7 @@ public class Game extends JFrame implements Runnable
 		player = Player.getPlayer();
 		ImageIcon playerSmall = new ImageIcon(getClass().getResource("content//player_animated_small.png"));
 		Sprite playerSmallSprite = new Sprite(playerSmall.getImage(), 2 , 4, 10, true, "small", this.observer);
+		playerSmallSprite.setAnimate(true);
 		player.addSprite(playerSmallSprite);
 		player.collidable = true;
 	}
@@ -150,6 +154,10 @@ public class Game extends JFrame implements Runnable
 			case SELECT_LEVEL:
 				this.paint(graphics);
 				break;
+				
+			case COMPLETE:
+				this.paint(graphics);
+				break;
 			}
 			
 			try
@@ -157,7 +165,6 @@ public class Game extends JFrame implements Runnable
 				Thread.sleep(1000 / 65);
 			}
 			catch(InterruptedException e) {; }
-				
 		}
 	}
 	
@@ -167,9 +174,11 @@ public class Game extends JFrame implements Runnable
 		{
 			case PLAYING:
 				
+				Sprite s = player.getActiveSprite();
 				player.getActiveSprite().setAnimate(false);
 				if(input.getKey("Left").isKeyDown())
 				{
+					
 					player.getActiveSprite().setAnimate(true);
 					player.doMove(-1);
 					if(player.getGravity() < 0)
@@ -194,7 +203,9 @@ public class Game extends JFrame implements Runnable
 				
 				if(input.getKey("Space").isKeyDown())
 					if(player.getIsOnGround())
+					if(player.getIsOnGround())
 					Gem.activateGem();
+						Gem.activateGem();
 				
 				if(input.getKey("Escape").isKeyDown())
 					gs = GameState.MENU;
@@ -218,14 +229,21 @@ public class Game extends JFrame implements Runnable
 					chooseLevel.moveDown();
 				if(input.getKey("Up").isKeyPress())
 					chooseLevel.moveUp();
-				if(input.getKey("Enter").isKeyDown())
-					
+				if(input.getKey("Enter").isKeyDown())	
 					chooseLevel.takeAction();
+				if (input.getKey("Escape").isKeyDown()) 
+					Game.gs = GameState.MENU;
+				break;
+				
+			case HELP:
+				break;
 				
 			case WON:
 				if(input.getKey("Enter").isKeyDown())
 				{
+					levelSystem.changeLevel(levelSystem.getLevelIndex() + 1);
 					this.repaint();
+					
 					gs = GameState.PLAYING;
 				}
 				break;
@@ -242,7 +260,8 @@ public class Game extends JFrame implements Runnable
 		
 		if(player.isInside(Goal.getGoal()))
 		{	
-			levelSystem.changeLevel(levelSystem.getLevelIndex() + 1);
+			
+			
 			gs = GameState.WON;
 		}
 	}	
@@ -286,9 +305,16 @@ public class Game extends JFrame implements Runnable
 				offscreen.setFont(menuFont);
 				chooseLevel.drawString(offscreen);	
 				break;
+				
+			case COMPLETE:
+				epilogue.drawEpilogue(offscreen);
+				epilogue.setY(epilogue.getY() + 2);
+				break;
+				
 		}
 		
 		drawHighscore();
+		
 		g.drawImage(offscreenImage, 0, 0, this);
 	}
 	
@@ -315,4 +341,9 @@ public class Game extends JFrame implements Runnable
 		}
 		offscreen.drawString("HIGHSCORE: " + (int)(Highscore.getHighscore()), 10, 180);
 	}
+	
+//	public void drawMydebug(){
+//		offscreen.setColor(Color.black);
+//		offscreen.drawString("Y: " + epilogue.getY(), 10, 100);
+//	}
 }

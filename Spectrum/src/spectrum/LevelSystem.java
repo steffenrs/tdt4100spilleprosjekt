@@ -12,10 +12,6 @@ public class LevelSystem {
 	private int levelIndex = 0;
 	private Game game;
 	
-	
-	
-
-	
 	public LevelSystem(ImageObserver io, String[] levels, Game game){
 		this.io = io;
 		this.currentLevel = new Level(io, game);
@@ -38,20 +34,21 @@ public class LevelSystem {
 		currentLevel.clear();
 		currentLevel.Load(url);
 		game.createPlayer();
+		Actor.arrangeActorList();
 		Game.gs = GameState.PLAYING;
 	}
-
 	
 	public void changeLevel(int index){
 		
-		if (index > levels.length) {
-			
+		if (index > levels.length - 1){
+			Game.gs = GameState.COMPLETE;
+			return;
 		}
 		else{
-			levelIndex = index;
-			changeLevel(levels[index]);
+		levelIndex = index;
+		changeLevel(levels[index]);
 		}
 	}
 	
-
+	
 }

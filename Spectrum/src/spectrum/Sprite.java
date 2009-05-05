@@ -13,9 +13,9 @@ public class Sprite
 	private Rectangle rectangle;
 	
 	private boolean animate;
-	private int frameX = 0;
+	public int frameX = 0;
 	private int frameY = 0;
-	private int tilesX;
+	public int tilesX;
 	private int tilesY;
 	private int frameInterval;
 	private int frameTimeRemaining;
