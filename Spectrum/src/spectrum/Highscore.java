@@ -12,12 +12,13 @@ public class Highscore {
 
 	public static void updateHighscore()
 	{
-		if(highscore != 0)
+		if(highscore > 0)
 		highscore -= 5;	
 	}
 	
 	public static void addPenalty()
 	{
+		if(highscore > 0)
 		highscore -= 5000;
 	}
 	
