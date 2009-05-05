@@ -96,7 +96,7 @@ public class Game extends JFrame implements Runnable
 		
 		//game setting
 		levelSystem = new LevelSystem(this, new String[]{
-				"level6.layer", "level2.layer", "level3.layer", "level4.layer",  "level5.layer"
+				"level1.layer", "level2.layer", "level4.layer", "level5.layer",  "level5.layer"
 		}, this);
 		
 		String[] levels = levelSystem.getLevels();
@@ -143,6 +143,7 @@ public class Game extends JFrame implements Runnable
 			case PLAYING:
 				Actor.updateActors();
 				checkWin();
+				Highscore.updateHighscore();
 				this.paint(graphics);
 				break;
 				
@@ -164,7 +165,8 @@ public class Game extends JFrame implements Runnable
 	{
 		switch(gs)
 		{
-			case PLAYING:	
+			case PLAYING:
+				
 				player.getActiveSprite().setAnimate(false);
 				if(input.getKey("Left").isKeyDown())
 				{
@@ -191,6 +193,7 @@ public class Game extends JFrame implements Runnable
 					gs = GameState.PAUSED;
 				
 				if(input.getKey("Space").isKeyDown())
+					if(player.getIsOnGround())
 					Gem.activateGem();
 				
 				if(input.getKey("Escape").isKeyDown())
@@ -285,8 +288,13 @@ public class Game extends JFrame implements Runnable
 				break;
 		}
 		
-		//drawDebug();
+		drawHighscore();
 		g.drawImage(offscreenImage, 0, 0, this);
+	}
+	
+	public void drawHighscore()
+	{
+		offscreen.drawString("Your score: " + (int)(Highscore.getHighscore()), 10, 180);
 	}
 	
 	public void drawDebug()
@@ -305,5 +313,6 @@ public class Game extends JFrame implements Runnable
 		if (Gem.gems.size() > 1) {
 			offscreen.drawString("Gems: " + Gem.gems.size() +":" + Gem.gems.get(1), 10, 160);
 		}
+		offscreen.drawString("HIGHSCORE: " + (int)(Highscore.getHighscore()), 10, 180);
 	}
 }
