@@ -12,6 +12,7 @@ public class Highscore {
 
 	public static void updateHighscore()
 	{
+		if(highscore != 0)
 		highscore -= 5;	
 	}
 	
