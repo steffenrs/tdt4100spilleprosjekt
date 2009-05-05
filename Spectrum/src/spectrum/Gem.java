@@ -124,9 +124,11 @@ public class Gem extends Actor
 
 			if(Actor.checkCollision(Game.getPlayer(), gem))
 			{
-				
+				if(((Gem)(gem)).visible)
+				{
 				((Gem)(gem)).activate();
 				return;
+				}
 			}
 		}
 	}

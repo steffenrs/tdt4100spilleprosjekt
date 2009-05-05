@@ -28,6 +28,7 @@ public class Game extends JFrame implements Runnable
 	private ChooseLevel chooseLevel;
 	private Epilogue epilogue;
 	
+	
 	boolean started = false;
 	
 	//Game Loop
@@ -298,6 +299,7 @@ public class Game extends JFrame implements Runnable
 				for (Actor actor : Actor.actors) 
 				{
 					actor.draw(offscreen, this);
+					drawHighscore();
 				}
 				break;
 				
@@ -313,14 +315,13 @@ public class Game extends JFrame implements Runnable
 				
 		}
 		
-		drawHighscore();
 		
 		g.drawImage(offscreenImage, 0, 0, this);
 	}
 	
 	public void drawHighscore()
 	{
-		offscreen.drawString("Your score: " + (int)(Highscore.getHighscore()), 10, 180);
+		offscreen.drawString("Your score: " + (int)(Highscore.getHighscore()), 10, 80);
 	}
 	
 	public void drawDebug()
