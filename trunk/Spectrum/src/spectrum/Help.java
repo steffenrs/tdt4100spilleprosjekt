@@ -40,7 +40,7 @@ public class Help {
 		keys = new String[] {"- Left/Right  =  Move",
 							"- Up  =  Jump",
 							"- Space  =  Activate Gem",
-							"- Escape  =  Menu",
+							"- Escape  =  Menu / Exit menu",
 							"- P  =  Pause"
 		};
 		

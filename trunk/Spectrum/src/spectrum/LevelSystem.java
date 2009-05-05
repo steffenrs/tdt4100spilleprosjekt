@@ -50,7 +50,7 @@ public class LevelSystem {
 			levelIndex = index;
 			changeLevel(levels[index]);
 			Menu.menuItems.get(0).name = "Restart Level";
-			levelIndex = index;
+			game.setStarted(true);
 		}
 	}
 	
