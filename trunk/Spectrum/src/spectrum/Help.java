@@ -21,6 +21,7 @@ public class Help {
 	private String header;
 	private String subHeader1;
 	private String subHeader2;
+	private String [] gemNumber;
 	
 
 	
@@ -43,6 +44,9 @@ public class Help {
 							"- P  =  Pause"
 		};
 		
+		gemNumber = new String []{"- You can only have 2 active gems at the same time.",
+				"  When you activate the 3rd gem, the 1st gem you activated will become inactive"};
+		
 		helpFont = new Font("Calibri", Font.PLAIN, 17);	
 		headerFont = new Font("Calibri", Font.BOLD, 32);
 		subHeader = new Font("Calibri", Font.BOLD, 24);
@@ -50,10 +54,6 @@ public class Help {
 		subHeader2 = "Gems";
 		
 	}
-	
-	
-	
-	
 	
 	
 	public void drawHelp(Graphics g){
@@ -89,7 +89,9 @@ public class Help {
 		g.drawString(gems[4], 200, 620);
 		g.drawString(gems[5], 200, 640);
 		
-		
+		for (int i = 0; i < gemNumber.length; i++) {
+			g.drawString(gemNumber[i], 200, 700 + i * 20);
+		}
 		
 		
 		
