@@ -37,14 +37,16 @@ public class Help {
 				"  With Spectravision you can see gems that are normally invisible to you",		
 		};
 		
-		keys = new String[] {"- Left/Right = Move",
-							"- Up = Jump",
-							"- Space = Activate Gems"
+		keys = new String[] {"- Left/Right  =  Move",
+							"- Up  =  Jump",
+							"- Space  =  Activate Gem",
+							"- Escape  =  Menu",
+							"- P  =  Pause"
 		};
 		
-		helpFont = new Font("Calibri", Font.PLAIN, 15);	
+		helpFont = new Font("Calibri", Font.PLAIN, 17);	
 		headerFont = new Font("Calibri", Font.BOLD, 32);
-		subHeader = new Font("Calibri", Font.BOLD, 22);
+		subHeader = new Font("Calibri", Font.BOLD, 24);
 		subHeader1 = "Keys";
 		subHeader2 = "Gems";
 		
@@ -61,21 +63,32 @@ public class Help {
 		g.setFont(headerFont);
 		fm = g.getFontMetrics(headerFont);
 		stringLength = fm.stringWidth(header);
-		g.drawString(header, Game.SCREEN_WIDTH / 2 - stringLength / 2, 50);
+		g.drawString(header, Game.SCREEN_WIDTH / 2 - stringLength / 2, 70);
+		
 		
 		fm = g.getFontMetrics(subHeader);
 		stringLength = fm.stringWidth(subHeader1);
+		g.setFont(subHeader);
 		g.drawString(subHeader1, Game.SCREEN_WIDTH / 2 - stringLength / 2 , 150);
 		
+		g.setFont(helpFont);
+		for (int i = 0; i < keys.length; i++) {
+			g.drawString(keys[i], 330, 200 + i * 40);
+		}
+		
+		fm = g.getFontMetrics(subHeader);
+		stringLength = fm.stringWidth(subHeader2);
+		g.setFont(subHeader);
+		g.drawString(subHeader2, Game.SCREEN_WIDTH / 2 - stringLength / 2 , 400);
 		
 		//Draws gemdescriptions
 		g.setFont(helpFont);
-		g.drawString(gems[0], 200, 120);
-		g.drawString(gems[1], 200, 140);
-		g.drawString(gems[2], 200, 190);
-		g.drawString(gems[3], 200, 240);
-		g.drawString(gems[4], 200, 290);
-		g.drawString(gems[5], 200, 310);
+		g.drawString(gems[0], 200, 450);
+		g.drawString(gems[1], 200, 470);
+		g.drawString(gems[2], 200, 520);
+		g.drawString(gems[3], 200, 570);
+		g.drawString(gems[4], 200, 620);
+		g.drawString(gems[5], 200, 640);
 		
 		
 		
