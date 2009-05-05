@@ -26,7 +26,7 @@ public class Epilogue {
 	
 	
 	public Epilogue(){
-		names = new String [] {"Ali Torstensen", "Jon Roar Solset", "Jostein Roalkvam", "Christian Håland", "Steffen Stenersen"};
+		names = new String [] {"Aleksander Torstensen", "Jon Roar Solset", "Jostein Roalkvam", "Christian Håland", "Steffen Stenersen"};
 		madeBy = "Made By: ";
 		theEnd = "The End";
 
@@ -44,6 +44,8 @@ public class Epilogue {
 	}
 	
 	
+	
+	//Draws the credits to screen
 	public void drawEpilogue(Graphics g){
 		
 		FontMetrics fm = g.getFontMetrics(nameFont);

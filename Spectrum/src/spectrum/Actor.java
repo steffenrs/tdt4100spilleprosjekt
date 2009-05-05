@@ -124,6 +124,7 @@ public class Actor
 		spriteSheet.draw(g, observer, (int)posX, (int)posY);
 	}
 	
+	//Checks if the player is inside the goal
 	public boolean isInside(Actor a)
 	{
 		if(a.getRectangle().x - 5  < this.getRectangle().x &&

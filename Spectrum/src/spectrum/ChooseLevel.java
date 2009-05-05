@@ -21,6 +21,7 @@ public class ChooseLevel {
 		
 	}
 	
+	//Moves marker up an down in the menulist
 	public void moveUp()
 	{
 		current--;
@@ -36,7 +37,7 @@ public class ChooseLevel {
 			current = 0;
 	}
 	
-	
+	//Launches when enter is pressed in the menu
 	public void takeAction()
 	{
 		levelSystem.changeLevel(current);
@@ -46,7 +47,7 @@ public class ChooseLevel {
 	
 	
 	
-	
+	//Draws the chooseLevel menu to screen
 	public void drawString(Graphics graphics)
 	{
 		for (int i = 0; i < levels.length; i++) 
