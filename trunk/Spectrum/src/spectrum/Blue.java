@@ -16,7 +16,7 @@ public class Blue extends Gem {
 		Player.getPlayer().getActiveSprite().changeFrameY(2);
 	}
 	
-	public void removeProperties()
+	public void removeProperties(Gem gem)
 	{
 		Game.getPlayer().setGravity((Game.getPlayer().getGravity()) * -1);
 		Game.getPlayer().setJumpPower((Game.getPlayer().getJumpPower()) * -1);

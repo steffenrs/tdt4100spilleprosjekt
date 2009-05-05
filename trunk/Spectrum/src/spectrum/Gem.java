@@ -46,17 +46,24 @@ public class Gem extends Actor
 		super.update();
 	}
 	
+	
+	/**
+	 * Activates / deactivates the current gem
+	 */
 	private void activate()
 	{
-		if ((System.currentTimeMillis() - buttonPressed) > 1000) {
+		if ((System.currentTimeMillis() - buttonPressed) > 1000) 
+		{
 			Highscore.addPenalty();
 			this.getActiveSprite().changeFrameX();
+			
+			//if gem is active, deactivate it
 			if(this.active){
-				this.removeProperties();
+				this.removeProperties(this);
 				this.active = false;
 				buttonPressed = System.currentTimeMillis();
 				
-				
+				//deactivate all other gems of same color
 				for (Gem gem : getGems(this.color)) 
 				{
 					if(gem == this)
@@ -66,7 +73,8 @@ public class Gem extends Actor
 					gem.getActiveSprite().changeFrameX();
 				}
 				
-				for (Gem gem : gems) {
+				for (Gem gem : gems) 
+				{
 					if(this.color == gem.color)
 					{
 						gems.remove(gem);
@@ -75,48 +83,55 @@ public class Gem extends Actor
 				}
 				return;
 			}
-		else
-		{
-			buttonPressed = System.currentTimeMillis();
-			
-			if(gems.size() > limit)
+			//if gem is not active, activate it
+			else
 			{
-				gems.get(0).removeProperties();
-				gems.get(0).active = false;
+				buttonPressed = System.currentTimeMillis();
 				
-				for (Gem gem : getGems(gems.get(0).color)) 
+				//if the number of active gems is bigger than allowed, remove the first active gem
+				if(gems.size() > limit)
+				{				
+					gems.get(0).removeProperties(this);
+					gems.get(0).active = false;
+					
+					for (Gem gem : getGems(gems.get(0).color)) 
+					{
+						if(gem == gems.get(0))
+							continue;
+						
+						gem.active = false;
+						gem.getActiveSprite().changeFrameX();
+					}
+					
+					gems.get(0).getActiveSprite().changeFrameX();
+					gems.remove(0);
+				}
+				
+				//activate the current gem
+				gems.add(this);
+				this.active = true;
+				
+				//activate all other gems of same color
+				for (Gem gem : getGems(this.color)) 
 				{
-					if(gem == gems.get(0))
+					if(gem == this)
 						continue;
 					
-					gem.active = false;
+					gem.active = true;
 					gem.getActiveSprite().changeFrameX();
 				}
 				
-				gems.get(0).getActiveSprite().changeFrameX();
-				gems.remove(0);
+				this.applyProperties();
 			}
-			gems.add(this);
-			this.active = true;
-			
-			for (Gem gem : getGems(this.color)) 
-			{
-				if(gem == this)
-					continue;
-				
-				gem.active = true;
-				gem.getActiveSprite().changeFrameX();
-			}
-			
-			this.applyProperties();
-				
 		}
 	}
-}
 	
+	/**
+	 * Activates/deactivates a gem if the player stands on it
+	 * @author Jon Roar Solset
+	 */
 	public static void activateGem()
 	{
-		
 		for (Actor gem : Actor.actors) 
 		{
 			if(!(gem instanceof Gem))
@@ -146,11 +161,15 @@ public class Gem extends Actor
 		
 	}
 	
-	public void removeProperties()
+	public void removeProperties(Gem gem)
 	{
 		
 	}
 	
+	/**
+	 * @param color Color to search for
+	 * @return Returns a list of all gems of the given color
+	 */
 	public static ArrayList<Gem> getGems(String color)
 	{
 		ArrayList<Gem> gems = new ArrayList<Gem>();

@@ -49,6 +49,7 @@ public class LevelSystem {
 		else{
 		levelIndex = index;
 		changeLevel(levels[index]);
+			levelIndex = index;
 		}
 	}
 	
