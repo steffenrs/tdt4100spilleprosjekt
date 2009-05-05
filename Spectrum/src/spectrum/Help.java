@@ -16,7 +16,6 @@ public class Help {
 	private Font helpFont;
 	private Font subHeader;
 	private int stringLength;
-	private Sprite [] sprites;
 	private String [] keys;
 	private String [] gems;
 	private String header;

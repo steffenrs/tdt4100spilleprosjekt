@@ -160,6 +160,7 @@ public class Game extends JFrame implements Runnable
 				break;
 				
 			case COMPLETE:
+				this.setStarted(false);
 				this.paint(graphics);
 				break;
 			case HELP:
@@ -257,6 +258,10 @@ public class Game extends JFrame implements Runnable
 					
 				}
 				break;
+			case COMPLETE:
+				if (input.getKey("Escape").isKeyDown()) {
+					Game.gs = GameState.MENU;
+				}
 				
 			}
 		input.setLastKeys();
