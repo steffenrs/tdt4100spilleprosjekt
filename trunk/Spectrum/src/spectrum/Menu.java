@@ -65,7 +65,7 @@ public class Menu
 		}
 		else if (current == 2) 
 		{
-//			Game.gs = GameState.HELP;
+			Game.gs = GameState.HELP;
 		}
 		else if(current == 3)
 		{

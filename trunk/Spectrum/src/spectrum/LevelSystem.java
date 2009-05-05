@@ -28,6 +28,7 @@ public class LevelSystem {
 		return this.levelIndex;
 	}
 	
+	
 	public void changeLevel(String path)
 	{
 		URL url = getClass().getResource("content/" + path);
@@ -38,6 +39,7 @@ public class LevelSystem {
 		Game.gs = GameState.PLAYING;
 	}
 	
+
 	public void changeLevel(int index){
 		
 		if (index > levels.length - 1){
