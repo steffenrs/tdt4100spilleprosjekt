@@ -14,6 +14,7 @@ public class Player extends Actor
 	private boolean isOnGround = true;
 	private boolean jump = false;
 	private float moveSpeed = 3f;
+	private float maxSpeed = 20f;
 	
 	public void setJumpPower(float value)
 	{

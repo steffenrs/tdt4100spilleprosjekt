@@ -65,6 +65,9 @@ public class Actor
 		return posY;
 	}
 	
+	/*
+	 * Sets which sprite is active
+	 */
 	public void setActiveSprite(String value)
 	{
 		for (Sprite sprite : sprites) 
@@ -101,16 +104,26 @@ public class Actor
 		return null;
 	}
 	
+	/**
+	 *
+	 * @return the rectangle defined by the sprite
+	 */
 	public Rectangle getRectangle()
 	{
 		return new Rectangle((int)this.posX, (int)this.posY, this.getActiveSprite().getWidth(), this.getActiveSprite().getHeight());
 	}
 	
+	/*
+	 * Update method for actors
+	 */
 	public void update()
 	{
 		spriteSheet.update();
 	}
 	
+	/*
+	 * Static method to update all actors
+	 */
 	public static void updateActors()
 	{
 		for (Actor actor : Actor.actors) 
@@ -119,12 +132,17 @@ public class Actor
 		}
 	}
 	
+	/*
+	 * Draw method for actor
+	 */
 	public void draw(Graphics g, ImageObserver observer)
 	{
 		spriteSheet.draw(g, observer, (int)posX, (int)posY);
 	}
-	
-	//Checks if the player is inside the goal
+
+	/*
+	 * Checks if a actor is inside the rectangle of another actor
+	 */
 	public boolean isInside(Actor a)
 	{
 		if(a.getRectangle().x - 5  < this.getRectangle().x &&
@@ -138,6 +156,9 @@ public class Actor
 			
 	}
 	
+	/*
+	 * Check for rectangle collision between two actors
+	 */
 	public static Rectangle intersects(Rectangle a, Rectangle b)
 	{
 		int x1 = Math.max((int)a.getMinX(), (int)b.getMinX());
@@ -154,6 +175,9 @@ public class Actor
 			return null;
 	}
 	
+	/*
+	 * check for pixel collision between two actors
+	 */
 	public static boolean checkCollision(Actor a, Actor b)
 	{
 		final int ALPHA_THRESHOLD = 48;
@@ -172,25 +196,6 @@ public class Actor
 			if(alphaA[i] > ALPHA_THRESHOLD && alphaB[i] > ALPHA_THRESHOLD)
 				return true;
 		}
-		
 		return false;
-
-	}
-	
-	public static void arrangeActorList(){
-		Player tempPlayer;
-		
-		Actor actor;
-		
-		for (int i = Actor.actors.size() - 1; i <= 0; i++) 
-		{
-			actor = Actor.actors.get(i);
-			if (actor instanceof Player) 
-			{
-				tempPlayer = (Player)actor;
-				Actor.actors.remove(actor);
-				Actor.actors.add(tempPlayer);
-			}
-		}
 	}
 }
