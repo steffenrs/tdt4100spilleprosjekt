@@ -38,6 +38,10 @@ public class LevelSystem {
 		Game.gs = GameState.PLAYING;
 	}
 	
+	/*
+	 * Change level
+	 * @param index of the level
+	 */
 	public void changeLevel(int index){
 		
 		if (index > levels.length - 1){

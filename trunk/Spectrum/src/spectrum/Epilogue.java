@@ -51,7 +51,6 @@ public class Epilogue {
 			stringLength = fm.stringWidth(madeBy);
 			if (y < -1300) {
 				g.drawString(madeBy, Game.SCREEN_WIDTH / 2 - stringLength / 2, 1900 + y);
-				
 			}
 			
 			stringLength = fm2.stringWidth(theEnd);

@@ -61,6 +61,9 @@ public class Player extends Actor
 		this.setPosY(y);
 	}
 	
+	/*
+	 * player jumps if it's not in the ground
+	 */
 	public void doJump()
 	{
 		if(isOnGround)
@@ -71,6 +74,9 @@ public class Player extends Actor
 		}
 	}
 	
+	/*
+	 * moves player alongs the x-axis
+	 */
 	public void doMove(int direction)
 	{
 		this.setPosX(this.getPosX() + direction*moveSpeed);
@@ -83,6 +89,9 @@ public class Player extends Actor
 		applyPhysics();
 	}
 	
+	/*
+	 * Handles jumping an actor / wall collision
+	 */
 	private void applyPhysics()
 	{
 		if(!isOnGround)
@@ -100,6 +109,9 @@ public class Player extends Actor
 		checkWallCollision();
 	}
 
+	/*
+	 * Checks if the actor collides with other collidable actors
+	 */
 	private void checkActorCollision() 
 	{
 		for (Actor actor : actors) 
@@ -169,6 +181,9 @@ public class Player extends Actor
 		}
 	}
 
+	/*
+	 * Checks if the player collides with the wall
+	 */
 	private void checkWallCollision() 
 	{
 		//check bottom

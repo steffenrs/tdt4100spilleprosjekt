@@ -6,7 +6,7 @@ public class Red extends Gem
 	{
 		super(sprite, x, y, visible, active, "red");
 	}
-	
+	//Red gem handles player size
 	public void applyProperties()
 	{
 		if (Game.getPlayer().getGravity() < 0) {

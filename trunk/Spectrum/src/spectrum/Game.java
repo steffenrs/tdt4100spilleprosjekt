@@ -97,11 +97,11 @@ public class Game extends JFrame implements Runnable
 		offscreen = offscreenImage.getGraphics();
 		graphics = this.getGraphics();
 		
-		menuBackground = new ImageIcon(getClass().getResource("content//background_00.png")).getImage();
+		menuBackground = new ImageIcon(getClass().getResource("content/background_00.png")).getImage();
 		
 		//game setting
 		levelSystem = new LevelSystem(this, new String[]{
-				"level9.layer", "level2.layer", "level3.layer", "level4.layer",  "level5.layer"
+				"level1.layer", "level2.layer", "level3.layer", "level4.layer",  "level5.layer"
 				, "level6.layer", "level7.layer", "level8.layer", "level9.layer", "level10.layer"
 		}, this);
 		
@@ -114,10 +114,13 @@ public class Game extends JFrame implements Runnable
 		this.update();
 	}
 	
+	/*
+	 * Sets up the player settings
+	 */
 	public void createPlayer()
 	{		
 		player = Player.getPlayer();
-		ImageIcon playerSmall = new ImageIcon(getClass().getResource("content//player_animated_small.png"));
+		ImageIcon playerSmall = new ImageIcon(getClass().getResource("content/player_animated_small.png"));
 		Sprite playerSmallSprite = new Sprite(playerSmall.getImage(), 2 , 4, 10, true, "small", this.observer);
 		playerSmallSprite.setAnimate(true);
 		player.addSprite(playerSmallSprite);
@@ -133,6 +136,9 @@ public class Game extends JFrame implements Runnable
 		menu.add(new MenuItem("Exit"));
 	}
 	
+	/*
+	 * Handles the updating of the game based on which gamestate it's in
+	 */
 	public void update()
 	{	
 		while(true)
@@ -270,7 +276,9 @@ public class Game extends JFrame implements Runnable
 		input.setLastKeys();
 	}
 	
-	
+	/*
+	 * Checks if the player have reached the goal
+	 */
 	private void checkWin()
 	{
 		if(Goal.getGoal() == null)
@@ -284,12 +292,20 @@ public class Game extends JFrame implements Runnable
 		}
 	}	
 	
+	/*
+	 * Resets the current level
+	 */
 	public void resetLevel()
 	{
 		Highscore.resetHighscore();
 		levelSystem.changeLevel(levelSystem.getLevelIndex());
 	}
-		
+	
+	/*
+	 * Handles the painting of the game based on the gamestate
+	 * (non-Javadoc)
+	 * @see java.awt.Container#paint(java.awt.Graphics)
+	 */
 	public void paint(Graphics g)
 	{	
 		if(offscreen == null || gs == null)
@@ -345,6 +361,9 @@ public class Game extends JFrame implements Runnable
 		g.drawImage(offscreenImage, 0, 0, this);
 	}
 	
+	/*
+	 * draws the score to the screen
+	 */
 	public void drawScore()
 	{
 		offscreen.setFont(scoreFont);

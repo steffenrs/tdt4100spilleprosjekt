@@ -148,6 +148,11 @@ public class Gem extends Actor
 		}
 	}
 	
+	/*
+	 * Draws the gem if its visible
+	 * (non-Javadoc)
+	 * @see spectrum.Actor#draw(java.awt.Graphics, java.awt.image.ImageObserver)
+	 */
 	public void draw(Graphics g, ImageObserver observer)
 	{
 		if(!this.visible)
@@ -156,11 +161,17 @@ public class Gem extends Actor
 		super.draw(g, observer);
 	}
 	
+	/*
+	 * Applies the property of the current gem
+	 */
 	public void applyProperties()
 	{
 		
 	}
 	
+	/*
+	 * Removes the property of the current gem
+	 */
 	public void removeProperties()
 	{
 		

@@ -44,9 +44,6 @@ public class ChooseLevel {
 		
 	}
 	
-	
-	
-	
 	//Draws the chooseLevel menu to screen
 	public void drawString(Graphics graphics)
 	{

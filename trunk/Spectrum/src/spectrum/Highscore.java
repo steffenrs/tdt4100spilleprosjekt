@@ -1,16 +1,9 @@
 package spectrum;
 
-import java.io.File;
-
 public class Highscore {
 	
 	private static double highscore = 100000;
 	private static double totalScore;
-	private File highscoreFile;
-	
-	public Highscore(){
-		
-	}
 	
 	public static double getHighscore()
 	{
@@ -50,12 +43,4 @@ public class Highscore {
 	{
 		highscore = 100000;
 	}
-	
-//	public void saveHighscore(){
-//		if (condition) {
-//			
-//		}
-//	}
-	
-	
 }

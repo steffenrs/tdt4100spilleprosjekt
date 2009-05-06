@@ -17,6 +17,9 @@ public class Input extends KeyAdapter
 		new Key(KeyEvent.VK_SPACE)
 	};
 	
+	/*
+	 * Gets the key based on the value input
+	 */
 	public Key getKey(String value)
 	{
 		String keyValue;
@@ -49,6 +52,9 @@ public class Input extends KeyAdapter
 		}
 	}
 	
+	/*
+	 * Sets the lastState boolean to all the keys
+	 */
 	public void setLastKeys()
 	{
 		for (int i = 0; i < keys.length; i++) 

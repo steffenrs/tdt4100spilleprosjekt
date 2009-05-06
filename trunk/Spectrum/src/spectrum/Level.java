@@ -4,6 +4,8 @@ import java.awt.image.ImageObserver;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.ArrayList;
 
@@ -42,14 +44,15 @@ public class Level
 	/**
 	 * @author Steffen R. Stenersen
 	 * @param path to the level
+	 * Loads the level from the file into the game. Adds all the actors relevant to the level.
 	 */
 	public void Load(URL path)
 	{
 		BufferedReader reader = null;
-		
+	
 		try
 		{
-			reader = new BufferedReader(new FileReader(path.getPath()));
+			reader = new BufferedReader(new InputStreamReader(path.openStream()));
 			
 			String input;
 			int step = 0;
@@ -71,7 +74,7 @@ public class Level
 					if(input.equals(""))
 						continue;
 					
-					textures.add(new ImageIcon(getClass().getResource("content//" + input + ".png")));
+					textures.add(new ImageIcon(getClass().getResource("content/" + input + ".png")));
 					int t = input.indexOf("_");
 					textures.get(textures.size() - 1).setDescription(input.substring(0, t));
 					break;
@@ -148,9 +151,9 @@ public class Level
 					}
 				}
 			}
+			//sets the background of the level
 			game.setBackground(textures.get(0).getImage());
 			reader.close();
-			
 		}
 		
 		catch(IOException exc)

@@ -8,7 +8,6 @@ public class MenuItem
 	public MenuItem(String name)
 	{
 		this.name = name;
-		
 	}
 	
 	public void takeAction(Game game)
