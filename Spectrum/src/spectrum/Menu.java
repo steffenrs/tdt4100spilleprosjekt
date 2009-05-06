@@ -41,6 +41,7 @@ public class Menu
 			current = 0;
 	}
 	
+	//Handles action when a menuitem is selected 
 	public void takeAction()
 	{
 		if(current == 0)
@@ -50,16 +51,12 @@ public class Menu
 				game.getLevelSystem().changeLevel(0);
 				game.setStarted(true);
 				menuItems.get(0).name = "Restart Level";
-				Game.gs = GameState.PLAYING;	
-				
+				Game.gs = GameState.PLAYING;		
 			}
 			else
 			{
 				game.resetLevel();
-				
 			}
-			
-
 		}
 		else if(current == 1)
 		{

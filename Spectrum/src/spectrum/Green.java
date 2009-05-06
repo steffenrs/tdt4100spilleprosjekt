@@ -7,7 +7,8 @@ public class Green extends Gem
 		super(sprite, x , y, visible, collidable, "green");
 		
 	}
-
+	
+	//green gem handles low gravity
 	public void applyProperties()
 	{
 		if (Game.getPlayer().getGravity() < 0) {

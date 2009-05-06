@@ -7,6 +7,7 @@ public class Key
 	boolean keyState;
 	boolean lastKeyState;
 	
+	//Class for holding keystate for each keys
 	public Key(int keyCode)
 	{
 		this.keyCode = keyCode;

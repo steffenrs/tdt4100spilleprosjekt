@@ -14,6 +14,7 @@ public class Purple extends Gem
 		super(sprite, x , y, visible, collidable, "purple");	
 	}
 	
+	//purple gem handles invisibility
 	public void applyProperties()
 	{	
 		for(int i = 0; i < Actor.actors.size(); i++)

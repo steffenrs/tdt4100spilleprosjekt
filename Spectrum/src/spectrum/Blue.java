@@ -7,7 +7,7 @@ public class Blue extends Gem {
 		super(sprite, x, y, visible, active, "blue");
 	
 	}
-	
+	//Blue gem handles reverse gravity
 	public void applyProperties()
 	{
 		Game.getPlayer().setGravity((Game.getPlayer().getGravity()) * -1);
